@@ -23,47 +23,107 @@ console.log(b)
 /*2.Naudokite funkcija rand(). Sukurkite tris kintamuosius ir naudodamiesi funkcija rand() jiems priskirkite atsitiktines 
 reikšmes nuo 0 iki 25. Raskite ir su console.log() atspausdinkite kintąmąjį turintį vidurinę reikšmę.*/
 console.log('---------------------')
+    let c = Math.floor(Math.random() * 26)
+    let d = Math.floor(Math.random() * 26)
+    let e = Math.floor(Math.random() * 26)
+    console.log(c)
+    console.log(d)
+    console.log(e)
+    const cde = [c, d, e]
+    console.log(cde)
+  
+  if ((c < d) && (c > e) || (c < e) && (c > d) ){
+    console.log(`${c} yra vidurines reiksmes skaicius`)
+  } 
+  if ((d < c) && (d > e) || (d < e) && (d > c) ){
+    console.log(`${d} yra vidurines reiksmes skaicius`)
+  } 
+  if ((e < c) && (e > d) || (e < d) && (e > c) ){
+    console.log(`${e} yra vidurines reiksmes skaicius`)
+  } 
 
-
-function nextBiggest(cde) {
-    let max = -Infinity, result = -Infinity;
-  
-    for (const value of cde) {
-      const nr = Number(value)
-  
-      if (nr > max) {
-        [result, max] = [max, nr] // save previous max
-      } else if (nr < max && nr > result) {
-        result = nr; // new second biggest
-      }
-    }
-  
-    return result;
+  if(c === d || c === e || d === e  ){
+    console.log('Nera vidurines reiksmes skaiciaus')
   }
-  let c = Math.floor(Math.random() * 26)
-  let d = Math.floor(Math.random() * 26)
-  let e = Math.floor(Math.random() * 26)
-  console.log(c)
-  console.log(d)
-  console.log(e)
-  
-  const cde = [c, d, e]
-  console.log(cde)
-  console.log(result)
  
 
+/*3.Įvedami skaičiai -f, g, h –kraštinių ilgiai, trys kintamieji (naudokite ​rand()​ funkcija nuo 1 iki 10). 
+ Parašykite skriptą, kuris nustatytų, ar galima sudaryti trikampį ir atsakymą atspausdintų naudojant console.log(). */
+ console.log('---------------------')
+ let f = Math.floor(Math.random() * 10) + 1;
+ let g = Math.floor(Math.random() * 10) + 1;
+ let h = Math.floor(Math.random() * 10) + 1;
+ console.log(f)
+ console.log(g)
+ console.log(h)
+
+ if (f + g >= h || f + h >= g || g + h >= f){
+   console.log(`trikampi sudaryti galima`)
+ }
+   else {
+     console.log(`trikampio sudaryti negalima`)
+
+   }
 
 
-/*3.Įvedami skaičiai -a, b, c –kraštinių ilgiai, trys kintamieji (naudokite ​rand()​ funkcija nuo 1 iki 10). 
-Parašykite skriptą, kuris nustatytų, ar galima sudaryti trikampį ir atsakymą atspausdintų naudojant console.log(). */
 /*4.Sukurkite keturis kintamuosius ir ​rand()​ funkcija sugeneruokite jiems reikšmes nuo 0 iki 2. 
 Suskaičiuokite kiek yra nulių, vienetų ir dvejetų. Rezultatus atspauzdinkite su console.log()*/
+console.log('---------------------')
+let j = Math.floor(Math.random() *  3)
+let k = Math.floor(Math.random() *  3)
+let l = Math.floor(Math.random() *  3)
+let m = Math.floor(Math.random() *  3)
+console.log(j)
+console.log(k)
+console.log(l)
+console.log(m)
+const jklm = [j,k,l,m]
+console.log(jklm)
+const map = jklm.reduce(function(prev, cur) {
+  prev[cur] = (prev[cur] || 0) + 1;
+  return prev;
+}, {});
+
+console.log(map);
+
 /* 5.Naudokite funkcija rand(). Atspausdinkite 3 skaičius naudodami console.log() nuo -10 iki 10.
 Prie skaičių mažesnių už 0 iš abiejų pusių atspauzdinkite “+” simbolius,  didesnių už 0 iš abiejų pusių atspauzdinkite
  “-” simbolius, o prie 0 “*” simbolius*/
-/* 6.Įmonė parduoda žvakes po 1 EUR. Perkant daugiau kaip už 1000 EUR taikoma 3 % nuolaida, daugiau kaip už 2000 EUR - 4 %
+ console.log('---------------------')
+ 
+ function random(min, max) {
+  return Math.floor(Math.random()*(max-min+1)+min);
+ }
+ for (let i = 0; i < 3; i++) {
+    console.log (random(-10,10))
+  
+  }
+
+
+
+/* 6.Įmonė parduoda žvakes po 1 EUR. Perkant daugiau kaip už 1000 EUR taikoma 3 % nuolaida, daugiau kaip už 2000   - 4 %
  nuolaida. Parašykite skriptą, kuri skaičiuos žvakių kainą ir atspausdintų atsakymą su console.log() kiek žvakių ir kokia 
  kaina perkama. Žvakių kiekį generuokite ​rand()​ funkcija nuo 5 iki 3000.*/
+ console.log('---------------------')
+
+ let zvakiuKiekis = random(5,3000)
+    console.log (zvakiuKiekis)
+    
+ let zvakesKaina = 1
+
+ if (zvakiuKiekis >= 1000 && zvakiuKiekis < 2000) {
+   zvakesKaina = zvakiuKiekis - (zvakiuKiekis * 0.03)
+   console.log(`Perkama ${zvakiuKiekis} zvakiu. Zvakiu kaina su nuolaida 3%: ${zvakesKaina}EUR`)
+ }
+ if (zvakiuKiekis >= 2000) {
+  zvakesKaina = zvakiuKiekis - (zvakiuKiekis * 0.04)
+  console.log(`Perkama ${zvakiuKiekis} zvakiu. Zvakiu kaina su nuolaida 4%: ${zvakesKaina}EUR`)
+} else{ console.log(`Perkama ${zvakiuKiekis} zvakiu. Zvakiu kaina: ${zvakiuKiekis} EUR`)
+
+}
+
+  
+  
 /* 7.Naudokite funkcija rand(). Sukurkite tris kintamuosius su atsitiktinėm reikšmėm nuo 0 iki 100. 
 Paskaičiuokite jų aritmetinį vidurkį. Ir aritmetinį vidurkį atmetus tas reikšmes, 
 kurios yra mažesnės nei 10 arba didesnės nei 90. Abu vidurkius atspausdinkite su console.log()*/
