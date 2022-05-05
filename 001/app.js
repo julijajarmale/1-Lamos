@@ -1,6 +1,6 @@
 /*1.Naudokite funkcija rand(). Sukurkite du kintamuosius ir naudodamiesi funkcija rand() jiems priskirkite atsitiktines
  reikšmes nuo 0 iki 4. Didesnę reikšmę padalinkite iš mažesnės. Atspausdinkite rezultatą naudodami console.log()*/
-console.log('---------------------')
+console.log('----------1 UZDAVINYS-----------')
 let a = Math.floor(Math.random() * 5)
 let b = Math.floor(Math.random() * 5)
 console.log(a)
@@ -22,13 +22,11 @@ console.log(b)
 
 /*2.Naudokite funkcija rand(). Sukurkite tris kintamuosius ir naudodamiesi funkcija rand() jiems priskirkite atsitiktines 
 reikšmes nuo 0 iki 25. Raskite ir su console.log() atspausdinkite kintąmąjį turintį vidurinę reikšmę.*/
-console.log('---------------------')
+console.log('---------2 UZDAVINYS-----------')
     let c = Math.floor(Math.random() * 26)
     let d = Math.floor(Math.random() * 26)
     let e = Math.floor(Math.random() * 26)
-    console.log(c)
-    console.log(d)
-    console.log(e)
+    
     const cde = [c, d, e]
     console.log(cde)
   
@@ -49,7 +47,7 @@ console.log('---------------------')
 
 /*3.Įvedami skaičiai -f, g, h –kraštinių ilgiai, trys kintamieji (naudokite ​rand()​ funkcija nuo 1 iki 10). 
  Parašykite skriptą, kuris nustatytų, ar galima sudaryti trikampį ir atsakymą atspausdintų naudojant console.log(). */
- console.log('---------------------')
+ console.log('----------3 UZDAVINYS-----------')
  let f = Math.floor(Math.random() * 10) + 1;
  let g = Math.floor(Math.random() * 10) + 1;
  let h = Math.floor(Math.random() * 10) + 1;
@@ -68,15 +66,12 @@ console.log('---------------------')
 
 /*4.Sukurkite keturis kintamuosius ir ​rand()​ funkcija sugeneruokite jiems reikšmes nuo 0 iki 2. 
 Suskaičiuokite kiek yra nulių, vienetų ir dvejetų. Rezultatus atspauzdinkite su console.log()*/
-console.log('---------------------')
+console.log('----------4 UZDAVINYS-----------')
 let j = Math.floor(Math.random() *  3)
 let k = Math.floor(Math.random() *  3)
 let l = Math.floor(Math.random() *  3)
 let m = Math.floor(Math.random() *  3)
-console.log(j)
-console.log(k)
-console.log(l)
-console.log(m)
+
 const jklm = [j,k,l,m]
 console.log(jklm)
 const map = jklm.reduce(function(prev, cur) {
@@ -89,22 +84,32 @@ console.log(map);
 /* 5.Naudokite funkcija rand(). Atspausdinkite 3 skaičius naudodami console.log() nuo -10 iki 10.
 Prie skaičių mažesnių už 0 iš abiejų pusių atspauzdinkite “+” simbolius,  didesnių už 0 iš abiejų pusių atspauzdinkite
  “-” simbolius, o prie 0 “*” simbolius*/
- console.log('---------------------')
+ console.log('----------5 UZDAVINYS-----------')
  
- function random(min, max) {
+  function random(min, max) {
   return Math.floor(Math.random()*(max-min+1)+min);
  }
+ 
  for (let i = 0; i < 3; i++) {
-    console.log (random(-10,10))
-  
+  let value = random(-10,10)
+
+    if (value<0){
+      console.log(`+${value}+`)
+    }
+    if (value>0){
+      console.log(`"${value}"`)
+    }
+    if (value===0){
+      console.log(`*${value}*`)
+    }
   }
-
-
+  console.log('---------------------')
+ 
 
 /* 6.Įmonė parduoda žvakes po 1 EUR. Perkant daugiau kaip už 1000 EUR taikoma 3 % nuolaida, daugiau kaip už 2000   - 4 %
  nuolaida. Parašykite skriptą, kuri skaičiuos žvakių kainą ir atspausdintų atsakymą su console.log() kiek žvakių ir kokia 
  kaina perkama. Žvakių kiekį generuokite ​rand()​ funkcija nuo 5 iki 3000.*/
- console.log('---------------------')
+ console.log('----------6 UZDAVINYS-----------')
 
  let zvakiuKiekis = random(5,3000)
     console.log (zvakiuKiekis)
@@ -127,3 +132,19 @@ Prie skaičių mažesnių už 0 iš abiejų pusių atspauzdinkite “+” simbol
 /* 7.Naudokite funkcija rand(). Sukurkite tris kintamuosius su atsitiktinėm reikšmėm nuo 0 iki 100. 
 Paskaičiuokite jų aritmetinį vidurkį. Ir aritmetinį vidurkį atmetus tas reikšmes, 
 kurios yra mažesnės nei 10 arba didesnės nei 90. Abu vidurkius atspausdinkite su console.log()*/
+console.log('----------7 UZDAVINYS-----------')
+
+let o = Math.floor(Math.random() *  100)
+let p = Math.floor(Math.random() *  100)
+let r = Math.floor(Math.random() *  100)
+
+const opr = [o, p, r]
+console.log(opr)
+const average = opr.reduce((a, b) => a + b, 0) / opr.length;
+console.log(`Pirmas vidurkis: ${average}`)
+
+positive = opr.filter(function (a) { return a >= 10 && a <=90; }),
+sum = positive.reduce(function (a, b) { return a + b; });
+
+const average2 = sum / positive.length
+console.log(`Antras vidurkis: ${average2}`)
