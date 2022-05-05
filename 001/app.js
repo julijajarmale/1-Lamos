@@ -148,3 +148,5 @@ sum = positive.reduce(function (a, b) { return a + b; });
 
 const average2 = sum / positive.length
 console.log(`Antras vidurkis: ${average2}`)
+
+
