@@ -19,10 +19,12 @@
         let sumABC = a + b + c;
         console.log(sumABC);
         
-        console.log(`${'' + a}, ${'' + b}, ${'' + c}`) // ar reikejo sudeti i stringo tipo kintamaji?
-        console.log(`${'' + a} ${'' + b} ${'' + c}`)
-        console.log (`${'' + a} ${'' + b} ${'' + c} ${sumABC}`)
-
+        let string = (`${'' + a}, ${'' + b}, ${'' + c}`)
+        console.log(string) 
+        let string1 = (`${'' + a} ${'' + b} ${'' + c}`)
+        console.log(string1)
+        let string2 = (`${'' + a} ${'' + b} ${'' + c} ${sumABC}`)
+        console.log(string2)
 
 /*2.	Sukurkite vieną kintamąjį, jam priskirkite skaičių (iš intervalo 5…10), kurį sugeneruoja funkcija rand(5, 10) ir jį 
 atspauszdinkite pasinaudojus console.log;*/
@@ -77,11 +79,33 @@ kurie yra iš intervalo 10…20. Ciklą kartokite 5 kartus;
     D.	Skaičius, generuojamus ciklo viduje dėkite į stringo tipo kintamąjį tarp skaičių darydami tarpą.
      Ciklui pasibaigus prie stringo tipo kintamojo pridėkite ciklo viduje generuotų skaičių sumą, paskaičiuotą kaip B dalyje.
     Stringo tipo kintamąjį atspausdinkite pasinaudodami console.log;*/
+    console.log (`--------------7.uzdavinys------------`)
+    function rand(min, max) {   
+        return Math.floor(Math.random()*(max-min+1)+min);
+    }
+    let e = 0
+    let sumE = 0
+    let arrE = []
+
+    for (let i = 0; i < 5 ; i++) {
+        let e = (random(10,20))
+        console.log(e)
+        sumE= sumE + e;
+        arrE.push( e );
+        
+    }
+    console.log(sumE)
+    let stringE = arrE.join(` ${e} `)
+    console.log(stringE)
+    console.log(typeof stringE)
+    let stringWithSum = (`${stringE} ${sumE}`)
+    console.log(stringWithSum)
+    
+    
 
 /*8.	Deklaruokite kintamąjį (jeigu reikia kelis kintamuosius) už ciklo ribų. Ciklo viduje generuokite atsitiktinius 
 skaičius funkcija rand(), kurie yra iš intervalo 10…25. Ciklą kartokite tol, kol ciklo viduje bus sugeneruotas skaičius
  mažesnis nei 12;
-
     A.	Ciklo viduje sugeneruotą reikšmę priskirkite kintamajam, kurį sukūrėte už ciklo ribų ir jį atspauzdinkite;
     B.	Suskaičiuokite kiek iteracijų padarėte ir jų kiekį atspauzdinkite pasinaudodami console.log už ciklo ribų jam 
     pasibaigus;
@@ -93,6 +117,23 @@ skaičius funkcija rand(), kurie yra iš intervalo 10…25. Ciklą kartokite tol
     Rezultatą atspauzdinkite pasinaudodami console.log už ciklo ribų jam pasibaigus.
     F.	Ciklą iš dalies B kartokite tol,  kol to ciklo iteracijų kiekis bus didesnis nei 20 (vieno ciklo). 
     Paskaičiuokite kiek pakartojimų buvo atlikta ir rezultatą atspauzdinkite pabaigoje. */
+    console.log (`--------------8.uzdavinys------------`)
+
+
+    function rand(min, max) {   
+        return Math.floor(Math.random()*(max-min+1)+min);
+       }
+       let number1 = 0;
+       let g = 0;
+       while ((number1 != 7) && (number1 != 5)) {
+           number1 = rand(0, 10);
+           console.log(number1);
+           g++
+       } console.log(`Ciklas apsisuko ${g} kartų`);
+    
+    
+
+
 
 /*9.	Ciklo viduje generuokite atsitiktinius skaičius funkcija rand(), kurie yra iš intervalo 5-10. Ciklą kartokite tol, 
 kol ciklo viduje bus sugeneruotas skaičius 5;
@@ -102,13 +143,18 @@ kol ciklo viduje bus sugeneruotas skaičius 5;
     B.	Padarykite taip, kad išorinis ciklas pasibaigtų kai 5 yra sugeneruojamas ne pirmą, bet trečią kartą ir
      paskaičiuokite iteracijas analogiškai kaip A dalyje;
     C.	Padarykite analogiškai kaip B dalyje, bet tik kai 5 yra sugeneruojami 3 kartus iš eilės;*/
+    console.log (`--------------9.uzdavinys------------`)
+
+
+
+
+
 
 /*10.	Kazys ir Petras žaidžia bingo. Petras per vieną partiją surenka taškų kiekį nuo 10 iki 20, 
 Kazys - surenka taškų kiekį nuo 5 iki 25. Console.log išvesti žaidėjų vardus su taškų kiekiu ir “Partiją laimėjo: 
 laimėtojo vardas”. Taškų kiekį generuokite funkcija rand(). Žaidimą laimi tas, kas greičiau surenka 222 taškus. 
 Partijas kartokite tol, kol kažkuris žaidėjas pirmas surenks 222 arba daugiau taškų.*/
-
-
+console.log (`--------------10.uzdavinys------------`)
 
 
 
