@@ -66,7 +66,7 @@ console.log (`--------------5.uzdavinys------------`)
      if (d >= 7) {
     console.log(d)
     } else {
-        console.log(`Skaicius mazesnis uz 7`)
+        console.log(`Skaicius mazesnis uz 7`);
     }
 
 /*7.	Deklaruokite kintamąjį už ciklo ribų. Ciklo viduje generuokite atsitiktinius skaičius funkcija rand(), 
@@ -94,12 +94,12 @@ kurie yra iš intervalo 10…20. Ciklą kartokite 5 kartus;
         arrE.push( e );
         
     }
-    console.log(sumE)
-    let stringE = arrE.join(` ${e} `)
-    console.log(stringE)
-    console.log(typeof stringE)
-    let stringWithSum = (`${stringE} ${sumE}`)
-    console.log(stringWithSum)
+    console.log(sumE);
+    let stringE = arrE.join(` ${e} `);
+    console.log(stringE);
+    console.log(typeof stringE);
+    let stringWithSum = (`${stringE} ${sumE}`);
+    console.log(stringWithSum);
     
     
 
@@ -116,24 +116,45 @@ skaičius funkcija rand(), kurie yra iš intervalo 10…25. Ciklą kartokite tol
     E.	Suskaičiuokite kiek tarp cikle atsitiktinai generuojamų reikšmių yra lyginių ir kiek nelyginių skaičių. 
     Rezultatą atspauzdinkite pasinaudodami console.log už ciklo ribų jam pasibaigus.
     F.	Ciklą iš dalies B kartokite tol,  kol to ciklo iteracijų kiekis bus didesnis nei 20 (vieno ciklo). 
-    Paskaičiuokite kiek pakartojimų buvo atlikta ir rezultatą atspauzdinkite pabaigoje. */
+    Paskaičiuokite kiek pakartojimų buvo atlikta ir rezultatą atspauzdinkite pabaigoje. 
+    
+    <------F NOT DONE!!!!!!!!!!!!! */
     console.log (`--------------8.uzdavinys------------`)
-
-
+   
     function rand(min, max) {   
         return Math.floor(Math.random()*(max-min+1)+min);
        }
        let number1 = 0;
-       let g = 0;
-       while ((number1 != 7) && (number1 != 5)) {
-           number1 = rand(0, 10);
+       let loop = 0;
+       let sum = 0;
+       let count = 0;
+       let even = 0;
+       let odd = 0;
+       while ((number1 != 10) && (number1 != 11)) {
+           number1 = rand(10, 25);
            console.log(number1);
-           g++
-       } console.log(`Ciklas apsisuko ${g} kartų`);
-    
-    
+           loop++
 
+           if (number1 <= 18){
+            sum= sum + number1;
+            } else {
+                count++
+            }
+            
+            if (number1 % 2 ===0){
+                even++
+            }
+            if (number1 % 2 !=0){
+                odd++
+            }
 
+       } 
+       console.log(`Ciklas apsisuko ${loop} kartų`);
+       console.log(`suma: ${sum}`);
+       console.log(`atmesta skaiciu:${count}`);
+       console.log(`lyginiu: ${even}`)
+       console.log(`nelyginiu: ${odd}`)
+    
 
 /*9.	Ciklo viduje generuokite atsitiktinius skaičius funkcija rand(), kurie yra iš intervalo 5-10. Ciklą kartokite tol, 
 kol ciklo viduje bus sugeneruotas skaičius 5;
@@ -141,12 +162,30 @@ kol ciklo viduje bus sugeneruotas skaičius 5;
     Paskaičiuokite kiek iteracijų padarė išorinis ciklas ir kiek bendrai iteracijų padarė vidinis ciklas. 
     Rezultatus atspauzdinkite pasinaudodami console.log už ciklo ribų jam pasibaigus;
     B.	Padarykite taip, kad išorinis ciklas pasibaigtų kai 5 yra sugeneruojamas ne pirmą, bet trečią kartą ir
-     paskaičiuokite iteracijas analogiškai kaip A dalyje;
-    C.	Padarykite analogiškai kaip B dalyje, bet tik kai 5 yra sugeneruojami 3 kartus iš eilės;*/
+     paskaičiuokite iteracijas analogiškai kaip A dalyje; 
+    C.	Padarykite analogiškai kaip B dalyje, bet tik kai 5 yra sugeneruojami 3 kartus iš eilės;
+    
+    !!!!!!! B and C not done
+    */
     console.log (`--------------9.uzdavinys------------`)
 
+    function rand(min, max) {   
+        return Math.floor(Math.random()*(max-min+1)+min);
+      }
+      let number = 0;
+      let ciklas = 0;
+      let ciklas2 = 0
+      while (number != 5) {
+          number = rand(5, 10);
+          ciklas++
+          console.log(number);
 
-
+          for (let i = 0; i < 5 ; i++) {
+            ciklas2++
+        }
+      }
+   console.log(`Isorinis ciklas apsisuko ${ciklas} kartų`)
+   console.log(`Vidinis ciklas apsisuko ${ciklas2} kartų`)
 
 
 
@@ -157,9 +196,8 @@ Partijas kartokite tol, kol kažkuris žaidėjas pirmas surenks 222 arba daugiau
 console.log (`--------------10.uzdavinys------------`)
 
 
+    
+   
 
-
-
-
-
+  
 
