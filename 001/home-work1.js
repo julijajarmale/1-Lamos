@@ -112,22 +112,26 @@ Prie skaičių mažesnių už 0 iš abiejų pusių atspauzdinkite “+” simbol
  console.log('----------6 UZDAVINYS-----------')
 
  let zvakiuKiekis = random(5,3000)
-    console.log (zvakiuKiekis)
-    
- let zvakesKaina = 1
+ console.log (zvakiuKiekis)
+ 
+ let zvakiuKaina = 1
+ let naujaKaina= 0
 
- if (zvakiuKiekis >= 1000 && zvakiuKiekis < 2000) {
-   zvakesKaina = zvakiuKiekis - (zvakiuKiekis * 0.03)
-   console.log(`Perkama ${zvakiuKiekis} zvakiu. Zvakiu kaina su nuolaida 3%: ${zvakesKaina}EUR`)
- }
- if (zvakiuKiekis >= 2000) {
-  zvakesKaina = zvakiuKiekis - (zvakiuKiekis * 0.04)
-  console.log(`Perkama ${zvakiuKiekis} zvakiu. Zvakiu kaina su nuolaida 4%: ${zvakesKaina}EUR`)
-} else{ console.log(`Perkama ${zvakiuKiekis} zvakiu. Zvakiu kaina: ${zvakiuKiekis} EUR`)
+if (zvakiuKiekis > 1000 && zvakiuKiekis <= 2000) {
+   naujaKaina =  zvakiuKiekis * zvakiuKaina - ( zvakiuKiekis * zvakiuKaina * 0.03)
+  
+  console.log(`Perkama ${zvakiuKiekis} zvakiu. Zvakiu kaina su nuolaida 3%: ${naujaKaina}EUR`)
+}
+if (zvakiuKiekis > 2000) {
+  naujaKaina = zvakiuKiekis * zvakiuKaina - ( zvakiuKiekis * zvakiuKaina * 0.04)
+  console.log(`Perkama ${zvakiuKiekis} zvakiu. Zvakiu kaina su nuolaida 4%: ${naujaKaina}EUR`)
+}
+if (zvakiuKiekis <= 1000){ 
+  naujaKaina = zvakiuKiekis * zvakiuKaina
+  console.log(`Perkama ${zvakiuKiekis} zvakiu. Zvakiu kaina: ${naujaKaina} EUR`)
 
 }
-
-  
+ 
   
 /* 7.Naudokite funkcija rand(). Sukurkite tris kintamuosius su atsitiktinėm reikšmėm nuo 0 iki 100. 
 Paskaičiuokite jų aritmetinį vidurkį. Ir aritmetinį vidurkį atmetus tas reikšmes, 
