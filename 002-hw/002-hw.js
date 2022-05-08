@@ -130,13 +130,14 @@ skaičius funkcija rand(), kurie yra iš intervalo 10…25. Ciklą kartokite tol
        let count = 0;
        let even = 0;
        let odd = 0;
+       
        while ((number1 != 10) && (number1 != 11)) {
            number1 = rand(10, 25);
            console.log(number1);
            loop++
 
            if (number1 <= 18){
-            sum= sum + number1;
+            sum = sum + number1;
             } else {
                 count++
             }
@@ -154,6 +155,7 @@ skaičius funkcija rand(), kurie yra iš intervalo 10…25. Ciklą kartokite tol
        console.log(`atmesta skaiciu:${count}`);
        console.log(`lyginiu: ${even}`)
        console.log(`nelyginiu: ${odd}`)
+       
     
 
 /*9.	Ciklo viduje generuokite atsitiktinius skaičius funkcija rand(), kurie yra iš intervalo 5-10. Ciklą kartokite tol, 
@@ -174,11 +176,14 @@ kol ciklo viduje bus sugeneruotas skaičius 5;
       }
       let number = 0;
       let ciklas = 0;
-      let ciklas2 = 0
+      let ciklas2 = 0;
+      
+
       while (number != 5) {
           number = rand(5, 10);
           ciklas++
           console.log(number);
+          
 
           for (let i = 0; i < 5 ; i++) {
             ciklas2++
@@ -195,7 +200,31 @@ laimėtojo vardas”. Taškų kiekį generuokite funkcija rand(). Žaidimą laim
 Partijas kartokite tol, kol kažkuris žaidėjas pirmas surenks 222 arba daugiau taškų.*/
 console.log (`--------------10.uzdavinys------------`)
 
+      let kTaskai = 0;
+      let sumaK = 0;
+      let pTaskai = 0;
+      let sumaP = 0;
 
+      while((sumaK < 222 && sumaK != 222)&&(sumaP < 222 && sumaP != 222)){
+          let kTaskai = rand(5, 25);
+          sumaK = sumaK + kTaskai;
+          let pTaskai = rand(10, 20);
+          sumaP = sumaP + pTaskai;
+            if (sumaK >= 222 && sumaK > sumaP){
+            console.log(`Kazys: ${sumaK} tasku; Petras: ${sumaP} tasku. Partija laimejo Kazys` )
+        }
+            if (sumaP >= 222 && sumaP > sumaK){
+            console.log(`Kazys: ${sumaK} tasku; Petras: ${sumaP} tasku. Partija laimejo Petras` )
+        }
+            if (sumaP === 222 && sumaK === 222){
+            console.log(`Kazys: ${sumaK} tasku; Petras: ${sumaP} tasku. Rezultatas - lygiosios` )
+        }
+    }
+          
+
+    
+   
+    
     
    
 
