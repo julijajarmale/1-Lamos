@@ -220,13 +220,148 @@ console.log (`--------------10.uzdavinys------------`)
             console.log(`Kazys: ${sumaK} tasku; Petras: ${sumaP} tasku. Rezultatas - lygiosios` )
         }
     }
-          
+
+    console.log (`--------------CIKLU ANTRAS LAPAS ------------`)
 
     
-   
-    
-    
-   
+/*1. console.log’e, naudojant ciklą atspausdinti penkias eilutes ‘Labas’;*/
+console.log (`--------------1.UZDUOTIS ------------`)
 
-  
+    for(let i= 0; i < 5; i++){
+     console.log('Labas');
+    }
 
+/*2.console.log’e, naudojant ciklą penkiose eilutėse atspausdinti skaičius 0 1 2 3 4 (vienas skaičius vienoje eilutėje);*/
+console.log (`--------------2.UZDUOTIS ------------`)
+
+    for(let i= 0; i < 5; i++){
+     console.log(i);
+    }
+
+/*3.console.log’e, naudojant ciklą penkiose eilutėse atspausdinti skaičius 0 10 20 30 40 (vienas skaičius vienoje eilutėje);*/
+console.log (`--------------3.UZDUOTIS ------------`)
+    for(let i= 0; i <= 40; i+=10){
+     console.log(i);
+   }
+
+/*4.console.log’e, naudojant ciklą penkiose eilutėse atspausdinti skaičius 49 50 51 52 53 (vienas skaičius vienoje eilutėje);*/
+console.log (`--------------4.UZDUOTIS ------------`)
+    for(let i= 49; i <= 53; i++){
+     console.log(i);
+  }
+
+/*5. console.log’e, naudojant ciklą penkiose eilutėse atspausdinti skaičius 4 3 2 1 0 (vienas skaičius vienoje eilutėje);*/
+console.log (`--------------5.UZDUOTIS ------------`)
+
+    for(let i= 4; i >= 0; i--){
+     console.log(i);
+ }
+
+/*6.console.log’e, naudojant ciklą penkiose eilutėse atspausdinti skaičius 0 2 4 6 8 (vienas skaičius vienoje eilutėje, daugybos
+konsolėje nenaudoti!, if’ų nenaudoti, ciklas for);*/
+console.log (`--------------6.UZDUOTIS ------------`)
+
+    for(let i= 0; i <= 8; i+=2){
+     console.log(i);
+}
+/*7.console.log’e, naudojant ciklą penkiose eilutėse atspausdinti skirtingus atsitiktinius skaičius nuo 0 iki 10 
+(vienas skaičius vienoje eilutėje);*/
+console.log (`--------------7.UZDUOTIS ------------`)
+    let num = 0;
+
+    for(let i= 0; i < 5; i++){
+        num = (random(0,10))
+        console.log(num);
+    }
+
+/*8.console.log’e, naudojant ciklą atspausdinti skirtingus atsitiktinius skaičius nuo 0 iki 10 (vienas skaičius vienoje eilutėje).
+Paskutinis atspausdintas skaičius turi būti 5;*/
+console.log (`--------------8.UZDUOTIS ------------`)
+
+    let l = 0
+    while (l != 5){
+        l = (random(0,10))
+        console.log(l);
+    }
+
+/*9.console.log’e, naudojant ciklą atspausdinti atsitiktinius skirtingus skaičius nuo 0 iki 10 (vienas skaičius vienoje eilutėje). 
+Ciklas turi pasibaigti tada, kai atsitiktinių skaičių suma viršija 100;*/
+console.log (`--------------9.UZDUOTIS ------------`)
+
+    let sumM=0;
+    while (sumM<=100) {
+      sumM += rand(1, 10);
+      console.log(rand(1, 10));
+    }
+
+/*10.console.log’e, naudojant ciklą atspausdinti skirtingus atsitiktinius skaičius nuo 0 iki 10 
+(vienas skaičius vienoje eilutėje). Paskutinis atspausdintas skaičius turi būti 5 arba 7; Suskaičiuoti kiek ciklų prasisuko;*/
+console.log (`--------------10.UZDUOTIS ------------`)
+
+    let skaicius1 = 0;
+    let ciklas1 = 0;
+
+    while(skaicius1 !=5 && skaicius1 != 7){
+        skaicius1 = (rand(0, 10))
+        console.log(skaicius1)
+        ciklas1++
+    }
+    console.log(`apsisuko ${ciklas1} ciklu`)
+
+/*11.console.log’e, naudojant ciklą atspausdinti atsitiktinius skirtingus skaičius nuo 0 iki 10 (vienas skaičius vienoje eilutėje).
+ Ciklas turi pasibaigti tada, kai atsitiktinių skaičių suma viršija 20, bet ne anksčiau nei po 11 ciklų;*/
+ console.log (`--------------11.UZDUOTIS ------------`)
+
+   let skaicius11 = 0;
+   let ciklas11 = 0;
+   let sum11=0;
+    while (sum11<=20 || ciklas11<11) {
+      sum11 += rand(0, 10);
+      ciklas11++
+      console.log(rand(1, 10));
+    }
+
+/*12.console.log’e, naudojant ciklą atspausdinti skirtingus atsitiktinius skaičius nuo 0 iki 10 (vienas skaičius vienoje eilutėje).
+ Ciklą kartoti kol bus sugeneruoti trys nelyginiai skaičiai;*/
+ console.log (`--------------12.UZDUOTIS ------------`)
+
+
+
+/*13.console.log’e, naudojant ciklą atspausdinti po porą skirtingų atsitiktinių skaičių nuo 0 iki 10 (abu skaičiai vienoje eilutėje).
+ Ciklą kartoti tol, kol neiškris abu vienodi skaičiai;*/
+ console.log (`--------------13.UZDUOTIS ------------`)
+
+ let sk1 = 0;
+ let sk2 = 0;
+
+ while (sk1 <= sk2){
+     let sk1 = rand(0, 10);
+     let sk2 = rand(0, 10);
+     console.log(`${sk1}, ${sk2}`)
+
+     if(sk1 === sk2){
+     break
+     }
+ }
+ 
+/*14.console.log’e, naudojant ciklą atspausdinti po porą skirtingų atsitiktinių skaičių nuo 0 iki 10 (abu skaičiai vienoje eilutėje).
+ Skaičiuoti abiejų skaičių sumas skirtinguose kintamuosiuose (skaičiuoti skaičių stulpelių sumas). 
+ Ciklą kartoti tol, kol kiekviena iš sumų bus daugiau nei 100;*/
+ console.log (`--------------14.UZDUOTIS ------------`)
+let sk3 = 0;
+let sk4 = 0;
+let sum3 = 0;
+let sum4 = 0;
+ while (sum3 < 100 || sum4 < 100){
+     let sk3 = rand(0, 10);
+     let sk4 = rand(0, 10);
+     sum3 = sum3 + sk3;
+     sum4 = sum4 + sk4;
+     console.log(`${sum3},${sum4}`);
+ }
+
+/*15.console.log’e, naudojant ciklą atspausdinti po porą skirtingų atsitiktinių skaičių nuo 0 iki 10 (abu skaičiai vienoje eilutėje).
+ Ciklą kartoti kol bus sugeneruota po tris arba daugiau nelyginių skaičių  (skaičiai atskiruose stulpeliuose).*/
+ console.log (`--------------15.UZDUOTIS ------------`)
+
+        
