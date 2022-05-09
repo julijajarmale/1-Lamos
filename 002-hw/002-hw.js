@@ -324,6 +324,23 @@ console.log (`--------------10.UZDUOTIS ------------`)
 /*12.console.log’e, naudojant ciklą atspausdinti skirtingus atsitiktinius skaičius nuo 0 iki 10 (vienas skaičius vienoje eilutėje).
  Ciklą kartoti kol bus sugeneruoti trys nelyginiai skaičiai;*/
  console.log (`--------------12.UZDUOTIS ------------`)
+ 
+ 
+  /*let sk12 = 0;
+  let countOdd=0;
+  let ciklas12 = true;
+
+  while(countOdd >= 3){
+    let sk12 = random(0,10);
+    if (sk12 % 2 != 0){
+        countOdd++
+        if (countOdd === 3){
+            let ciklas12 = false;
+        }
+
+    }
+  }*/
+
 
 
 
@@ -342,8 +359,9 @@ console.log (`--------------10.UZDUOTIS ------------`)
      if(sk1 === sk2){
      break
      }
- }
+ } 
  
+ // vienas random kitas while !==
 /*14.console.log’e, naudojant ciklą atspausdinti po porą skirtingų atsitiktinių skaičių nuo 0 iki 10 (abu skaičiai vienoje eilutėje).
  Skaičiuoti abiejų skaičių sumas skirtinguose kintamuosiuose (skaičiuoti skaičių stulpelių sumas). 
  Ciklą kartoti tol, kol kiekviena iš sumų bus daugiau nei 100;*/

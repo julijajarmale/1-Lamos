@@ -79,3 +79,12 @@ switch(kas){
     
 } // switch yra ciklas
 
+
+let b = 'labas';
+
+if (3 < 7){
+    let a = 'valio'
+    let b = 'valio'
+}
+console.log(b)
+console.log(a)
