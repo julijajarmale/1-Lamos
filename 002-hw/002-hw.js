@@ -83,7 +83,7 @@ kurie yra iš intervalo 10…20. Ciklą kartokite 5 kartus;
     function rand(min, max) {   
         return Math.floor(Math.random()*(max-min+1)+min);
     }
-    let e = 0
+    let e = 0;
     let sumE = 0
     let arrE = []
 
@@ -124,32 +124,32 @@ skaičius funkcija rand(), kurie yra iš intervalo 10…25. Ciklą kartokite tol
     function rand(min, max) {   
         return Math.floor(Math.random()*(max-min+1)+min);
        }
-       let number1 = 0;
+       let number1;
        let loop = 0;
        let sum = 0;
        let count = 0;
        let even = 0;
        let odd = 0;
+      do{
+        number1 = rand(10, 25);
+        console.log(number1);
+        loop++
+
+        if (number1 <= 18){
+         sum = sum + number1;
+         } else {
+             count++
+         }
+         
+         if (number1 % 2 ===0){
+             even++
+         }
+         if (number1 % 2 !=0){
+             odd++
+         }
+      }
+       while ((number1 != 10) && (number1 != 11)) 
        
-       while ((number1 != 10) && (number1 != 11)) {
-           number1 = rand(10, 25);
-           console.log(number1);
-           loop++
-
-           if (number1 <= 18){
-            sum = sum + number1;
-            } else {
-                count++
-            }
-            
-            if (number1 % 2 ===0){
-                even++
-            }
-            if (number1 % 2 !=0){
-                odd++
-            }
-
-       } 
        console.log(`Ciklas apsisuko ${loop} kartų`);
        console.log(`suma: ${sum}`);
        console.log(`atmesta skaiciu:${count}`);
@@ -174,18 +174,21 @@ kol ciklo viduje bus sugeneruotas skaičius 5;
     function rand(min, max) {   
         return Math.floor(Math.random()*(max-min+1)+min);
       }
-      let number = 0;
+      let number;
       let ciklas = 0;
       let ciklas2 = 0;
+      let count9 = 0;
       
-
+      do{
+        number = rand(5, 10);
+        ciklas++
+        console.log(number);
+        
+      }
       while (number != 5) {
-          number = rand(5, 10);
-          ciklas++
-          console.log(number);
           
 
-          for (let i = 0; i < 5 ; i++) {
+          for (let i = 0; i < ciklas ; i++) {
             ciklas2++
         }
       }
@@ -200,26 +203,28 @@ laimėtojo vardas”. Taškų kiekį generuokite funkcija rand(). Žaidimą laim
 Partijas kartokite tol, kol kažkuris žaidėjas pirmas surenks 222 arba daugiau taškų.*/
 console.log (`--------------10.uzdavinys------------`)
 
-      let kTaskai = 0;
+      let kTaskai;
       let sumaK = 0;
-      let pTaskai = 0;
+      let pTaskai;
       let sumaP = 0;
 
-      while((sumaK < 222 && sumaK != 222)&&(sumaP < 222 && sumaP != 222)){
-          let kTaskai = rand(5, 25);
-          sumaK = sumaK + kTaskai;
-          let pTaskai = rand(10, 20);
-          sumaP = sumaP + pTaskai;
-            if (sumaK >= 222 && sumaK > sumaP){
-            console.log(`Kazys: ${sumaK} tasku; Petras: ${sumaP} tasku. Partija laimejo Kazys` )
-        }
-            if (sumaP >= 222 && sumaP > sumaK){
-            console.log(`Kazys: ${sumaK} tasku; Petras: ${sumaP} tasku. Partija laimejo Petras` )
-        }
-            if (sumaP === 222 && sumaK === 222){
-            console.log(`Kazys: ${sumaK} tasku; Petras: ${sumaP} tasku. Rezultatas - lygiosios` )
-        }
-    }
+      do{
+        let kTaskai = rand(5, 25);
+        sumaK = sumaK + kTaskai;
+        let pTaskai = rand(10, 20);
+        sumaP = sumaP + pTaskai;
+          if (sumaK >= 222 && sumaK > sumaP){
+          console.log(`Kazys: ${sumaK} tasku; Petras: ${sumaP} tasku. Partija laimejo Kazys` )
+      }
+          if (sumaP >= 222 && sumaP > sumaK){
+          console.log(`Kazys: ${sumaK} tasku; Petras: ${sumaP} tasku. Partija laimejo Petras` )
+      }
+          if (sumaP === 222 && sumaK === 222){
+          console.log(`Kazys: ${sumaK} tasku; Petras: ${sumaP} tasku. Rezultatas - lygiosios` )
+      }
+      }
+
+      while((sumaK < 222 && sumaK != 222)&&(sumaP < 222 && sumaP != 222))
 
     console.log (`--------------CIKLU ANTRAS LAPAS ------------`)
 
@@ -267,7 +272,7 @@ console.log (`--------------6.UZDUOTIS ------------`)
 /*7.console.log’e, naudojant ciklą penkiose eilutėse atspausdinti skirtingus atsitiktinius skaičius nuo 0 iki 10 
 (vienas skaičius vienoje eilutėje);*/
 console.log (`--------------7.UZDUOTIS ------------`)
-    let num = 0;
+    let num;
 
     for(let i= 0; i < 5; i++){
         num = (random(0,10))
@@ -278,7 +283,7 @@ console.log (`--------------7.UZDUOTIS ------------`)
 Paskutinis atspausdintas skaičius turi būti 5;*/
 console.log (`--------------8.UZDUOTIS ------------`)
 
-    let l = 0
+    let l;
     while (l != 5){
         l = (random(0,10))
         console.log(l);
@@ -325,41 +330,40 @@ console.log (`--------------10.UZDUOTIS ------------`)
  Ciklą kartoti kol bus sugeneruoti trys nelyginiai skaičiai;*/
  console.log (`--------------12.UZDUOTIS ------------`)
  
- 
-  /*let sk12 = 0;
-  let countOdd=0;
-  let ciklas12 = true;
+ count = 0;
+ ciklasEina = true;
 
-  while(countOdd >= 3){
-    let sk12 = random(0,10);
-    if (sk12 % 2 != 0){
-        countOdd++
-        if (countOdd === 3){
-            let ciklas12 = false;
-        }
-
+ do{
+     num12 = rand(0, 10);
+     console.log(num12);
+     if(num12 % 2 != 0){
+         count++
+     }
+     if(count === 3){
+        ciklasEina = false;
     }
-  }*/
-
-
-
+ } while(ciklasEina);
+ 
 
 /*13.console.log’e, naudojant ciklą atspausdinti po porą skirtingų atsitiktinių skaičių nuo 0 iki 10 (abu skaičiai vienoje eilutėje).
  Ciklą kartoti tol, kol neiškris abu vienodi skaičiai;*/
  console.log (`--------------13.UZDUOTIS ------------`)
 
+
  let sk1 = 0;
  let sk2 = 0;
-
- while (sk1 <= sk2){
-     let sk1 = rand(0, 10);
+ let ciklai = true;
+do{
+    let sk1 = rand(0, 10);
      let sk2 = rand(0, 10);
      console.log(`${sk1}, ${sk2}`)
 
      if(sk1 === sk2){
-     break
+     ciklai = false;
      }
- } 
+}
+ while (ciklai);
+    
  
  // vienas random kitas while !==
 /*14.console.log’e, naudojant ciklą atspausdinti po porą skirtingų atsitiktinių skaičių nuo 0 iki 10 (abu skaičiai vienoje eilutėje).
@@ -381,5 +385,26 @@ let sum4 = 0;
 /*15.console.log’e, naudojant ciklą atspausdinti po porą skirtingų atsitiktinių skaičių nuo 0 iki 10 (abu skaičiai vienoje eilutėje).
  Ciklą kartoti kol bus sugeneruota po tris arba daugiau nelyginių skaičių  (skaičiai atskiruose stulpeliuose).*/
  console.log (`--------------15.UZDUOTIS ------------`)
+ let sk15;
+ let sk16;
+ let count15 = 0;
+ let count16 = 0;
+
+ do{
+    let sk15 = random(0, 10);
+    let sk16 = random(0, 10);
+    console.log(`${sk15}, ${sk16}`)
+
+    if(sk15 % 2 != 0){
+        count15 ++
+    }
+    if(sk16 % 2 != 0){
+       count16 ++
+   }
+   if (count15 >= 3 && count16 >= 3) {
+       break;
+   }
+ }
+ while(count15 != 3 || count16 != 3);
 
         
