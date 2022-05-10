@@ -117,8 +117,7 @@ skaičius funkcija rand(), kurie yra iš intervalo 10…25. Ciklą kartokite tol
     Rezultatą atspauzdinkite pasinaudodami console.log už ciklo ribų jam pasibaigus.
     F.	Ciklą iš dalies B kartokite tol,  kol to ciklo iteracijų kiekis bus didesnis nei 20 (vieno ciklo). 
     Paskaičiuokite kiek pakartojimų buvo atlikta ir rezultatą atspauzdinkite pabaigoje. 
-    
-    <------F NOT DONE!!!!!!!!!!!!! */
+    */
     console.log (`--------------8.uzdavinys------------`)
    
     function rand(min, max) {   
@@ -130,10 +129,12 @@ skaičius funkcija rand(), kurie yra iš intervalo 10…25. Ciklą kartokite tol
        let count = 0;
        let even = 0;
        let odd = 0;
+       let countIteracijos = 0;
       do{
         number1 = rand(10, 25);
         console.log(number1);
         loop++
+        countIteracijos++
 
         if (number1 <= 18){
          sum = sum + number1;
@@ -148,7 +149,7 @@ skaičius funkcija rand(), kurie yra iš intervalo 10…25. Ciklą kartokite tol
              odd++
          }
       }
-       while ((number1 != 10) && (number1 != 11)) 
+       while ((number1 != 10) && (number1 != 11) || (countIteracijos < 20))
        
        console.log(`Ciklas apsisuko ${loop} kartų`);
        console.log(`suma: ${sum}`);
@@ -167,7 +168,7 @@ kol ciklo viduje bus sugeneruotas skaičius 5;
      paskaičiuokite iteracijas analogiškai kaip A dalyje; 
     C.	Padarykite analogiškai kaip B dalyje, bet tik kai 5 yra sugeneruojami 3 kartus iš eilės;
     
-    !!!!!!! B and C not done
+    !!!!!!! C not done
     */
     console.log (`--------------9.uzdavinys------------`)
 
@@ -177,21 +178,28 @@ kol ciklo viduje bus sugeneruotas skaičius 5;
       let number;
       let ciklas = 0;
       let ciklas2 = 0;
-      let count9 = 0;
+      let count5 = 0;
+      let ciklasEina = true;
+      
       
       do{
         number = rand(5, 10);
         ciklas++
         console.log(number);
-        
-      }
-      while (number != 5) {
-          
 
-          for (let i = 0; i < ciklas ; i++) {
+        for (let i = 0; i < ciklas ; i++) {
             ciklas2++
         }
+        if (number === 5){
+            count5 ++
+        }
+        if (count5 === 3){
+            ciklasEina = false;
+        }
       }
+      
+      
+      while (ciklasEina) 
    console.log(`Isorinis ciklas apsisuko ${ciklas} kartų`)
    console.log(`Vidinis ciklas apsisuko ${ciklas2} kartų`)
 
