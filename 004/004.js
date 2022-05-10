@@ -1,4 +1,5 @@
 //MASYVAI
+'use strict';
 
 const n = ['Petras', 'Asilas', 'Barsukas', 'Kate'];
 
@@ -31,3 +32,48 @@ for (let i = 0; i < n.length; i++){
     console.log(n[i]); // i -indexas 0, 1, 2...
 
 }
+
+const nPlus = [
+    [4, 7, 12],
+    [85, 17, 12],
+    [10, 33, 74],
+    [26, 41, 99],
+]
+
+console.table(nPlus);
+console.log(nPlus[3][0]);
+
+for (let i = 0; i < nPlus.length; i++){
+    
+    for (let k = 0; k < nPlus[i].length; k++){
+        console.log(nPlus[i][k]);
+    }
+
+    
+}
+
+/*nPlus.forEach (m => {
+    m.forEach(k => console.log(k))
+}); */
+
+// nPlus.forEach(m => m.forEach(k => console.log(k)));
+
+function rand(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+
+
+const naujasNamas = [];
+
+for (let i = 0; i < 100; i++){
+    const aukstas = [];
+    for (let k = 0; k < 100; k++){
+    aukstas.push(rand(10, 99));
+}
+    naujasNamas.push(aukstas);
+}
+
+console.table(naujasNamas);

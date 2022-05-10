@@ -167,8 +167,6 @@ kol ciklo viduje bus sugeneruotas skaičius 5;
     B.	Padarykite taip, kad išorinis ciklas pasibaigtų kai 5 yra sugeneruojamas ne pirmą, bet trečią kartą ir
      paskaičiuokite iteracijas analogiškai kaip A dalyje; 
     C.	Padarykite analogiškai kaip B dalyje, bet tik kai 5 yra sugeneruojami 3 kartus iš eilės;
-    
-    !!!!!!! C not done
     */
     console.log (`--------------9.uzdavinys------------`)
 
