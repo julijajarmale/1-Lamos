@@ -102,4 +102,23 @@ for(let i = 0; i < 10; i++){
 
      console.log(kotletasSuvalgytasPer);
 
+// kiek ciklu nueis kate, kol pagaus nemaziau nei 20 ziurkiu
+
+console.log(`********************KONTROLINIS***********************`);
+
+     let ziurke;
+     let sumZiurke = 0;
+     let ciklas = 0;
+
+    do{ 
+        let ziurke = random(3, 5);
+        console.log(ziurke);
+        sumZiurke = sumZiurke + ziurke;
+        ciklas++
+    }
+    
+    while (sumZiurke <= 20);
+    console.log(`katinas pagavo ${sumZiurke} ziurke apsukes aplink nama ${ciklas} kartus`)
+
+
  

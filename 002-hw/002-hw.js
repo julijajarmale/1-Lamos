@@ -192,6 +192,8 @@ kol ciklo viduje bus sugeneruotas skaičius 5;
         }
         if (number === 5){
             count5 ++
+        } else{
+            count5 === 0;
         }
         if (count5 === 3){
             ciklasEina = false;
