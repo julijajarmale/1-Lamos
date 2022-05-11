@@ -54,18 +54,19 @@ console.log(pinigine);
 
 
 /* 5.Surasti didžiausią reikšmę 1 uždavinio masyve ir paskaičiuoti kiek tokių didžiausių reikšmių masyve yra;*/
-console.log(`-------------5.UZDAVINYS-----------`) //count++ nepavyko
+console.log(`-------------5.UZDAVINYS-----------`) 
 
-let largest = pinigine[0];
+let largest;
 let countLargest = 0;
 
 for (let i = 0; i < pinigine.length; i++) {
-    if (largest < pinigine[i] ) {
-        largest = pinigine[i];  
+    largest = Math.max(...pinigine)
+    if(largest === pinigine[i]){
+        countLargest++
+    }
 
     }
    
-}
 console.log(largest);
 console.log(`${largest} yra ${countLargest} kiekio`)
 
@@ -161,34 +162,77 @@ B.Raskite didžiausią masyvo reikšmę ir jos indeksą;
 C.Suskaičiuokite visų porinių (lyginių) indeksų reikšmių sumą;
 D.Sukurkite naują masyvą, kurio reikšmės yra 1 uždavinio masyvo reikšmes minus tos reikšmės indeksas;
 E.Papildykite masyvą papildomais 10 elementų su reikšmėmis nuo 5 iki 25, kad bendras masyvas padidėtų iki indekso 39;
-F.Iš masyvo elementų sukurkite du naujus masyvus. Vienas turi būti sudarytas iš neporinių indeksų reikšmių, o kitas iš porinių (pagal neporinį-porinį indeksą, ne reikšmę);
+F.Iš masyvo elementų sukurkite du naujus masyvus. Vienas turi būti sudarytas iš neporinių indeksų reikšmių, o kitas iš porinių 
+(pagal neporinį-porinį indeksą, ne reikšmę);
 G.Pirminio masyvo elementus su poriniais indeksais padarykite lygius 0 jeigu jie didesni už 15;
 H.Suraskite pirmą (mažiausią) indeksą, kurio elemento reikšmė didesnė už 10;*/
 console.log(`-------------2.2.UZDAVINYS-----------`)
 
 let count1 = 0;
-countLargest = 0;
+let maks;
+let kitiMaks;
+let countMax = 0;
 let sumEven = 0;
+let masyvas2 = [];
+let masyvas2a = [];
+let masyvas2b = [];
 
  for (let i = 0; i < masyvas.length; i++){
      if(masyvas[i] > 10) {
          count1++
      }
-     if (largest < masyvas[i] ) {
-        largest = masyvas[i];  
-    }
+
+      maks = Math.max(...masyvas)
+      
     if (masyvas[i] % 2 === 0) {
         sumEven = sumEven + masyvas[i]
-         
     } 
 } 
+  for (let i = 0; i < masyvas.length; i++){
+   masyvas2.push(masyvas[i] - i)
+  }
 
 
  console.log(`a)daugiau uz 10 reiksmiu yra ${count1}`)
- console.log(`b) ${largest} indekse ${masyvas.indexOf(largest)}`);
+ console.log(`b) ${maks} indekse ${masyvas.indexOf(maks)}`);
  console.log(`c) poriniu suma ${sumEven}`)
- 
+ console.table(`d) ${masyvas2}`);
 
+  for (let i = 0; i < 10; i++){
+    masyvas.push(rand(5,25))
+   }
+
+   console.table(`e) ${masyvas}`);
+
+   //f)
+   for (let i = 0; i < masyvas.length; i++){
+    if(i % 2 === 0){
+        masyvas2a.push(masyvas[i]);
+    }
+    if(i % 2 != 0){
+        masyvas2b.push(masyvas[i]);
+    }
+    
+   }
+console.log(masyvas2a);
+console.log(masyvas2b);
+
+    //g  
+    for (let i = 0; i < masyvas.length; i++){
+        if(masyvas[i] > 15 && i % 2 ===0){
+            masyvas[i] = 0;
+        }
+    }
+   console.log(masyvas);
+
+   //h
+   for (let i = 0; i < masyvas.length; i++){
+       if(masyvas[i] > 10){
+           console.log(i)              
+           break       
+       }   
+                                                                                                                                                                                   
+   }
 
 /*3.Sugeneruokite masyvą, kurio reikšmės atsitiktinės raidės A, B, C ir D, o ilgis 200. Suskaičiuokite kiek yra 
 kiekvienos raidės.*/
@@ -209,11 +253,13 @@ console.log(map);
 
 /*4.Sugeneruokite 3 masyvus pagal 3 uždavinio sąlygą. Sudėkite masyvus, sudėdami atitinkamas reikšmes. 
 Paskaičiuokite kiek unikalių (po vieną, nesikartojančių) reikšmių ir kiek unikalių kombinacijų gavote.*/
-
 console.log(`-------------2.4.UZDAVINYS-----------`)
+
+
 /*5.Sugeneruokite du masyvus, kurių reikšmės yra atsitiktiniai skaičiai nuo 100 iki 999.
 Masyvų ilgiai 100. Masyvų reikšmės turi būti unikalios savo masyve (t.y. neturi kartotis).*/
 console.log(`-------------2.5.UZDAVINYS-----------`)
+
 const masyvas5 = [];
 const masyvas6 = [];
 for(let i = 0; i < 100; i++){
@@ -239,16 +285,7 @@ console.table(masyvas6)
 
 const masyvas7 =[];
 
- for(let i = 0; i < 100; i++){
-     let value = masyvas5[i]
-
-  masyvas7.push(value);
-
-  if (masyvas5.some(value=> masyvas6.indexOf(value) >= 0) ){
-      continue
-  }
-
- }
+ 
 
 console.table(masyvas7)
 
@@ -257,13 +294,7 @@ console.log(`-------------2.7.UZDAVINYS-----------`)
 
 const masyvas8 =[];
 
- for(let i = 0; i < 100; i++){
-  let value = masyvas5[i]
-  if (masyvas5.some(value=> masyvas6.indexOf(value) >= 0) ){
-    masyvas8.push(value)
-}
-
- }
+ 
 
 console.table(masyvas8)
 
@@ -275,3 +306,24 @@ console.log(`-------------2.8.UZDAVINYS-----------`)
 /*9.Sugeneruokite 10 skaičių masyvą pagal taisyklę: Du pirmi skaičiai- atsitiktiniai nuo 5 iki 25. 
 Trečias, pirmo ir antro suma. Ketvirtas- antro ir trečio suma. Penktas trečio ir ketvirto suma ir t.t.*/
 console.log(`-------------2.9.UZDAVINYS-----------`)
+
+let masyvas10 = [];
+let prev;
+let prev2;
+
+for (let i = 0; i < 10; i++){
+  masyvas10[0] = rand(5, 25);
+  masyvas10[1] = rand(5, 25);
+  masyvas10[2] = masyvas10[0]+masyvas10[1];
+  masyvas10[3] = masyvas10[1]+masyvas10[2];
+  masyvas10[4] = masyvas10[2]+masyvas10[3];
+  masyvas10[5] = masyvas10[3]+masyvas10[4];
+  masyvas10[6] = masyvas10[4]+masyvas10[5];
+  masyvas10[7] = masyvas10[5]+masyvas10[6];
+  masyvas10[8] = masyvas10[6]+masyvas10[7];
+  masyvas10[9] = masyvas10[7]+masyvas10[8];
+
+
+}
+
+console.table(masyvas10);
