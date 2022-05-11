@@ -84,54 +84,157 @@ console.log(pinigine);
 /* 7. Į 1 uždavinio masyvą pridėti tiek naujų reikšmių (pinigų, atsitiktinių skaičių nuo 0 iki 10), kad masyvo
  ilgis būtų lygiai 30;*/
  console.log(`-------------7.UZDAVINYS-----------`)
+let n = 30 - pinigine.length
 
-//30 i masyvo.length fore
- console.log(pinigine)
+for (let i = 0; i < n; i++){
+   pinigine.push(rand(0, 10))
+}
+
+console.log(n)
+console.log(pinigine)
+
 
 /* 8.Naudojant 1 uždavinio masyvą iš jo reikšmių sukurti dar du papildomus masyvus. Į vieną iš 1 uždavinio 
 masyvo pridėti reikšmes mažesnes arba lygias 2 (monetas), o į kitą didesnes nei 2 (popierinius pinigus);*/
 console.log(`-------------8.UZDAVINYS-----------`)
 
+const monetos = [];
+const kupiuros = [];
 
+for (let i = 0; i<pinigine.length; i++){
+ if (pinigine[i] <= 2){
+     monetos.push(pinigine[i]);
+ }
+ if (pinigine[i] > 2){
+    kupiuros.push(pinigine[i]);
+}
+
+}
+console.log(monetos);
+console.log(kupiuros);
 
 /* 9. Sukurti masyvą (piniginę su dviem skyreliais) iš dviejų elementų, kurio pirmas elementas būtų masyvas iš 8 uždavinio 
 su monetom, o antras elementas masyvas iš 8 uždavinio su popieriniais pinigais;*/
-
 console.log(`-------------9.UZDAVINYS-----------`)
 
+const naujaPinigine = [];
 
+naujaPinigine.push(monetos, kupiuros)
 
+console.table(naujaPinigine)
 
 /*10. Į 9 uždavinio masyvą, piniginę su dviem skyreliais, pridėti trečią skyrelį- masyvą su kortelėm: 
 ['KIKA', 'Euro Vaistinė', 'Drogas', 'Ačiū', 'Lietuvos Geležinkeliai', 'Mano RIMI'];*/
 console.log(`-------------10.UZDAVINYS-----------`)
 
+const korteles = ['KIKA', 'Euro Vaistinė', 'Drogas', 'Ačiū', 'Lietuvos Geležinkeliai', 'Mano RIMI'];
+
+naujaPinigine.push(korteles);
+
+console.table(naujaPinigine);
 
 
 /*11. Korteles skyrelyje sudėlioti (išrūšiuoti) pagal abėcėlę;*/
 console.log(`-------------11.UZDAVINYS-----------`)
 
+korteles.sort(function(a, b) { return (a > b ? 1 : (a === b ? 0 : -1)) })
+console.log(naujaPinigine)
 
 
 /* 12. Į kortelių skyrelį pridėti mokėjimo kortelių 'MasterCard', 'Visa' (su rand generuokite atsitiktines reikšmes
 'MasterCard' arba 'Visa' ir rašykite į masyvą) iš skirtingų bankų tiek, kad skyrelis (masyvo ilgis) pasidarytų lygus 20;*/
 console.log(`-------------12.UZDAVINYS-----------`)
+n2 = 20 - korteles.length
+const masterVisa = ['MasterCard','Visa']
 
+for (let i = 0; i < n2; i++){
+    korteles.push(masterVisa[Math.floor(Math.random()*masterVisa.length)])
+}
+console.log(korteles)
 
 
 /* 13.Paskaičiuokite, kokio tipo kortelių ('MasterCard' arba 'Visa') yra daugiau;*/
 console.log(`-------------13.UZDAVINYS-----------`)
+
+let countM = 0;
+let countV = 0;
+
+for (let i = 0; i < korteles.length; i++){
+ if(korteles[i] === 'MasterCard'){
+     countM++
+ }
+ if(korteles[i] === 'Visa'){
+    countV++
+}
+}
+
+if(countM > countV){
+    console.log(`MasterCard korteliu yra daugiau`)
+}
+if(countM === countV){
+   console.log(`MasterCard ir Visa korteliu kiekis vienodas`)
+} else{
+   console.log(`Visa korteliu yra daugiau`)
+}
+
+
 /* 14. Sukurkite masyve (piniginėje) ketvirtą elementą (skyrelį) į kurį įdėkite 10 loterijos bilietų, kurių numerius
  sugeneruokite atsitiktinai su rand funkcija nuo 1000000000 iki 9999999999;*/
  console.log(`-------------14.UZDAVINYS-----------`)
+
+ const naujasSkyrelis = [];
+
+ for(let i = 0; i < 10; i++){
+
+     const bilietai = rand(1000000000, 9999999999);
+     naujasSkyrelis.push(bilietai);
+
+    }
+
+    pinigine.push(naujasSkyrelis);
+
+    console.log(naujasSkyrelis)
+    console.log(pinigine);
+
+
 /*15. Loterijos bilietų masyvą išrūšiuoti nuo didžiausio numerio iki mažiausio;*/
 console.log(`-------------15.UZDAVINYS-----------`)
+
+ naujasSkyrelis.sort()
+ console.log(naujasSkyrelis)
+
+
 /*16. Į piniginės popierinių pinigų skyrelį įdėti 500 pinigų mažom kupiūrom ( generuoti atsitiktinius skaičius 
-    nuo 3 iki 10 ir dėti kaip naujus elementus, kol įdėta suma bus lygi 500);*/
-    console.log(`-------------16.UZDAVINYS-----------`)
+nuo 3 iki 10 ir dėti kaip naujus elementus, kol įdėta suma bus lygi 500);*/
+console.log(`-------------16.UZDAVINYS-----------`)
+
+ const naujosKupiuros = rand(3, 10);
+ sumaNaujosKupiuros = 0;
+
+ do{
+     kupiuros.push(naujosKupiuros);
+     sumaNaujosKupiuros = sumaNaujosKupiuros + naujosKupiuros;
+     
+ } while(sumaNaujosKupiuros != 500);
+
+ console.log(kupiuros)
+
+
 /* 17. Patikrinti ar ką nors laimėjote. Bilieto numerius dalinkite iš 777 ir jeigu numeris išsidalins be liekanos -
  jūs laimėjote! Suskaičiuokite, kiek buvo laimingų bilietų.*/
+
  console.log(`-------------17.UZDAVINYS-----------`)
+ 
+ let countLaimingi = 0;
+
+ for (let i = 0; i < naujasSkyrelis.length; i++){
+     if(naujasSkyrelis[i] % 777 === 0){
+         countLaimingi++
+     }
+     console.log(`${countLaimingi} laimingu bilietu!`)
+ }
+
+
  /*18. Sukurkite penktą skyrelį ir į jį sudėkite nuotraukas: ['šuo', 'katė', 'automobilis', 'namas', 'kiemas'] ir 
  jas išrūšiuokite pagal žodžių ilgį taip, kad pirma eitų trumpiausi žodžiai; */
  console.log(`-------------18.UZDAVINYS-----------`)
@@ -315,3 +418,4 @@ ma.push(ma[i-1] + ma[i-2]);
  }
  console.log(ma);
 
+ 
