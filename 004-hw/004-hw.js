@@ -224,6 +224,7 @@ console.log(`-------------16.UZDAVINYS-----------`)
  jūs laimėjote! Suskaičiuokite, kiek buvo laimingų bilietų.*/
 
  console.log(`-------------17.UZDAVINYS-----------`)
+
  
  let countLaimingi = 0;
 
@@ -234,13 +235,14 @@ console.log(`-------------16.UZDAVINYS-----------`)
      console.log(`${countLaimingi} laimingu bilietu!`)
  }
 
-
  /*18. Sukurkite penktą skyrelį ir į jį sudėkite nuotraukas: ['šuo', 'katė', 'automobilis', 'namas', 'kiemas'] ir 
  jas išrūšiuokite pagal žodžių ilgį taip, kad pirma eitų trumpiausi žodžiai; */
  console.log(`-------------18.UZDAVINYS-----------`)
 
+const nuotraukuSkyrius = ['šuo', 'katė', 'automobilis', 'namas', 'kiemas'];
 
-
+nuotraukuSkyrius.sort((x,y) => x.length - y.length);
+console.log(nuotraukuSkyrius);
 
  console.log(`-------------ANTRAS LAPAS-----------`)
 
