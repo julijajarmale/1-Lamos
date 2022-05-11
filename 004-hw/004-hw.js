@@ -85,8 +85,8 @@ console.log(pinigine);
  ilgis būtų lygiai 30;*/
  console.log(`-------------7.UZDAVINYS-----------`)
 
- 
-
+//30 i masyvo.length fore
+ console.log(pinigine)
 
 /* 8.Naudojant 1 uždavinio masyvą iš jo reikšmių sukurti dar du papildomus masyvus. Į vieną iš 1 uždavinio 
 masyvo pridėti reikšmes mažesnes arba lygias 2 (monetas), o į kitą didesnes nei 2 (popierinius pinigus);*/
@@ -307,23 +307,11 @@ console.log(`-------------2.8.UZDAVINYS-----------`)
 Trečias, pirmo ir antro suma. Ketvirtas- antro ir trečio suma. Penktas trečio ir ketvirto suma ir t.t.*/
 console.log(`-------------2.9.UZDAVINYS-----------`)
 
-let masyvas10 = [];
-let prev;
-let prev2;
+const ma = [rand (5, 25), rand (5, 25)];
 
-for (let i = 0; i < 10; i++){
-  masyvas10[0] = rand(5, 25);
-  masyvas10[1] = rand(5, 25);
-  masyvas10[2] = masyvas10[0]+masyvas10[1];
-  masyvas10[3] = masyvas10[1]+masyvas10[2];
-  masyvas10[4] = masyvas10[2]+masyvas10[3];
-  masyvas10[5] = masyvas10[3]+masyvas10[4];
-  masyvas10[6] = masyvas10[4]+masyvas10[5];
-  masyvas10[7] = masyvas10[5]+masyvas10[6];
-  masyvas10[8] = masyvas10[6]+masyvas10[7];
-  masyvas10[9] = masyvas10[7]+masyvas10[8];
+ for(let i =2; i < 10; i++){
+ma.push(ma[i-1] + ma[i-2]);
 
+ }
+ console.log(ma);
 
-}
-
-console.table(masyvas10);
