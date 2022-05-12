@@ -12,8 +12,9 @@ const products = ['Dviratis', 'Triratis', 'Žvakidė', 'Stalas', 'Kėdė', 'Knyg
 'Medinė dėžė'];
 
 const saskaituMasyvas = [];
-const saskaita = {};
+let saskaita = {};
 let saskaitosNr;
+let productsNewMasyvas = [];
 
 
 for (let i = 0; i <= 100; i++){
@@ -30,11 +31,23 @@ for (let i = 0; i <= 100; i++){
      if(i===0){
         continue
     }
-      
-       saskaita.push(saskaitosNr)
+    let saskaita ={
+        [saskaitosNr]:'number',
+
     }
+    console.log(saskaita)
+}
+
+for (let i = 0; i < rand(1, 10); i++){
+    let productsNew = products[Math.floor(Math.random() * products.length)]
+    console.table(productsNew)
+    productsNewMasyvas.push(productsNew)
+       
+    }
+   
     
 
+     
+console.log(productsNewMasyvas)
 
-console.log(saskaituMasyvas)
 
