@@ -342,8 +342,8 @@ console.log(masyvas2b);
 /*3.Sugeneruokite masyvą, kurio reikšmės atsitiktinės raidės A, B, C ir D, o ilgis 200. Suskaičiuokite kiek yra 
 kiekvienos raidės.*/
 console.log(`-------------2.3.UZDAVINYS-----------`)
-let masyvas3 = [];
-let possibleString = 'ABCD'
+const masyvas3 = [];
+const possibleString = 'ABCD'
  for(let i = 0; i < 200; i++){
      masyvas3.push(possibleString.charAt(Math.floor(Math.random() * possibleString.length)));
  }
@@ -359,6 +359,22 @@ console.log(map);
 /*4.Sugeneruokite 3 masyvus pagal 3 uždavinio sąlygą. Sudėkite masyvus, sudėdami atitinkamas reikšmes. 
 Paskaičiuokite kiek unikalių (po vieną, nesikartojančių) reikšmių ir kiek unikalių kombinacijų gavote.*/
 console.log(`-------------2.4.UZDAVINYS-----------`)
+const masyvasA =[];
+const masyvasB =[];
+const masyvasC =[];
+const masyvasD = [];
+
+
+for(let i = 0; i < 200; i++){
+    masyvasA.push(possibleString.charAt(Math.floor(Math.random() * possibleString.length)));
+    masyvasB.push(possibleString.charAt(Math.floor(Math.random() * possibleString.length)));
+    masyvasC.push(possibleString.charAt(Math.floor(Math.random() * possibleString.length)));
+}
+
+for (let i = 0; i < Math.max(masyvasA.length, masyvasB.length, masyvasC.length); i++) {
+  masyvasD.push((masyvasA[i] || 0) + (masyvasB[i] || 0) + (masyvasC[i] || 0));
+}
+console.log(masyvasD);
 
 
 /*5.Sugeneruokite du masyvus, kurių reikšmės yra atsitiktiniai skaičiai nuo 100 iki 999.
@@ -384,24 +400,37 @@ for(let i = 0; i < 100; i++){
 console.table(masyvas5)
 console.table(masyvas6)
 
-/*6.Sugeneruokite masyvą, kuris būtų sudarytas iš reikšmių, kurios yra pirmame 6 uždavinio masyve, bet nėra antrame
- 6 uždavinio masyve.*/
+/*6.Sugeneruokite masyvą, kuris būtų sudarytas iš reikšmių, kurios yra pirmame 5 uždavinio masyve, bet nėra antrame
+ 5 uždavinio masyve.*/
  console.log(`-------------2.6.UZDAVINYS-----------`)
 
+
+const filterMasyvas = masyvas5.filter(v => -1 != masyvas6.indexOf(v));
 const masyvas7 =[];
+const z = masyvas5.length - filterMasyvas.length
 
- 
+for(let i = 0; i < z; i++){
+        if (i === filterMasyvas[i]){
+            continue;
+        } else{
+            masyvas7.push(masyvas5[i])
+        }
+}
+console.log(filterMasyvas)
+console.table(masyvas7);
 
-console.table(masyvas7)
 
 /*7.Sugeneruokite masyvą iš elementų, kurie kartojasi abiejuose 6 uždavinio masyvuose.*/
 console.log(`-------------2.7.UZDAVINYS-----------`)
 
 const masyvas8 =[];
 
- 
+masyvas8.push(filterMasyvas)
 
-console.table(masyvas8)
+
+console.table(masyvas8);
+
+
 
 /*8.Sugeneruokite masyvą, kurio indeksus sudarytų pirmo 6 uždavinio masyvo reikšmės, o jo reikšmės būtų antrojo masyvo.*/
 console.log(`-------------2.8.UZDAVINYS-----------`)

@@ -9,7 +9,6 @@ const index = n1.indexOf('Asilas')
 
 
 const copy2 = n1.filter(v => -1 != n2.indexOf(v));
-
 const copy3 =[];
 
 for (let i = 0; i < n1.length; i++){
