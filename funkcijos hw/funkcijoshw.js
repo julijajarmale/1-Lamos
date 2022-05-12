@@ -1,17 +1,26 @@
 //1.Parašykite funkciją, kurios argumentas būtų tekstas, kuris yra atspausdinamas su console.log;
 console.log(`1 UZDAVINYS`)
 
-const tekstas = 'labas'
-function pirma(){
-    console.log(tekstas)
+
+function tekstas(vardas){
+    
+    console.log(`Labukas ${vardas}`)
 }
 
-pirma();
+tekstas('Kajus');
 
 //2.Parašykite funkciją su dviem argumentais, pirmas argumentas tekstas, įterpiamas atspausdinamas su console.log, 
 //o antrasis kiek kartų spausdinimas atliekamas. Rašydami šią funkciją remkitės pirmame uždavinyje parašytą funkciją;
 console.log(`2 UZDAVINYS`)
+let countPaminetas = 0;
+function tekstas1(vardas, paminetas){
+    for (let i = 0; i < paminetas; i++){
+        console.log(`Labukas ${vardas}`)
+    }
+  
+}
 
+tekstas1('Kajus', 5);
 
 
 //4.Parašykite funkciją, kuri skaičiuotų, iš kiek sveikų skaičių jos argumentas dalijasi be liekanos 
