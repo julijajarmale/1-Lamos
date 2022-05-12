@@ -374,7 +374,11 @@ for(let i = 0; i < 200; i++){
 for (let i = 0; i < Math.max(masyvasA.length, masyvasB.length, masyvasC.length); i++) {
   masyvasD.push((masyvasA[i] || 0) + (masyvasB[i] || 0) + (masyvasC[i] || 0));
 }
+
 console.log(masyvasD);
+
+const uniqueCount = new Set(masyvasD).size;
+console.log(uniqueCount);
 
 
 /*5.Sugeneruokite du masyvus, kurių reikšmės yra atsitiktiniai skaičiai nuo 100 iki 999.
