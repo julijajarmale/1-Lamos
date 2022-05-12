@@ -365,6 +365,7 @@ const masyvasC =[];
 const masyvasD = [];
 
 
+
 for(let i = 0; i < 200; i++){
     masyvasA.push(possibleString.charAt(Math.floor(Math.random() * possibleString.length)));
     masyvasB.push(possibleString.charAt(Math.floor(Math.random() * possibleString.length)));
@@ -379,6 +380,8 @@ console.log(masyvasD);
 
 const uniqueCount = new Set(masyvasD).size;
 console.log(uniqueCount);
+
+
 
 
 /*5.Sugeneruokite du masyvus, kurių reikšmės yra atsitiktiniai skaičiai nuo 100 iki 999.
@@ -448,7 +451,7 @@ console.log(`-------------2.9.UZDAVINYS-----------`)
 const ma = [rand (5, 25), rand (5, 25)];
 
  for(let i =2; i < 10; i++){
-ma.push(ma[i-1] + ma[i-2]);
+ ma.push(ma[i-1] + ma[i-2]);
 
  }
  console.log(ma);

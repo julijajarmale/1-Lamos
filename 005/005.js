@@ -87,6 +87,8 @@ const namasSuKaminu2 = JSON.parse(JSON.stringify(namasSuKaminu));
 console.log(namasSuKaminu2)
 console.log(namasSuKaminu)
 
+//MAP'as
+
 const map = new Map();
 
 map.set('Murka', 5);
@@ -102,3 +104,22 @@ console.log(map.size)
 
 const masmap = [...map];
 console.log(masmap)
+
+//SET'as 
+
+const se = new Set();
+
+const va =[4,8,2,7,7,4];
+
+console.log(new Set(va)) // ismeta pasikartojancias reiksmes
+
+se.add('cat');
+se.add('dog');
+se.add('cat'); // i SET galima deti tik unikalias reiksmes, todel su SET galima rasti unikalias savybes, bet ne objekte;
+se.delete('dog');
+se.add({t:'cat'})
+
+console.log(se.has({t:'cat'}))
+
+console.log(se)
+
