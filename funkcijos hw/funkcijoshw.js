@@ -36,19 +36,24 @@ console.log(`4 UZDAVINYS`)
 function sveikuSkaicuKiekis(skaicius) {
      let count = 0;
      for (let i=2; i<skaicius; i++){
-        if ((skaicius % i === 0) && (i !== 1)) {
+        if ((skaicius % i === 0) && (i != skaicius)) {
             count++;
         }
     }
-    return `Skaičius ${skaicius} dalijasi iš ${count} sveikų skaičių be liekanos (išskyrus vienetą ir patį save).`
+    return count
 }
 
-    console.log(sveikuSkaicuKiekis(10));
-
+    console.log(sveikuSkaicuKiekis(72));
+    console.log(sveikuSkaicuKiekis(69));
+    console.log(sveikuSkaicuKiekis(71));
+    
+   
+    sveikuSkaicuKiekis()
 
 //5.Sugeneruokite masyvą iš 100 elementų, kurio reikšmės atsitiktiniai skaičiai nuo 33 iki 77. Išrūšiuokite 
 //masyvą pagal daliklių be liekanos kiekį mažėjimo tvarka, panaudodami ketvirto uždavinio funkciją.
 console.log(`5 UZDAVINYS`)
+
 const masyvas5 = [];
 let reiksmes;
 
@@ -56,7 +61,20 @@ for(let i = 0; i < 100; i++){
     let reiksmes = rand(33, 77);
     masyvas5.push(reiksmes);
 }
-
+ for(let k = 0; k < masyvas5.length; k++){
+    
+    masyvas5.sort((a, b) => {
+     
+        if (sveikuSkaicuKiekis(a) > sveikuSkaicuKiekis(b)){
+            return -1;
+        }
+        if (sveikuSkaicuKiekis(a) < sveikuSkaicuKiekis(b)){
+            return 1;
+        }
+    })
+    
+  
+}
 
 console.log(masyvas5);
 
