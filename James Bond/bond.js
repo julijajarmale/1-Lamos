@@ -48,7 +48,7 @@ a.addEventListener('click', e =>{
 });
 
 document.querySelector('#vaikas').addEventListener('click', e =>{
-    e.stopPropagation(); // bubblinimosi stabdymas
+    e.stopPropagation(); // event bubblinimosi stabdymas, kad nenueitu nuo vaiko iki tevo 
     console.log('vaikas')
     e.target.style.backgroundColor = 'black' 
     e.target.style.color = 'green' 
