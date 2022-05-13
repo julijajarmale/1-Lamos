@@ -43,9 +43,9 @@ function sveikuSkaicuKiekis(skaicius) {
     return count
 }
 
-    console.log(sveikuSkaicuKiekis(72));
-    console.log(sveikuSkaicuKiekis(69));
-    console.log(sveikuSkaicuKiekis(71));
+    console.log(sveikuSkaicuKiekis(412));
+    console.log(sveikuSkaicuKiekis(501));
+    
     
    
     sveikuSkaicuKiekis()
@@ -82,6 +82,25 @@ console.log(masyvas5);
 //6. Sugeneruokite masyvą iš 100 elementų, kurio reikšmės atsitiktiniai skaičiai nuo 333 iki 777. 
 //Naudodami 4 uždavinio funkciją iš masyvo ištrinkite pirminius skaičius.
 console.log(`6 UZDAVINYS`)
+
+const masyvas6 = [];
+let reiksmes6;
+let pirminiai = [];
+
+for(let i = 0; i < 100; i++){
+    let reiksmes = rand(333, 777);
+    masyvas6.push(reiksmes);
+}
+    for(let k = 0; k < masyvas6.length; k++){
+        if(sveikuSkaicuKiekis(masyvas6[k]) === 0){
+            pirminiai.push(masyvas6[k])
+        }
+}
+masyvas6.length = masyvas6.length - pirminiai.length
+console.log(pirminiai)
+console.log(masyvas6)
+
+
 
 //7.Sugeneruokite atsitiktinio (nuo 10 iki 20) ilgio masyvą, kurio visi, išskyrus paskutinį, 
 //elementai yra atsitiktiniai skaičiai nuo 0 iki 10, o paskutinis masyvas, kuris generuojamas pagal tokią pat salygą
