@@ -57,29 +57,6 @@ for(let i = 0; i < 100; i++){
     masyvas5.push(reiksmes);
 }
 
-function skaiciuRusiavimas() {
-    let beLiekanos = [];
-    let suLiekana = [];
-    for (let i=1; i<masyvas5; i++){
-       if (skaicius % i === 0) {
-        beLiekanos.push(reiksmes)
-       }
-       if (skaicius % i != 0) {
-        suLiekana.push(reiksmes)
-    }
-   }
-   return masyvas5
-}
-
-   console.log(skaiciuRusiavimas(beLiekanos));
-   console.log(skaiciuRusiavimas(suLiekana));
-   
-
-
-
-
-
-
 
 console.log(masyvas5);
 
