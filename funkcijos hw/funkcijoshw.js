@@ -1,3 +1,9 @@
+console.log(`DUOMENU STRUKTUROS`)
+function rand(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
 //1.Parašykite funkciją, kurios argumentas būtų tekstas, kuris yra atspausdinamas su console.log;
 console.log(`1 UZDAVINYS`)
 
@@ -25,15 +31,58 @@ tekstas1('Kajus', 5);
 
 //4.Parašykite funkciją, kuri skaičiuotų, iš kiek sveikų skaičių jos argumentas dalijasi be liekanos 
 //(išskyrus vienetą ir patį save)
-
-function dalyba(){
-
-}
 console.log(`4 UZDAVINYS`)
+
+function sveikuSkaicuKiekis(skaicius) {
+     let count = 0;
+     for (let i=2; i<skaicius; i++){
+        if ((skaicius % i === 0) && (i !== 1)) {
+            count++;
+        }
+    }
+    return `Skaičius ${skaicius} dalijasi iš ${count} sveikų skaičių be liekanos (išskyrus vienetą ir patį save).`
+}
+
+    console.log(sveikuSkaicuKiekis(10));
+
 
 //5.Sugeneruokite masyvą iš 100 elementų, kurio reikšmės atsitiktiniai skaičiai nuo 33 iki 77. Išrūšiuokite 
 //masyvą pagal daliklių be liekanos kiekį mažėjimo tvarka, panaudodami ketvirto uždavinio funkciją.
 console.log(`5 UZDAVINYS`)
+const masyvas5 = [];
+let reiksmes;
+
+for(let i = 0; i < 100; i++){
+    let reiksmes = rand(33, 77);
+    masyvas5.push(reiksmes);
+}
+
+function skaiciuRusiavimas() {
+    let beLiekanos = [];
+    let suLiekana = [];
+    for (let i=1; i<masyvas5; i++){
+       if (skaicius % i === 0) {
+        beLiekanos.push(reiksmes)
+       }
+       if (skaicius % i != 0) {
+        suLiekana.push(reiksmes)
+    }
+   }
+   return masyvas5
+}
+
+   console.log(skaiciuRusiavimas(beLiekanos));
+   console.log(skaiciuRusiavimas(suLiekana));
+   
+
+
+
+
+
+
+
+console.log(masyvas5);
+
 
 //6. Sugeneruokite masyvą iš 100 elementų, kurio reikšmės atsitiktiniai skaičiai nuo 333 iki 777. 
 //Naudodami 4 uždavinio funkciją iš masyvo ištrinkite pirminius skaičius.
