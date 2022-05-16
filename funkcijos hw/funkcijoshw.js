@@ -107,6 +107,23 @@ console.log(masyvas6)
 // kaip ir pirmasis masyvas. Viską pakartokite atsitiktinį nuo 10 iki 30  kiekį kartų. Paskutinio masyvo paskutinis 
 // elementas yra lygus 0;
 console.log(`7 UZDAVINYS`)
+const masyvas7 =[];
+const masyvas7a = [];
+
+function masyvas(){
+ for(let i = 0; i < rand(10,20); i++){
+    masyvas7[i] = rand(0,10)
+    masyvas7.push(masyvas7[i])
+    
+    if (masyvas7[i] === masyvas7.length - 1){
+        masyvas7[i] = []
+
+    }
+ }
+
+ }
+ function masyvas()
+ console.log(masyvas7)
 
 
 //8.Suskaičiuokite septinto uždavinio elementų, kurie nėra masyvai, sumą. Skaičiuoti reikia visuose masyvuose ir 
