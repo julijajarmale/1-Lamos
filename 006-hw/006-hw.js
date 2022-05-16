@@ -17,7 +17,7 @@ for (let i = 0; i <= 100; i++){
     const saskaita = {
         number: 'INV' + i,
         products: [],
-        total: 0
+    
     };
     if(i<10 && i > 0){
         saskaita.number = `INV00${i}`
@@ -29,11 +29,41 @@ for (let i = 0; i <= 100; i++){
          continue
      }
      
+ for (let i = 0; i < rand(1, 10); i++) {
+    const productsSaskaitos = {
+        title: products[rand(0, products.length - 1)],
+        price: rand(100, 10000) / 100,
+        amount: rand(1, 20),
+        
+        }
 
+    saskaita.products[i] = productsSaskaitos
+    let totalProducts =  (saskaita.products[i].price *  saskaita.products[i].amount).toFixed(2);
+    saskaita.products[i].total = totalProducts;
+  }
+  
+ let total = 0;
+ for(let i = 0; i < saskaita.products.length; i ++){
+     total = saskaita.products[i].total++
+     saskaita.total = total;
+ }
+
+ let vat = 0;
+ for(let i = 0; i < saskaita.products.length; i ++){
+    vat = saskaita.total * 0.21
+    saskaita.vat = (vat).toFixed(2);
+}
+  
+let grandTotal = 0;
+ for(let i = 0; i < saskaita.products.length; i ++){
+    grandTotal = Number(saskaita.total) + Number(saskaita.vat)
+    saskaita.grandtotal = (grandTotal).toFixed(2)
+}
+  console.log(saskaita)
 }
 
 
-console.log(saskaituMasyvas)
+  
 
 
-    
+
