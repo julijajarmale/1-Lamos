@@ -107,23 +107,20 @@ console.log(masyvas6)
 // kaip ir pirmasis masyvas. Viską pakartokite atsitiktinį nuo 10 iki 30  kiekį kartų. Paskutinio masyvo paskutinis 
 // elementas yra lygus 0;
 console.log(`7 UZDAVINYS`)
-const masyvas7 =[];
-const masyvas7a = [];
 
-function masyvas(){
- for(let i = 0; i < rand(10,20); i++){
-    masyvas7[i] = rand(0,10)
-    masyvas7.push(masyvas7[i])
-    
-    if (masyvas7[i] === masyvas7.length - 1){
+ function masyvasMasyve() {
+    const masyvas7 = [];
+    masyvas7.length = rand(10, 20);
+    for(let i = 0; i < masyvas7.length; i++) {
         masyvas7[i] = []
-
+        for(let j = 0; j < masyvas7.length - 1; j++) {
+          masyvas7[j] = rand(0, 10);
+        }
     }
- }
+    console.log(masyvas7);
+  };
 
- }
- function masyvas()
- console.log(masyvas7)
+  masyvasMasyve();
 
 
 //8.Suskaičiuokite septinto uždavinio elementų, kurie nėra masyvai, sumą. Skaičiuoti reikia visuose masyvuose ir 
@@ -132,9 +129,32 @@ console.log(`8 UZDAVINYS`)
 
 //9.Sugeneruokite masyvą iš trijų elementų, kurie yra atsitiktiniai skaičiai nuo 1 iki 33. 
 //Jeigu tarp trijų paskutinių elementų yra nors vienas ne pirminis skaičius, prie masyvo pridėkite dar vieną elementą-
-// atsitiktinį skaičių nuo 1 iki 33. Vėl patikrinkite pradinę sąlygą ir jeigu reikia pridėkite dar vieną elementą. 
+//atsitiktinį skaičių nuo 1 iki 33. Vėl patikrinkite pradinę sąlygą ir jeigu reikia pridėkite dar vieną elementą. 
 //Kartokite, kol sąlyga nereikalaus pridėti elemento. 
 console.log(`9 UZDAVINYS`)
+
+const masyvas9 = [];
+
+for(let i = 0; i < 3; i++){
+    masyvas9[i] = rand(1, 33)
+}
+console.log(masyvas9)
+console.log(sveikuSkaicuKiekis(masyvas9[masyvas9.length-1]))
+console.log(sveikuSkaicuKiekis(masyvas9[masyvas9.length-2]))
+console.log(sveikuSkaicuKiekis(masyvas9[masyvas9.length-3]))
+
+do{ masyvas9.push(rand(1, 33));
+
+} while (
+sveikuSkaicuKiekis(masyvas9[masyvas9.length-1]) != 0 ||
+sveikuSkaicuKiekis(masyvas9[masyvas9.length-2]) != 0 ||
+sveikuSkaicuKiekis(masyvas9[masyvas9.length-3]) != 0)
+
+
+console.log(masyvas9)
+console.log(sveikuSkaicuKiekis(masyvas9[masyvas9.length-1]))
+console.log(sveikuSkaicuKiekis(masyvas9[masyvas9.length-2]))
+console.log(sveikuSkaicuKiekis(masyvas9[masyvas9.length-3]))
 
 
 //10.Sugeneruokite masyvą iš 10 elementų, kurie yra masyvai iš 10 elementų, kurie yra atsitiktiniai skaičiai nuo 1 iki 100.
