@@ -1,4 +1,5 @@
 console.log(`DUOMENU STRUKTUROS`)
+console.log(`A)`)
 function rand(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -57,10 +58,65 @@ for (let i = 0; i <= 100; i++){
 let grandTotal = 0;
  for(let i = 0; i < saskaita.products.length; i ++){
     grandTotal = Number(saskaita.total) + Number(saskaita.vat)
-    saskaita.grandtotal = (grandTotal).toFixed(2)
+    saskaita.grandTotal = (grandTotal).toFixed(2)
+   
 }
-  console.log(saskaita)
+  saskaituMasyvas.push(saskaita)
 }
+console.log(saskaituMasyvas)
+
+
+
+console.log(`B)`)
+
+//B.	Sugeneruotame (ne generavimo metu!) masyve paskaičiuoti ir konsolėje atspausdinti visų sąskaitų grandTotal sumą,
+// produktų sąrašą prie kiekvieno produkto pavadinimo pridedant koks to produkto kiekis yra visose sąskaitose bendrai ir 
+// už kokią bendrą sumą.
+
+//Pvz: 
+//1.	Dviratis 35 479.55
+//2.	Triratis 10 457.22
+//3.	…..
+//4.	Medinė dėžė 47 1025.74
+
+
+/*let newGrandTotal = 0;
+let sumGrandTotal = 0;
+for (let i = 0; i < saskaituMasyvas.length; i++){
+   newGrandTotal = Number(saskaituMasyvas[i].grandTotal)
+   sumGrandTotal = sumGrandTotal + newGrandTotal;
+   console.log(sumGrandTotal)
+}*/
+
+let newGrandTotal = 0;
+let sumGrandTotal = 0;
+let count = 0;
+for (let i = 0; i < saskaituMasyvas.length; i++){
+   newGrandTotal = Number(saskaituMasyvas[i].grandTotal)
+   sumGrandTotal += newGrandTotal;
+   
+}
+console.log(`Visų sąskaitų GrandTotal suma: ${sumGrandTotal.toFixed(2)}`)
+
+// Si dalis nurasyta nuo Doviles, paprasyti, kad paaiskintu destytojas
+
+for (let i = 0; i < products.length; i++) {
+  let sum = 0;
+  let amount = 0;
+  for (let a = 0; a < saskaituMasyvas.length; a++) {
+    for (let b = 0; b < saskaituMasyvas[a].products.length; b++) {
+      if (products[i] === saskaituMasyvas[a].products[b].title) {
+        amount++;
+        sum = sum + saskaituMasyvas[a].products[b].total;
+      }
+    }
+  }
+  console.log(products[i], amount, Number(sum.toFixed(2)));
+}
+
+
+
+
 
 
   
