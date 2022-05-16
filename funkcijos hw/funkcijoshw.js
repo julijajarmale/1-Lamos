@@ -161,5 +161,39 @@ console.log(sveikuSkaicuKiekis(masyvas9[masyvas9.length-3]))
 // Jeigu tokio didelio masyvo (ne atskirai mažesnių) pirminių skaičių vidurkis mažesnis už 70, suraskite masyve 
 //mažiausią skaičių (nebūtinai pirminį) ir prie jo pridėkite 3. Vėl paskaičiuokite masyvo pirminių skaičių vidurkį ir
 // jeigu mažesnis nei 70 viską kartokite. 
-
 console.log(`10 UZDAVINYS`)
+
+const masyvas10 = [];
+masyvas10.length = 10;
+let pirminiaiSkaiciai = 0;
+let pirminiuSkaiciuSuma = 0;
+
+
+for (let i = 0; i < masyvas10.length; i++) {
+    const masyvas10A = [];
+    for (let j = 0; j < 10; j++) {
+       masyvas10A[j] = rand(1, 100);
+    
+    if(sveikuSkaicuKiekis(masyvas10A[j]) === 0){
+        pirminiaiSkaiciai += 1;
+        pirminiuSkaiciuSuma = pirminiuSkaiciuSuma + masyvas10A[j];
+       
+    }
+    
+ }
+masyvas10[i] = masyvas10A
+   
+
+
+}
+
+
+
+console.log(masyvas10)
+console.log(pirminiaiSkaiciai)
+console.log(pirminiuSkaiciuSuma)
+
+
+
+
+
