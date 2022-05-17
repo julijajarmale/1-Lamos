@@ -108,24 +108,38 @@ console.log(masyvas6)
 // elementas yra lygus 0;
 console.log(`7 UZDAVINYS`)
 
- function masyvasMasyve() {
-    const masyvas7 = [];
-    masyvas7.length = rand(10, 20);
-    for(let i = 0; i < masyvas7.length; i++) {
-        masyvas7[i] = []
-        for(let j = 0; j < masyvas7.length - 1; j++) {
-          masyvas7[j] = rand(0, 10);
-        }
+const monsterSize = rand(10, 20)
+
+// pasirasem funkcija, kuri grazina paruosta array
+const makeNiceArray = () =>{
+    const array = [];
+    const size = rand(10,20);
+    for (let i = 0; i < size; i++){
+        array.push(rand(0,10))
     }
-    console.log(masyvas7);
-  };
+    return array;
+};
 
-  masyvasMasyve();
+let monster = [];
+    for(let sizeNumer = 0; sizeNumer < monsterSize; sizeNumer++){
 
+        const monsterPart = makeNiceArray();
+
+        if(!sizeNumer){
+            monsterPart[monsterPart.length - 1] = 0;
+        } else{
+            monsterPart[monsterPart.length - 1] = monster;
+        }
+        monster = monsterPart;
+
+    }
+
+console.log(monster)
 
 //8.Suskaičiuokite septinto uždavinio elementų, kurie nėra masyvai, sumą. Skaičiuoti reikia visuose masyvuose ir 
 //submasyvuose.
 console.log(`8 UZDAVINYS`)
+
 
 //9.Sugeneruokite masyvą iš trijų elementų, kurie yra atsitiktiniai skaičiai nuo 1 iki 33. 
 //Jeigu tarp trijų paskutinių elementų yra nors vienas ne pirminis skaičius, prie masyvo pridėkite dar vieną elementą-
@@ -163,43 +177,71 @@ console.log(sveikuSkaicuKiekis(masyvas9[masyvas9.length-3]))
 // jeigu mažesnis nei 70 viską kartokite. 
 console.log(`10 UZDAVINYS`)
 
-const masyvas10 = [];
-masyvas10.length = 10;
-let pirminiaiSkaiciai = 0;
-let pirminiuSkaiciuSuma = 0;
-let min = 100;
-
-
-for (let i = 0; i < masyvas10.length; i++) {
-    const masyvas10A = [];
-    for (let j = 0; j < 10; j++) {
-       masyvas10A[j] = rand(1, 100);
-    
-    if(sveikuSkaicuKiekis(masyvas10A[j]) === 0){
-        pirminiaiSkaiciai += 1;
-        pirminiuSkaiciuSuma = pirminiuSkaiciuSuma + masyvas10A[j];
+const prime = (a) =>{
+    let count = 0;
+    for (let i = 2; i < a; i++){
+        if (a % i === 0){
+            count++;
+        }
     }
-    if (masyvas10A[j] < min) {
-        min = masyvas10A[j];
-     }
-    //do{
-    //   min = min + 3
-    // } 
-    //while(pirminiuSkaiciuSuma/pirminiaiSkaiciai != 70)
-     
- }
-          
-  masyvas10[i] = masyvas10A
-  
+    return count;
+};
+
+const sqArray = [];
+
+for(let i = 0; i < 10; i++){  //masyvas is 10 masyvu
+    const row = [];
+    for(let y = 0; y < 10; y++){ // kurio viduje yra randomai nuo 1-100;
+        row.push(rand (1, 100)); 
+        
+    }
+    sqArray.push(row);
+}
+
+const primeAverage = a => {
+    let sum = 0;
+    let count = 0;
+    a.forEach(e => e.forEach(v => {  // e- eilute, v-kiekviena reiksme atkirai
+        if(prime(v) === 0){ // arba if(!prime(v))
+            count++;
+            sum += v;
+        }
+    }));
+    console.log(sum, count)
+    return count ? sum / count : 0;
 
 }
 
+const findMin = a => {
+    let min = a[0][0];  // 100; // imamas didziausias galimas
+    let coord = [0, 0];
+  a.forEach((r, ri) => r.forEach((v, ci)=> {
+      if( v < min){
+          min = v;
+          coord = [ri, ci];
+      }
+  }));
+  return coord;
+}
 
 
-console.log(masyvas10)
-console.log(pirminiaiSkaiciai)
-console.log(pirminiuSkaiciuSuma)
-console.log(min);
+console.table(sqArray)
+console.log(primeAverage(sqArray))
+console.log(findMin(sqArray))
+
+let s = 1000;
+
+do{
+    if(--s === 0){
+    break;
+    console.log('BR')
+    }
+    const [x, y] = findMin(sqArray);
+    sqArray[x][y] += 3;
+} while(primeAverage(sqArray) < 70) // kol nepasidaro daugiau uz 70;
+
+console.table(sqArray)
+console.log(primeAverage(sqArray))
 
 
 
