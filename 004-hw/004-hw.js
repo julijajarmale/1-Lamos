@@ -439,11 +439,34 @@ console.table(masyvas8);
 
 
 
-/*8.Sugeneruokite masyvą, kurio indeksus sudarytų pirmo 6 uždavinio masyvo reikšmės, o jo reikšmės būtų antrojo masyvo.*/
+/*8.Sugeneruokite masyvą, kurio indeksus sudarytų pirmo 5 uždavinio masyvo reikšmės, o jo reikšmės būtų antrojo masyvo.*/
 console.log(`-------------2.8.UZDAVINYS-----------`)
+const longSet1 = new Set()
 
+do{
+    longSet1.add(rand(100, 999));
+} while(longSet1.size < 100);
 
+const longArray = [...longSet1]
 
+console.table(longArray)
+
+const longSet2 = new Set()
+
+do{
+    longSet2.add(rand(100, 999));
+} while(longSet2.size < 100);
+
+const longArray2 = [...longSet2]
+
+console.table(longArray2)
+
+const freakArray =[];
+longArray.forEach((v,i) => {
+    freakArray[v] = longArray2[i]
+})
+
+console.table(freakArray)
 /*9.Sugeneruokite 10 skaičių masyvą pagal taisyklę: Du pirmi skaičiai- atsitiktiniai nuo 5 iki 25. 
 Trečias, pirmo ir antro suma. Ketvirtas- antro ir trečio suma. Penktas trečio ir ketvirto suma ir t.t.*/
 console.log(`-------------2.9.UZDAVINYS-----------`)
