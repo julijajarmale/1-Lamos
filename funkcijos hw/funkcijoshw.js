@@ -167,6 +167,7 @@ const masyvas10 = [];
 masyvas10.length = 10;
 let pirminiaiSkaiciai = 0;
 let pirminiuSkaiciuSuma = 0;
+let min = 100;
 
 
 for (let i = 0; i < masyvas10.length; i++) {
@@ -177,13 +178,19 @@ for (let i = 0; i < masyvas10.length; i++) {
     if(sveikuSkaicuKiekis(masyvas10A[j]) === 0){
         pirminiaiSkaiciai += 1;
         pirminiuSkaiciuSuma = pirminiuSkaiciuSuma + masyvas10A[j];
-       
     }
-    
+    if (masyvas10A[j] < min) {
+        min = masyvas10A[j];
+     }
+    //do{
+    //   min = min + 3
+    // } 
+    //while(pirminiuSkaiciuSuma/pirminiaiSkaiciai != 70)
+     
  }
-masyvas10[i] = masyvas10A
-   
-
+          
+  masyvas10[i] = masyvas10A
+  
 
 }
 
@@ -192,6 +199,16 @@ masyvas10[i] = masyvas10A
 console.log(masyvas10)
 console.log(pirminiaiSkaiciai)
 console.log(pirminiuSkaiciuSuma)
+console.log(min);
+
+
+
+
+
+
+
+
+
 
 
 
