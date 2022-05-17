@@ -170,7 +170,27 @@ console.log(sveikuSkaicuKiekis(masyvas9[masyvas9.length-1]))
 console.log(sveikuSkaicuKiekis(masyvas9[masyvas9.length-2]))
 console.log(sveikuSkaicuKiekis(masyvas9[masyvas9.length-3]))
 
+//destytojo variantas
 
+/*const whiteCat = [rand(1,33), rand(1,33), rand(1,33)];
+
+const yesOrNo = (a, c = 3) => {
+    for (let i = 0; i < c; i++){
+       if (prime(a.slice(-c)[i])){
+           return true;
+       }
+    
+    }
+    return false;
+}
+
+while(yesOrNo(whiteCat)){
+    whiteCat.push(rand(1, 33));
+
+}
+
+yesOrNo(whiteCat)
+console.log(whiteCat)*/
 //10.Sugeneruokite masyvą iš 10 elementų, kurie yra masyvai iš 10 elementų, kurie yra atsitiktiniai skaičiai nuo 1 iki 100.
 // Jeigu tokio didelio masyvo (ne atskirai mažesnių) pirminių skaičių vidurkis mažesnis už 70, suraskite masyve 
 //mažiausią skaičių (nebūtinai pirminį) ir prie jo pridėkite 3. Vėl paskaičiuokite masyvo pirminių skaičių vidurkį ir

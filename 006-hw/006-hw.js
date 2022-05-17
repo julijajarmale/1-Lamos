@@ -99,6 +99,7 @@ for (let i = 0; i < saskaituMasyvas.length; i++){
 console.log(`Visų sąskaitų GrandTotal suma: ${sumGrandTotal.toFixed(2)}`)
 
 // Si dalis nurasyta nuo Doviles, paprasyti, kad paaiskintu destytojas
+//su Mapu pabandyti is Almiros
 
 for (let i = 0; i < products.length; i++) {
   let sum = 0;
