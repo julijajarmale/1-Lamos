@@ -241,11 +241,26 @@ line.forEach(e => {
 
 //B)Padaryti, kad paspaudus ant gyvūno jis būtų atvaizduojamas 130% didesniu fonto dydžiu. “PATINKA” tas neturi galioti.
 
+const animalsNew = document.querySelectorAll('.animals > ul > li');
+animalsNew.forEach(animals => {
+    if (animals.className !== 'like-button') {
+        animals.addEventListener('click', e => {
+            animals.style.fontSize = '130%';
+        });
+    }
+});
 
 //C)Padaryti, kad paspaudus ant “PATINKA”, atitinkamai (tėvinei) sekcijai būtų priskirta klasė like;
-console.log(`5 UZDAVINYS`)
 
+animalsNew.forEach(animals => {
+  if (animals.className === 'like-button') {
+      animals.addEventListener('click', e => {
+          animals.parentElement.classList.add('like');
+      });
+  }
+});
 //5.Dinaminis elementų kūrimas (su createElement)
+console.log(`5 UZDAVINYS`)
 //A)Dinamiškai su JS pridėti naują kainą “Senjorai tik: 1.99 eur”;
 //klasę new ir ant jo paklikinus jis pasidarytų žalias;
 //C)Dinamiškai su JS kiekvienoje gyvūnų kategorijoje po “PATINKA” pridėkite dar vieną li elementą “NEPATINKA”, 
