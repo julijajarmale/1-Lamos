@@ -194,7 +194,7 @@ padidinti.forEach(e => {
 
 //F)Padaryti taip, kad paspaudus ant X, esančio tage su id contacts, pridėtos tage su id contacts savybės būtų panaikintos
 // https://stackoverflow.com/questions/18691655/remove-style-on-element //perdaryti
-
+console.log(`nepadarytas 3 F!!!!!!!!!!!!!!`)
 const remove = document.querySelectorAll('#contacts > b');
 remove.forEach(e => {
   e.addEventListener('click', () => {
@@ -232,6 +232,7 @@ console.log(`4 UZDAVINYS`)
 //4.Elementų grupių events
 //A)Padaryti, kad dukartus paspaudus ant naujų gyvūnų jie nusispalvintu raudonai 
 https://developer.mozilla.org/en-US/docs/Web/API/Element/dblclick_event
+
 line.forEach(e => {
   e.addEventListener('dblclick', () => {
     e.style.color = 'red';
@@ -261,6 +262,7 @@ animalsNew.forEach(animals => {
 });
 //5.Dinaminis elementų kūrimas (su createElement)
 console.log(`5 UZDAVINYS`)
+
 //A)Dinamiškai su JS pridėti naują kainą “Senjorai tik: 1.99 eur”;
 //klasę new ir ant jo paklikinus jis pasidarytų žalias;
 //C)Dinamiškai su JS kiekvienoje gyvūnų kategorijoje po “PATINKA” pridėkite dar vieną li elementą “NEPATINKA”, 
