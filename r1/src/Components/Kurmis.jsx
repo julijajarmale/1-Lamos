@@ -1,9 +1,9 @@
-function Kurmis(){
-const xzz = 33;
+function Kurmis({skaicius}){
+    //const xzz = 11;
     return (
     <>
     <h3>Kurmis</h3>
-    <span>Urvinis padaras Nr. {10 + 11 + xzz} </span> 
+    <span>Urvinis padaras Nr. {skaicius+11} </span> 
     </>
     );
 }
