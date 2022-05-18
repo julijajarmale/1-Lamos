@@ -1,7 +1,18 @@
-import './App.css';
-import Hello from './Components/009/Hello';
-import Kurmis from './Components/Kurmis';
 
+import './App.css';
+import DuProps from './Components/009/DuProps';
+import Hello from './Components/009/Hello';
+import LabasZuiki from './Components/009/LabasZuiki';
+import Tekstas from './Components/009/Tekstas';
+import TrysProps from './Components/009/TrysProps';
+import ZebraiBebrai from './Components/009/ZebraiBebrai';
+import Kurmis from './Components/Kurmis';
+function rand(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+const x = rand(1,2);
 function App() {
   return (
     <div className="App">
@@ -10,6 +21,11 @@ function App() {
        <Hello spalva="black" bg="white"></Hello>
        <Hello spalva="yellow" bg="pink"></Hello>
        <Kurmis skaicius={4}></Kurmis>
+       <LabasZuiki></LabasZuiki>
+       <Tekstas tekstukas ="Bet koks tekstas"></Tekstas>
+       <ZebraiBebrai props = {x}></ZebraiBebrai>
+       <DuProps zuikis="Zuikis-Puikis" lape="Lape-Snape"></DuProps>
+       <TrysProps vilkas ="Vilas-Pilkas" krabas="Labas Krabas" spalvyte = "orange"></TrysProps>
       </header>
     </div>
   );
