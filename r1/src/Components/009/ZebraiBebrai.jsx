@@ -1,20 +1,21 @@
 
 function ZebraiBebrai({props}){
     console.log(props)
-if(props===1){
+    let spalva;
+    if(props===1){
+        spalva='blue'
+    }else if(props===2){
+        spalva='red'
+    }else {
+        spalva='black'
+    }
+
     return <h1 style={
         {
-            color: 'blue'
+            color: spalva
         }
     }>Zebrai ir Bebrai</h1>
-}
-if(props===2){
-    return <h1 style={
-        {
-            color: 'red'
-        }
-    }>Zebrai ir Bebrai</h1>
-}
+
 }
 
 export default ZebraiBebrai;

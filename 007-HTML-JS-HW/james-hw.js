@@ -194,14 +194,14 @@ padidinti.forEach(e => {
 
 //F)Padaryti taip, kad paspaudus ant X, esančio tage su id contacts, pridėtos tage su id contacts savybės būtų panaikintos
 // https://stackoverflow.com/questions/18691655/remove-style-on-element //perdaryti
-console.log(`nepadarytas 3 F!!!!!!!!!!!!!!`)
+console.log
 const remove = document.querySelectorAll('#contacts > b');
-remove.forEach(e => {
-  e.addEventListener('click', () => {
+remove.forEach(e => { 
+  e.addEventListener('click', (event) => { event.stopPropagation() ; console.log('suveike');
     contacts.forEach(e => {
-        e.style.color = 'null'
-        e.style.fontSize = 'null'
-
+        e.style.removeProperty("color");
+        e.style.removeProperty("fontsize");
+        
     });
 
 });
