@@ -42,6 +42,11 @@ const keistiSkaiciu = (ka) => {
 
  }
 
+ const remKv = () => {
+    setKv(k => k.slice(1)) 
+ 
+  }
+
 // tiesiogiai steito keisti negalima, galima tik per pagalbines funkcijas, siuo atveju, kaip setSpalva;
 
   return (
@@ -63,6 +68,7 @@ const keistiSkaiciu = (ka) => {
        <button onClick={() => keistiSkaiciu(1)}>+1</button>
        <button onClick={() => keistiSkaiciu(-1)}>-1</button>
        <button onClick={addKv}>ADD Kvadratukas</button>
+       <button onClick={remKv}>Remove Kvadratukas</button>
       </header>
     </div>
   );
