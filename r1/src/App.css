@@ -41,10 +41,10 @@
   display:flex;
   justify-content: center;
   align-items: center;
-  width: 77px;
-  height: 77px;
+  width: 80px;
+  height: 80px;
   background-color: aquamarine;
-  margin: 7px;
+  margin: 10px;
   border-radius: 7px;
 }
 
@@ -54,3 +54,16 @@
   align-items: center;
   flex-wrap: wrap ;
 }
+
+.circ{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+  background-color: rgb(255, 127, 223);
+  margin: 7px;
+  border-radius: 50px;
+}
+
+
