@@ -5,12 +5,12 @@ const dogs = ['šuo', 'šunius', 'Bobikas', 'kudlius', 'Šarikas', 'avigalvis'];
 dogs.sort(function(a, b){return b.length - a.length});
 
 function App() {
-  let newDogs = dogs.map(function (item) {
+ /* let newDogs = dogs.map(function (item) {
     if(dogs[i](0) === )
       return false; // This will skip current element
     else
         // logic for mapping acceptable elements
-  })
+  })*/
   return (
     <div className="App">
       <header className="App-header">

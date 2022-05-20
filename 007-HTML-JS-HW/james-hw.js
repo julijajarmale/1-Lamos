@@ -28,9 +28,8 @@ h2First.classList.remove("main");
 
 //E)Pirmam span tagui, kuris yra h2 viduje sumažinti fonto dydį iki 10px ir nudažyti pilkai
 console.log(`2 UZDAVINYS`)
-const firstSpan = document.querySelector('h2 > span');
-firstSpan.classList.add("span");
-
+document.querySelector('h2 > span').style.color = 'gray';
+document.querySelector('h2 > span').style.fontSize = '10px';
 //2.Elemetų grupės (nodeList) skaičiavimus išvest į consolę
 //A)Suskaičiuoti kiek yra h2 tagų;
 
@@ -57,14 +56,14 @@ h2All.forEach(h2 => {
 //D)Tagų, kurie yra div su klase prices, viduje esantiems h2 tagams pridėti klasę price-tag;
 
 const h2Div = document.querySelectorAll('div.prices > h2');
-h2Div.forEach( e => {
-    e.classList.add('price-tag');
+h2Div.forEach(h2 => {
+    h2.classList.add('price-tag');
 });
 
 //E)Pabraukti visus tagus su klase new;
 const line = document.querySelectorAll('.new');
-line.forEach(e=> {
-  e.style.textDecoration = ('underline');
+line.forEach(newElement=> {
+  newElement.style.textDecoration = ('underline');
 });
 
 //F)Suskaičiuoti kiek yra gyvūnų kategorijų ir žirafų (jos yra ul tagai);
@@ -101,25 +100,25 @@ let countGyvates = 0;
 let countZoliaedziai = 0;
 
 const zirafos = document.querySelectorAll('#zirafos > .new')
-zirafos.forEach(e => {
-  console.log(e)
+zirafos.forEach(naujaZirafa => {
+  console.log(naujaZirafa)
   countZirafos++
 });
 const plesrunai = document.querySelectorAll('#plesrunai > .new')
-plesrunai.forEach(e => {
-  console.log(e)
+plesrunai.forEach(naujasPlesrunas => {
+  console.log(naujasPlesrunas)
   countPlesrunai++
 });
 
 const gyvates = document.querySelectorAll('#gyvates > .new')
-gyvates.forEach(e => {
-  console.log(e)
+gyvates.forEach(naujaGyvate => {
+  console.log(naujaGyvate)
   countGyvates++
 });
 
 const zoliaedziai = document.querySelectorAll('#zoliaedziai > .new')
-zoliaedziai.forEach(e => {
-  console.log(e)
+zoliaedziai.forEach(zoliaedis => {
+  console.log(zoliaedis)
   countZoliaedziai++
 });
 
@@ -134,13 +133,13 @@ console.log(`Zolaedziu su klase new ${countZoliaedziai}`)
 console.log(`3 UZDAVINYS`)
 //A)Padaryti tai ką liepia mygtukai Header1 sekcijoje;
 const mygtukas1 = document.querySelectorAll('#h1-color');
-mygtukas1.forEach(e => {
-  e.style.color = 'green'
+mygtukas1.forEach(mygtukas => {
+  mygtukas.style.color = 'green'
 });
 
 const mygtukas2 = document.querySelectorAll('#h1-font');
-mygtukas2.forEach(e => {
-  e.style.fontSize = '10px'
+mygtukas2.forEach(mygtukas => {
+  mygtukas.style.fontSize = '10px'
 });
 
 //B)Padaryti, kad paspaudus ant i tago jis pakeistų fonto svorį į bold;
@@ -151,7 +150,7 @@ iBold.forEach(i => {
 
   i.addEventListener('click', () => {
       i.style.fontWeight = 'bold';
-      console.log(e);
+  
   });
 });
 
@@ -161,10 +160,10 @@ iBold.forEach(i => {
 
 const prices = document.querySelectorAll('.prices');
 
-prices.forEach(e => {
-  e.addEventListener('click', () => {
-    e.style.backgroundColor =e.style.backgroundColor === 'white'? 'gray' : 'white';
-    console.log(e);
+prices.forEach(price=> {
+  price.addEventListener('click', () => {
+    price.style.backgroundColor =price.style.backgroundColor === 'white'? 'gray' : 'white';
+  
 });
 
 })
@@ -173,10 +172,10 @@ prices.forEach(e => {
 
 const contacts = document.querySelectorAll('#contacts');
 
-contacts.forEach(e => {
-  e.addEventListener('click', () => {
-    e.style.color = 'orange'
-    console.log(e);
+contacts.forEach(cont => {
+  cont.addEventListener('click', () => {
+    cont.style.color = 'orange'
+  
 });
 
 })
@@ -184,26 +183,24 @@ contacts.forEach(e => {
 // fontSize = 20px;
 const padidinti = document.querySelectorAll('#contacts > u');
 
-padidinti.forEach(e => {
-  e.addEventListener('click', () => {
-    e.style.fontSize = '20px'
-    console.log(e);
+padidinti.forEach(element => {
+  element.addEventListener('click', () => {
+    element.style.fontSize = '20px'
+
 });
  
 })
 
 //F)Padaryti taip, kad paspaudus ant X, esančio tage su id contacts, pridėtos tage su id contacts savybės būtų panaikintos
 // https://stackoverflow.com/questions/18691655/remove-style-on-element //perdaryti
-console.log
+
 const remove = document.querySelectorAll('#contacts > b');
 remove.forEach(e => { 
   e.addEventListener('click', (event) => { event.stopPropagation() ; console.log('suveike');
-    contacts.forEach(e => {
-        e.style.removeProperty("color");
-        e.style.removeProperty("fontsize");
-        
+    contacts.forEach(element => {
+        element.style.removeProperty("color");
     });
-
+    
 });
 
 })
@@ -212,18 +209,18 @@ remove.forEach(e => {
 //G)Padaryti tai ką liepia mygtukai Header2 sekcijoje;
 
 const mygtukas3 = document.querySelectorAll('#h1-color-back');
-mygtukas3.forEach(e => {
-  e.addEventListener('click', () => {
-    e.style.color = e.style.color === 'black'? 'green' : 'black';
-    console.log(e);
+mygtukas3.forEach(h1 => {
+  h1.addEventListener('click', () => {
+    h1.style.color = h1.style.color === 'black'? 'green' : 'black';
+    
 });
 });
 
 const mygtukas4 = document.querySelectorAll('#h1-font-back');
-mygtukas4.forEach(e => {
-  e.addEventListener('click', () => {
-    e.style.fontSize = e.style.fontSize === '10px'? '20px' : '10px';
-    console.log(e);
+mygtukas4.forEach(h1 => {
+  h1.addEventListener('click', () => {
+    h1.style.fontSize = h1.style.fontSize === '10px' ? '5px' : '10px';
+    
 })
 })
 
@@ -233,10 +230,10 @@ console.log(`4 UZDAVINYS`)
 //A)Padaryti, kad dukartus paspaudus ant naujų gyvūnų jie nusispalvintu raudonai 
 https://developer.mozilla.org/en-US/docs/Web/API/Element/dblclick_event
 
-line.forEach(e => {
-  e.addEventListener('dblclick', () => {
-    e.style.color = 'red';
-    console.log(e);
+line.forEach(gyvunas => {
+  gyvunas.addEventListener('dblclick', () => {
+    gyvunas.style.color = 'red';
+    
 })
 })
 
@@ -245,7 +242,7 @@ line.forEach(e => {
 const animalsNew = document.querySelectorAll('.animals > ul > li');
 animalsNew.forEach(animals => {
     if (animals.className !== 'like-button') {
-        animals.addEventListener('click', e => {
+        animals.addEventListener('click', animal => {
             animals.style.fontSize = '130%';
         });
     }
@@ -255,7 +252,7 @@ animalsNew.forEach(animals => {
 
 animalsNew.forEach(animals => {
   if (animals.className === 'like-button') {
-      animals.addEventListener('click', e => {
+      animals.addEventListener('click', animal => {
           animals.parentElement.classList.add('like');
       });
   }
