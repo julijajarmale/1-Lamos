@@ -4,13 +4,30 @@ import './App.css';
 const dogs = ['šuo', 'šunius', 'Bobikas', 'kudlius', 'Šarikas', 'avigalvis'];
 dogs.sort(function(a, b){return b.length - a.length});
 
+const newDogs = [];
+for(let i =0; i< dogs.length; i++){
+ if(dogs[i][0].toUpperCase() !== dogs[i][0]){
+   newDogs.push(dogs[i])
+ }
+}
+console.log(newDogs)
+
+const newDogs2 = [];
+
+for(let i =0; i< dogs.length; i++){
+ let index = dogs[i].length
+ console.log(index)
+ newDogs2[i] = dogs[i]+index
+ console.log(newDogs2[i])
+  newDogs2.push(newDogs2[i])
+  }
+  console.log(newDogs2)
+ 
+
 function App() {
- /* let newDogs = dogs.map(function (item) {
-    if(dogs[i](0) === )
-      return false; // This will skip current element
-    else
-        // logic for mapping acceptable elements
-  })*/
+
+
+
   return (
     <div className="App">
       <header className="App-header">
@@ -31,10 +48,15 @@ function App() {
       </div>
       <div className='kvc'>
       {
-       dogs.map((d, i) => <div className={'circ'} key={i}>{i}.{d}</div>)
+       newDogs.map((d, i) => <div className={'circ'} key={i}>{i}.{d}</div>)
       }
       </div>
-      
+
+      <div className='kvc'>
+      {
+       newDogs2.map((d,i) => <div className={d.slice(-1) > 6 ? 'colorGreen':'colorRed'} key={i}>{d}</div>)
+      }
+      </div>
 
       </header>
     </div>

@@ -66,4 +66,13 @@
   border-radius: 50px;
 }
 
+.colorGreen{
+  color: green;
+  margin: 10px;
+}
+
+.colorRed{
+  color: red;
+  margin: 10px;
+}
 
