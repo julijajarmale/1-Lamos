@@ -1,10 +1,10 @@
 
-function ZebraiBebrai({props}){
-    console.log(props)
+function ZebraiBebrai({randomSkaicius}){
+    console.log(randomSkaicius)
     let spalva;
-    if(props===1){
+    if(randomSkaicius===1){
         spalva='blue'
-    }else if(props===2){
+    }else if(randomSkaicius===2){
         spalva='red'
     }else {
         spalva='black'

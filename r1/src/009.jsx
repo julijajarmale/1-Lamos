@@ -23,7 +23,7 @@ function App() {
        <Kurmis skaicius={4}></Kurmis>
        <LabasZuiki></LabasZuiki>
        <Tekstas tekstukas ="Bet koks tekstas"></Tekstas>
-       <ZebraiBebrai props = {x}></ZebraiBebrai>
+       <ZebraiBebrai randomSkaicius = {x}></ZebraiBebrai>
        <DuProps zuikis="Zuikis-Puikis" lape="Lape-Snape"></DuProps>
        <TrysProps vilkas ="Vilas-Pilkas" krabas="Labas Krabas" spalvyte = "orange"></TrysProps>
       </header>
