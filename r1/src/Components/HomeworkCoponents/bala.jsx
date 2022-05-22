@@ -15,7 +15,7 @@
 
     return(
 
-        seaPlaners.map((bala,object) => <li key={object}>{bala.name}</li>)
+        seaPlaners.map((bala,i) => <li key={i}>{bala.id}{bala.name}</li>)
 
     )
 }
