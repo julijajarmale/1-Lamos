@@ -14,7 +14,7 @@ function Daiktas(){
 
 
     return(
-        seaPlaners.map((bala,i) => <li key={i}>{bala.id}{bala.name}</li>)
+        seaPlaners.map((bala,i) => <p key={i}>{bala.id}{bala.name}</p>)
     
 
     )

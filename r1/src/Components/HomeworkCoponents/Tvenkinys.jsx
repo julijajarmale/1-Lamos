@@ -14,8 +14,12 @@ const seaPlaners = [
 ];
 function Tvenkinys(){
   
-      return ( )
+  return ( <>
+  <div>{seaPlaners.map((bala,i) => bala.id % 2 === 0 ? <p key={i}>{bala.id}{bala.name}</p> : false)}</div>
+  <div>{seaPlaners.map((bala,i) => bala.id % 2 !== 0 ? <p key={i}>{bala.id}{bala.name}</p> : false)}</div>   
+      </> )
 
 }
 
 export default Tvenkinys;
+
