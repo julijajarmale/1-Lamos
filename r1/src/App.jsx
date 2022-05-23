@@ -3,6 +3,7 @@ import './App.css';
 import Bala from './Components/HomeworkCoponents/Bala';
 import Jura from './Components/HomeworkCoponents/Jura';
 import Tvenkinys from './Components/HomeworkCoponents/Tvenkinys';
+import Vandenynas from './Components/HomeworkCoponents/Vandenynas';
 
 
 
@@ -14,6 +15,7 @@ function App() {
       <Bala></Bala>
       <Tvenkinys></Tvenkinys>
       <Jura></Jura>
+      <Vandenynas></Vandenynas>
       </header>
     </div>
   );
