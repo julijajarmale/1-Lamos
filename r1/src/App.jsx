@@ -28,7 +28,7 @@ function App() {
       <Tvenkinys seaPlaners={seaPlaners}></Tvenkinys>
       <Jura></Jura>
       <Vandenynas></Vandenynas>
-      <Pasaulis></Pasaulis>
+      <Pasaulis seaPlaners={seaPlaners}></Pasaulis>
     
       </header>
     </div>

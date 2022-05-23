@@ -1,4 +1,14 @@
-function Akvariumas(){
+
+function Akvariumas({seaPlaner}){
+    
+    return <div><i>ID:{seaPlaner.id} TYPE:{seaPlaner.type} <b>{seaPlaner.name}</b></i></div>
+}
+
+export default Akvariumas;
+
+
+
+/*function Akvariumas(){
     const seaPlaners = [
         {id: 1, type: 'man', name: 'Lina', color: 'blue'},
         {id: 2, type: 'car', name: 'Opel', color: 'red'},
@@ -16,4 +26,6 @@ function Akvariumas(){
     return  seaPlaners.map((Bala, i) => Bala.type === 'fish' ? <div key={i}>{Bala.id}{Bala.name} {Bala.type} </div> : null)
 }
 
-export default Akvariumas;
+export default Akvariumas;*/
+
+

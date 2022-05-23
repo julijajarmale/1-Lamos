@@ -1,4 +1,16 @@
-function Garazas(){
+
+function Garazas({seaPlaner}){
+    
+    return <div><i>ID:{seaPlaner.id} TYPE:{seaPlaner.type} <b>{seaPlaner.name}</b></i></div>
+}
+
+export default Garazas;
+
+
+
+
+
+/*function Garazas(){
     const seaPlaners = [
         {id: 1, type: 'man', name: 'Lina', color: 'blue'},
         {id: 2, type: 'car', name: 'Opel', color: 'red'},
@@ -16,4 +28,4 @@ function Garazas(){
     return  seaPlaners.map((Bala, i) => Bala.type === 'car' ? <div key={i}>{Bala.id}{Bala.name} {Bala.type} </div> : null)
 }
 
-export default Garazas;
+export default Garazas;*/

@@ -22,24 +22,43 @@ function Pasaulis(){
         <div>
          <h1>PORINIAI</h1>
             <h1>Namas</h1>
-            <Namas></Namas>
+            
+            {
+             seaPlaners.map(p => p.id % 2 ? null : <Namas key={p.id} seaPlaner={p}></Namas>)
+           }
+            
             <h1>Narvas</h1>
-            <Narvas></Narvas>
+            {
+             seaPlaners.map(p => p.id % 2 ? null : <Narvas key={p.id} seaPlaner={p}></Narvas>)
+           }
+    
             <h1>Garazas</h1>
-            <Garazas></Garazas>
+            {
+             seaPlaners.map(p => p.id % 2 ? null : <Garazas key={p.id} seaPlaner={p}></Garazas>)
+           }
             <h1>Akvariumas</h1>
-            <Akvariumas></Akvariumas>
+            {
+             seaPlaners.map(p => p.id % 2 ? null : <Akvariumas key={p.id} seaPlaner={p}></Akvariumas>)
+           }
         </div>
         <div>
          <h1>NEPORINIAI</h1>
             <h1>Namas</h1>
-            <Namas></Namas>
+            {
+            seaPlaners.map(p => p.id % 2 ? <Namas key={p.id} seaPlaner={p}></Namas> : null)
+        }
             <h1>Narvas</h1>
-            <Narvas></Narvas>
+            {
+            seaPlaners.map(p => p.id % 2 ? <Narvas key={p.id} seaPlaner={p}></Narvas> : null)
+        }
             <h1>Garazas</h1>
-            <Garazas></Garazas>
+            {
+            seaPlaners.map(p => p.id % 2 ? <Garazas key={p.id} seaPlaner={p}></Garazas> : null)
+        }
             <h1>Akvariumas</h1>
-            <Akvariumas></Akvariumas>
+            {
+            seaPlaners.map(p => p.id % 2 ? <Akvariumas key={p.id} seaPlaner={p}></Akvariumas> : null)
+        }
         </div>
         </>
        
