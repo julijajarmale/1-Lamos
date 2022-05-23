@@ -1,7 +1,8 @@
+import Bala from "./Bala";
 
 function Akvariumas({seaPlaner}){
     
-    return <div><i>ID:{seaPlaner.id} TYPE:{seaPlaner.type} <b>{seaPlaner.name}</b></i></div>
+    return <div><i>ID:{seaPlaner.id} TYPE:{seaPlaner.type} <b style={{color: seaPlaner.color}}>{seaPlaner.name}</b></i></div>
 }
 
 export default Akvariumas;
@@ -9,6 +10,7 @@ export default Akvariumas;
 
 
 /*function Akvariumas(){
+    <span style={{color: v.color}}>{v.name}</span> {v.color}
     const seaPlaners = [
         {id: 1, type: 'man', name: 'Lina', color: 'blue'},
         {id: 2, type: 'car', name: 'Opel', color: 'red'},

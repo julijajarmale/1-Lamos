@@ -1,7 +1,7 @@
 
 function Garazas({seaPlaner}){
     
-    return <div><i>ID:{seaPlaner.id} TYPE:{seaPlaner.type} <b>{seaPlaner.name}</b></i></div>
+    return <div><i>ID:{seaPlaner.id} TYPE:{seaPlaner.type} <b style={{color: seaPlaner.color}}>{seaPlaner.name}</b></i></div>
 }
 
 export default Garazas;

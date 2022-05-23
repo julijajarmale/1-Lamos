@@ -15,7 +15,7 @@
 
     return(
 
-        seaPlaners.map((bala,i) => <li key={i}>{bala.id}{bala.name}</li>)
+        seaPlaners.map((bala,i) => <li style={{color: bala.color}} key={i}>{bala.id}{bala.name}</li>)
 
     )
 }

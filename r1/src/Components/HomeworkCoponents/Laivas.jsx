@@ -15,7 +15,7 @@ function Laivas(){
 
     return(
 
-        seaPlaners.map((Bala, i) => Bala.type === 'car' ? <div key={i}>{Bala.name} {Bala.type} </div> : null)
+        seaPlaners.map((Bala, i) => Bala.type === 'car' ? <div style={{color: Bala.color}} key={i}>{Bala.name} {Bala.type} </div> : null)
 
     )
 }
