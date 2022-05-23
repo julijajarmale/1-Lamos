@@ -15,7 +15,7 @@ function Valtis(){
 
     return(
 
-        seaPlaners.map((Bala, i) => Bala.type === 'man' ? <div key={i}>{Bala.name} {Bala.type} </div> : <div key={i}></div>)
+        seaPlaners.map((Bala, i) => Bala.type === 'man' ? <div key={i}>{Bala.name} {Bala.type} </div> : null)
         
         );
 

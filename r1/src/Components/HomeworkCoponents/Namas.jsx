@@ -13,7 +13,7 @@ function Namas(){
     ];
 
    
-    return  seaPlaners.map((Bala, i) => Bala.type === 'man' ? <div key={i}>{Bala.id}{Bala.name} {Bala.type} </div> : <div key={i}></div>)
+    return  seaPlaners.map((Bala, i) => Bala.type === 'man' ? <div key={i}>{Bala.id}{Bala.name} {Bala.type} </div> : null)
 }
 
 export default Namas;

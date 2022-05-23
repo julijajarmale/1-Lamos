@@ -13,7 +13,7 @@ function Akvariumas(){
     ];
 
    
-    return  seaPlaners.map((Bala, i) => Bala.type === 'fish' ? <div key={i}>{Bala.id}{Bala.name} {Bala.type} </div> : <div key={i}></div>)
+    return  seaPlaners.map((Bala, i) => Bala.type === 'fish' ? <div key={i}>{Bala.id}{Bala.name} {Bala.type} </div> : null)
 }
 
 export default Akvariumas;

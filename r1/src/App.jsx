@@ -1,49 +1,35 @@
 
 import './App.scss';
-import { useEffect, useState } from 'react';
-import Books from './Components/011/books';
-import axios from 'axios';
+import Bala from './Components/HomeworkCoponents/Bala';
+import Jura from './Components/HomeworkCoponents/Jura';
+import Pasaulis from './Components/HomeworkCoponents/Pasaulis';
+import Tvenkinys from './Components/HomeworkCoponents/Tvenkinys';
+import Vandenynas from './Components/HomeworkCoponents/Vandenynas';
 
+const seaPlaners = [
+  {id: 1, type: 'man', name: 'Lina', color: 'blue'},
+  {id: 2, type: 'car', name: 'Opel', color: 'red'},
+  {id: 3, type: 'animal', name: 'Vilkas', color: 'green'},
+  {id: 4, type: 'fish', name: 'Ungurys', color: 'yellow'},
+  {id: 5, type: 'man', name: 'Tomas', color: 'green'},
+  {id: 6, type: 'animal', name: 'Bebras', color: 'red'},
+  {id: 7, type: 'animal', name: 'Barsukas', color: 'green'},
+  {id: 8, type: 'car', name: 'MB', color: 'blue'},
+  {id: 9, type: 'car', name: 'ZIL', color: 'red'},
+  {id: 10, type: 'man', name: 'Teta Toma', color: 'yellow'},
+];
 
 function App() {
-
-const [count, setCount] = useState(1);
-const [books, setBooks] = useState([]);
-
-useEffect(() => {
-    console.log('YES')
-    axios.get('https://in3.dev/knygos/')   
-    .then(res => {
-        console.log(res.data);
-        setBooks(res.data);
-    })                                            //READY!  kai paleidziam callbacka kurio argumentas yra tuscias masyvas, inicijuojame, kad paleista ir galima daryti kreipimasi i serveri;
-}, [])                                          //paleidzia viena vieninteli karta, kai viskas uzsikrauna
-
-const [user, setUsers] = useState([]);
-
-useEffect(() => {
-    console.log('YES')
-    axios.get('https://jsonplaceholder.typicode.com/users')   
-    .then(res => {
-        console.log(res.data);
-        setUsers(res.data);
-    })                                            //READY!  kai paleidziam callbacka kurio argumentas yra tuscias masyvas, inicijuojame, kad paleista ir galima daryti kreipimasi i serveri;
-}, [])     
 
   return (
     <div className="App">
       <header className="App-header">
-          <h1>{count}</h1>
-          <button onClick={() => setCount (c => c + 1)}>+1</button>
-          <Books books={books}></Books>
-          <h1>USER NAMES:</h1>
-          <div>
-              {
-                  user.map(u => <div key={u.id}>{u.name}</div>)
-              }
-          </div>
-          
-      
+      <Bala></Bala>
+      <Tvenkinys seaPlaners={seaPlaners}></Tvenkinys>
+      <Jura></Jura>
+      <Vandenynas></Vandenynas>
+      <Pasaulis></Pasaulis>
+    
       </header>
     </div>
   );
@@ -51,6 +37,9 @@ useEffect(() => {
 
 export default App;
 
-//ismokome kreiptis i serveri, gauti informacija ir ja atvaizduoti;
-//su books komponentu
-//vietoj axios galima naudoti fetch
+//1.	Sukurti Komponentą Bala ir jame atvaizduoti masyvą seaPlaners.
+
+//2.Sukurti du komponentus Tvenkinys, Daiktas -  tėvinį ir vaikinį atitinkamai. 
+//Tvenkinys komponente du kartus panaudokite komponentą Daiktas atvaizduoti 
+//masyvą seaPlaners - vieną kartą poriniams kitą kartą neporiniams įrašams 
+//(pagal id, ne masyvo indeksą).

@@ -23,7 +23,7 @@ function Jura(){
         <Sala></Sala>
         <div>
             {
-                seaPlaners.map((Bala, i) => Bala.type === 'fish' ? <div key={i}>{Bala.name} {Bala.type} </div> : <div key={i}></div>)
+                seaPlaners.map((Bala, i) => Bala.type === 'fish' ? <div key={i}>{Bala.name} {Bala.type} </div> : null)
             }
         </div>
         </>

@@ -13,7 +13,7 @@ function Narvas(){
     ];
 
    
-    return  seaPlaners.map((Bala, i) => Bala.type === 'animal' ? <div key={i}>{Bala.id}{Bala.name} {Bala.type} </div> : <div key={i}></div>)
+    return  seaPlaners.map((Bala, i) => Bala.type === 'animal' ? <div key={i}>{Bala.id}{Bala.name} {Bala.type} </div> : null)
 }
 
 export default Narvas;

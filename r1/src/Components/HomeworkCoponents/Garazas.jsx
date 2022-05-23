@@ -13,7 +13,7 @@ function Garazas(){
     ];
 
    
-    return  seaPlaners.map((Bala, i) => Bala.type === 'car' ? <div key={i}>{Bala.id}{Bala.name} {Bala.type} </div> : <div key={i}></div>)
+    return  seaPlaners.map((Bala, i) => Bala.type === 'car' ? <div key={i}>{Bala.id}{Bala.name} {Bala.type} </div> : null)
 }
 
 export default Garazas;
