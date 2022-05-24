@@ -205,16 +205,22 @@ span {
 
   .container{
     width: 800px;
-    display:inline-block;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap ;
     
     
   }
 
-  .column {
+  .column1 {
     width: 40%;
-    display:flex;
     float:left;
-    justify-content: center;
+  }
+
+  .column2 {
+    width: 40%;
+    float:right;
   }
 
   .karve{
