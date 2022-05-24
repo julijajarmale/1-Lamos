@@ -1,45 +1,45 @@
-
+import { useState } from 'react';
 import './App.scss';
-import Bala from './Components/HomeworkCoponents/Bala';
-import Jura from './Components/HomeworkCoponents/Jura';
-import Pasaulis from './Components/HomeworkCoponents/Pasaulis';
-import Tvenkinys from './Components/HomeworkCoponents/Tvenkinys';
-import Vandenynas from './Components/HomeworkCoponents/Vandenynas';
-
-const seaPlaners = [
-  {id: 1, type: 'man', name: 'Lina', color: 'blue'},
-  {id: 2, type: 'car', name: 'Opel', color: 'red'},
-  {id: 3, type: 'animal', name: 'Vilkas', color: 'green'},
-  {id: 4, type: 'fish', name: 'Ungurys', color: 'yellow'},
-  {id: 5, type: 'man', name: 'Tomas', color: 'green'},
-  {id: 6, type: 'animal', name: 'Bebras', color: 'red'},
-  {id: 7, type: 'animal', name: 'Barsukas', color: 'green'},
-  {id: 8, type: 'car', name: 'MB', color: 'blue'},
-  {id: 9, type: 'car', name: 'ZIL', color: 'red'},
-  {id: 10, type: 'man', name: 'Teta Toma', color: 'yellow'},
-];
 
 function App() {
+
+     function rand(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1) + min)
+      }
+
+  const [gyvunas, setGyvunas] = useState(0)
+ 
+  const pridetiGyvuna = () => {
+    setGyvunas(g => [...g]);
+  
+  }
+
 
   return (
     <div className="App">
       <header className="App-header">
-      <Bala></Bala>
-      <Tvenkinys seaPlaners={seaPlaners}></Tvenkinys>
-      <Jura></Jura>
-      <Vandenynas></Vandenynas>
-      <Pasaulis seaPlaners={seaPlaners}></Pasaulis>
-    
+         <div className="container">
+            <h1>GANYKLA</h1>
+                <div className="column">
+                    <h2>Karvės</h2>
+                    {
+       gyvunas.map((g, i) => <div className='karve' key={i}></div>)
+       }
+                </div>
+                <div className="column">
+                    <h2>Avys</h2>
+                    {
+       gyvunas.map((g, i) => <div className='avis' key={i}></div>)
+       }
+                </div>
+         <button onClick={pridetiGyvuna}>Į GANYKLĄ</button>
+     </div>
       </header>
     </div>
+    
   );
 }
 
 export default App;
-
-//1.	Sukurti Komponentą Bala ir jame atvaizduoti masyvą seaPlaners.
-
-//2.Sukurti du komponentus Tvenkinys, Daiktas -  tėvinį ir vaikinį atitinkamai. 
-//Tvenkinys komponente du kartus panaudokite komponentą Daiktas atvaizduoti 
-//masyvą seaPlaners - vieną kartą poriniams kitą kartą neporiniams įrašams 
-//(pagal id, ne masyvo indeksą).

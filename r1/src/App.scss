@@ -200,3 +200,43 @@ span {
     transform: rotate(360deg);
   }
 }
+
+
+  .container{
+    width: 800px;
+    display:inline-block;
+    
+    
+  }
+
+  .column {
+    width: 40%;
+    display:flex;
+    float:left;
+    justify-content: center;
+  }
+
+  .karve{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    background-color: brown;
+    border-color: white ;
+    margin: 10px;
+    border-radius: 7px;
+  }
+  
+  
+  .avis{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 90px;
+    background-color: whitesmoke;
+    margin: 7px;
+    border-radius: 50px;
+  }
+
