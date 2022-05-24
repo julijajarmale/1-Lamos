@@ -2,7 +2,11 @@
 import { useState, useRef, useEffect } from 'react';
 import './App.scss';
 
+
 function App() {
+
+
+    
 
 const [count, setCount] = useState(null);
 
@@ -54,6 +58,7 @@ const remCat = () => {
         <button onClick={addCat}>Add Cat</button>
         <button onClick={getCat}>Get Cat</button>
         <button onClick={remCat}>Remove Cat</button>
+      
 
       </header>
     </div>
