@@ -1,45 +1,64 @@
-import { useState } from 'react';
+
+import { useState, useRef } from 'react';
 import './App.scss';
 
 function App() {
 
-     function rand(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1) + min)
-      }
+const [count, setCount] = useState(0);
 
-  const [gyvunas, setGyvunas] = useState(0)
- 
-  const pridetiGyvuna = () => {
-    setGyvunas(g => [...g]);
-  
-  }
+const mano = useRef(0);
+const panda = useRef();
 
+const add = () => {
+    setCount(c => c + 1);
+    mano.current = mano.current + 3;
+    console.log(mano.current);
+    const p = panda.current
+    //const p = document.querySelector('#panda'); //queryselector reakte negerai
+    console.log(p.dataset.panda) //dataset. is plain js. duomenu saugojimas html'e.
+}
 
+const addCat = () => {
+    localStorage.setItem('katinukas', JSON.stringify(['Murka', 'Pilkis']));
+}
+
+const getCat = () => {
+    console.log(JSON.parse(localStorage.getItem('katinukas')));
+}
+
+const remCat = () => {
+    localStorage.removeItem('katinukas');
+}
   return (
     <div className="App">
       <header className="App-header">
-         <div className="container">
-            <h1>GANYKLA</h1>
-                <div className="column">
-                    <h2>Karvės</h2>
-                    {
-       gyvunas.map((g, i) => <div className='karve' key={i}></div>)
-       }
-                </div>
-                <div className="column">
-                    <h2>Avys</h2>
-                    {
-       gyvunas.map((g, i) => <div className='avis' key={i}></div>)
-       }
-                </div>
-         <button onClick={pridetiGyvuna}>Į GANYKLĄ</button>
-     </div>
+        <h1>useRef LocalStorage {count}</h1>
+        <button onClick={add}>+1</button>
+        <div ref={panda} data-panda="miega"></div>
+
+        <button onClick={addCat}>Add Cat</button>
+        <button onClick={getCat}>Get Cat</button>
+        <button onClick={remCat}>Remove Cat</button>
+
       </header>
     </div>
-    
   );
 }
 
 export default App;
+
+//https://dmitripavlutin.com/react-useref-guide/
+//useRef current ir t.t. //<div id ="panda" data-panda="miega"></div>
+//console.log(p.dataset.panda) <--- placiai naudojamas dalykas.
+//referensas - susikuriam taga, pridedame referensa ir tada rodome kad nukreipia
+//referensas i ta taga., taip galima pazymeti elementa.
+
+
+
+//LOCAL STORAGE - tarsi nuotoline duomenu baze.
+//nieko bendro su reaktu
+//narsykles feature - application--> local storage
+//key ir value, ten galima pasideti informacija, kuri niekur nedingsta.
+//value gali buti tiktai stringas;objekta galima saugoti su json.
+//norint ikelt pvz masyva reikia sujsonininti tada istraukti stringa ir ikelt;
+//
