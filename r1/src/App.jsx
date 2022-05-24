@@ -1,65 +1,64 @@
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './App.scss';
+import randColor from './Functions/randColor';
+
+
 
 
 function App() {
+  function rand(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+ 
+const [gyvunas, setGyvunas] = useState(null);
 
-
-    
-
-const [count, setCount] = useState(null);
-
-const mano = useRef(0);
-const panda = useRef();
-
-useEffect(() => {    //sis useeffect skirtas tai vietai kai pirma karta uzkrauname puslpai
-setCount(parseInt(localStorage.getItem('count') ?? 0 )); // A = B ?? ==> reiskia, kad turim default reiksme, kuria priskiriama A. jei nera reiksmes B einame ant defaulto.
-                                                            //parseInt pavercia i numberi tas pats, kad Number()
-
+const plusGyvunas  = () => {
+  setGyvunas(k => [...k, randColor()]);
+}
+// Kad persikrovus viskas liktu iki 31 eilutes, bet pakeitimai xtmle
+useEffect(() => {
+  setGyvunas(JSON.parse(localStorage.getItem('gyvunas') ?? '[]'));
 }, []);
 
-useEffect(() => {      
- if (null === count){  // is use effecto vieta tada kai refreshinam
-     return;
- }
- localStorage.setItem('count', count) 
-    }, [count]);
+useEffect(() => {
+  if (null === gyvunas) {
+      return;
+  }
+  localStorage.setItem('gyvunas', JSON.stringify(gyvunas));
+}, [gyvunas]);
 
+//gyvunai juda
 
-
-const add = () => {
-    setCount(c =>c + 1);
-    mano.current = mano.current + 3;
-    console.log(mano.current);
-    
-    const p = panda.current
-    //console.log(p.dataset.panda) //dataset. is plain js. duomenu saugojimas html'e.
+const [setMigracija] = useState(null);
+const moveGyvunas = () => {
+  setMigracija(("source").appendTo("destination"))
 }
 
-const addCat = () => {
-    localStorage.setItem('katinukas', JSON.stringify(['Murka', 'Pilkis']));
-}
-
-const getCat = () => {
-    console.log(JSON.parse(localStorage.getItem('katinukas')));
-}
-
-const remCat = () => {
-    localStorage.removeItem('katinukas');
-}
   return (
     <div className="App">
       <header className="App-header">
-        <h1>useRef LocalStorage {count}</h1>
-        <button onClick={add}>+1</button>
-        <div ref={panda} data-panda="miega"></div>
+      <h1>GANYKLA</h1>
+        <div className='container'>
+          <div className='column1'>
+            <h2>Karvės</h2>
+            {
+       gyvunas ? gyvunas.map((c, i) => <div className='karve' id ="source" onClick={moveGyvunas} key={i}>{`K0${rand(100000,999999)}`}</div>) : null
+       }
+        
+          </div>
+          <div className='column1'>
+            <h2>Avys</h2>
+            {
+       gyvunas ? gyvunas.map((c, i) => <div className='avis' id ="destination" key={i}>{`K0${rand(100000,999999)}`}</div>) : null
+       }
+          </div>
+         <button onClick={plusGyvunas}>Į GANYKLĄ</button>
 
-        <button onClick={addCat}>Add Cat</button>
-        <button onClick={getCat}>Get Cat</button>
-        <button onClick={remCat}>Remove Cat</button>
-      
-
+        </div>
+       
       </header>
     </div>
   );
@@ -67,17 +66,25 @@ const remCat = () => {
 
 export default App;
 
-//https://dmitripavlutin.com/react-useref-guide/
-//useRef current ir t.t. //<div id ="panda" data-panda="miega"></div>
-//console.log(p.dataset.panda) <--- placiai naudojamas dalykas.
-//referensas - susikuriam taga, pridedame referensa ir tada rodome kad nukreipia
-//referensas i ta taga., taip galima pazymeti elementa.
+//Nepadaryti random 5-20; identifikaciniai,  kad liktu tie patys ir nejuda gyvunai
 
 
-//LOCAL STORAGE - tarsi nuotoline duomenu baze.
-//nieko bendro su reaktu
-//narsykles feature - application--> local storage
-//key ir value, ten galima pasideti informacija, kuri niekur nedingsta.
-//value gali buti tiktai stringas;objekta galima saugoti su json.
-//norint ikelt pvz masyva reikia sujsonininti tada istraukti stringa ir ikelt;
-//
+
+/*REACT useState & useEffect PROJECT (MyLittleFarm)
+
+
+Sukurti tuščią “Ganyklą”. Ją padalinti į dvi dalis su užrašais- Avys ir Karvės. 
+Sukurti mygtuką “į ganyklą”, kurį paspaudus dešinė pusė būtų apgyvendinta avimis,
+kurias vaizduoja apskritimai, o kairė pusė karvėmis, kurias vaizduoja
+keturkampiai. Avių ir karvių skaičius rand 5 - 20. Kiekvieno gyvulio viduje
+yra random identifikacinis numeris: pvz avim A0254787, karvėm K0007898, 
+kur skaičius yra septynženklis rand skaičius. Perkrovus puslapį avių ir 
+karvių skaičius ir jų identifikaciniai numeriai turi nekisti (tik patį 
+pirmą kartą “Ganykla” turi būti tuščia). Paspaudus ant avies arba karvės
+ji turi perbėgti į priešingą ganyklos pusę (antrą kartą paspaudus grįžti
+atgal). Perkrovus puslapį perbėgimai turi išlikti nepakitę. Pakartotinai
+paspaudus “į ganyklą”, turi atsirasti nauji gyvuliai, kaip ir pirmą kartą.
+
+
+Pastaba: karvė avių ganyklos pusėje lieka karve, o avis- avimi. Nemutuojam!
+ Perbėgusios avys ir karvės yra dedamos į bandos galą. */
