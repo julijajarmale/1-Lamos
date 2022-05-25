@@ -1,56 +1,75 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.scss';
-import randColor from './Functions/randColor';
+import rand from './Functions/random';
 
 function App() {
-    function rand(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1) + min)
-      }
-    const [kv, setKv] = useState([]);
-    
-    const addKv = () => {
-    setKv(k => [...k + rand(5,10), randColor()]) //neteisingai random padarytas!
- 
-  }
-// perkrovus puslai lieka taip pat
 
-useEffect(() => {
-    setKv(JSON.parse(localStorage.getItem('kv') ?? '[]'));
-  }, []);
-  
-  useEffect(() => {
-    if (null === kv) {
-        return;
+    const [kv, setKv] = useState(null);
+    const istorija = useRef([]);
+
+    // PIRMAS KROVIMAS
+    useEffect(() => {
+        setKv(JSON.parse(localStorage.getItem('kv'))); // gali buti null arba []
+    }, []);
+
+    // UZSAUGOS POKYCIUS
+    useEffect(() => {
+        if (null === kv) {
+            return;
+        }
+        localStorage.setItem('kv', JSON.stringify(kv));
+        istorija.current.unshift(kv);
+    }, [kv]);
+
+
+    const prideti = () => {
+        const kiekis = rand(5, 10);
+        const kvadratukai = [];
+        for (let i = 0; i < kiekis; i++) {
+            kvadratukai.push('^o^');
+        }
+        setKv(k => null === k ? [...kvadratukai] : [...k, ...kvadratukai]);
     }
-    localStorage.setItem('kv', JSON.stringify(kv));
-  }, [kv]);
-  
-//isvalyti mygtukas
 
-const removeKv = () => {
-    setKv(k => k.slice(k.length)) 
- 
-  }
-
-
- return (
-    <div className="App">
-      <header className="App-header">
-     
-       <div className='kvc'>
-       {
-       kv ? kv.map((c, i) => <div className='kv' key={i} style = {{backgroundColor:c}}>{i}</div>) : null
-       }
-       </div>
-       <button onClick={addKv}>Prideti</button>
-       <button onClick={removeKv}>Išvalyti</button>
-       
-     
-      </header>
-    </div>
-  );
-    
+    const isvalyti = () => {
+        setKv([]);
     }
+
+    const atgal = () => {
+        let senas = istorija.current.shift();
+        if (!senas) {
+            setKv([]);
+        } else if (senas.length === kv.length) {
+            senas = istorija.current.shift();
+            if (!senas) {
+                setKv([]);
+            } else {
+                setKv(senas);
+            }
+        }
+        else {
+            setKv(senas);
+        }
+        
+    }
+
+
+    return (
+        <div className="App">
+            <header className="App-header">
+                <h1>PRAKTIMUMAS</h1>
+                    <div className="kvc">
+                        {
+                            kv ? kv.map((k, i) => <div key={i} className="kv">{k}</div>) : null
+                        }
+                    </div>
+
+                <button onClick={prideti}>Pridėti</button>
+                <button onClick={isvalyti}>Išvalyti</button>
+                <button onClick={atgal}>Atgal</button>
+            </header>
+        </div>
+    );
+}
+
 export default App;
