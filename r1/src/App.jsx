@@ -1,72 +1,51 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import './App.scss';
-import rand from './Functions/random';
+import randColor from './Functions/randColor';
+import { v4 as uuidv4 } from 'uuid';
+
+
 
 function App() {
 
-    const [kv, setKv] = useState(null);
-    const istorija = useRef([]);
+    const [avys, setAvys] = useState([]);
 
-    // PIRMAS KROVIMAS
-    useEffect(() => {
-        setKv(JSON.parse(localStorage.getItem('kv'))); // gali buti null arba []
-    }, []);
-
-    // UZSAUGOS POKYCIUS
-    useEffect(() => {
-        if (null === kv) {
-            return;
+    const newA = () => {
+        const avis = {
+            id: uuidv4(),
+            color: randColor(),
+            where: 'ganykla'
         }
-        localStorage.setItem('kv', JSON.stringify(kv));
-        istorija.current.unshift(kv);
-    }, [kv]);
-
-
-    const prideti = () => {
-        const kiekis = rand(5, 10);
-        const kvadratukai = [];
-        for (let i = 0; i < kiekis; i++) {
-            kvadratukai.push('^o^');
-        }
-        setKv(k => null === k ? [...kvadratukai] : [...k, ...kvadratukai]);
+        setAvys(a => [...a, avis])
     }
 
-    const isvalyti = () => {
-        setKv([]);
-    }
+    const go = id => {
+        setAvys(a => {
+            const avis = a.filter(av => av.id === id)[0];  //avis kurios mums reikia
+            avis.where = 'kirpykla';
+            const kitos = a.filter(av => av.id !== id); // visos avys be tos vienoso virsuj
+            return[...kitos, avis ];
 
-    const atgal = () => {
-        let senas = istorija.current.shift();
-        if (!senas) {
-            setKv([]);
-        } else if (senas.length === kv.length) {
-            senas = istorija.current.shift();
-            if (!senas) {
-                setKv([]);
-            } else {
-                setKv(senas);
-            }
-        }
-        else {
-            setKv(senas);
-        }
-        
-    }
+        });
+        //setAvys(a => a.map(avis => avis.id === id ? {...avis, where: 'kirpykla'} : avis))
 
+    }
 
     return (
         <div className="App">
             <header className="App-header">
-                <h1>PRAKTIMUMAS</h1>
-                    <div className="kvc">
-                        {
-                            kv ? kv.map((k, i) => <div key={i} className="kv">{k}</div>) : null
-                        }
-                    </div>
-
-                <button onClick={prideti}>Pridėti</button>
-                <button onClick={isvalyti}>Išvalyti</button>
-                <button onClick={atgal}>Atgal</button>
+            <h1>Kirpykla</h1>
+                <div className="kvc">
+                    {
+                        avys.filter(a => a.where === 'kirpykla').map(a => <div key={a.id} className="kv" style={{background:a.color}}></div>)
+                    }
+                </div>
+                <h1>AVYS</h1>
+                <div className="kvc">
+                    {
+                        avys.filter(a => a.where === 'ganykla').map(a => <div onClick={() => go(a.id)} key={a.id} className="kv" style={{background:a.color}}></div>)
+                    }
+                </div>
+                <button onClick={newA}>Naujas Avinas</button>
             </header>
         </div>
     );
