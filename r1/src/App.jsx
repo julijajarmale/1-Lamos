@@ -1,51 +1,64 @@
 import { useState } from 'react';
 import './App.scss';
-import randColor from './Functions/randColor';
-import { v4 as uuidv4 } from 'uuid';
-
 
 
 function App() {
 
-    const [avys, setAvys] = useState([]);
+    const[text, setText] = useState('');
+    const[select, setSelect] = useState('three');
+    const[cb, setCb] = useState({a: false, b: false, c: true, d: true});
+    const[radio, setRadio] = useState('c');
+    const[color, setColor] = useState('');
 
-    const newA = () => {
-        const avis = {
-            id: uuidv4(),
-            color: randColor(),
-            where: 'ganykla'
-        }
-        setAvys(a => [...a, avis])
+    const inputText = e =>{
+        console.log('gfh'.padStart(10, 0))
+        setText(e.target.value + '*')
     }
 
-    const go = id => {
-        setAvys(a => {
-            const avis = a.filter(av => av.id === id)[0];  //avis kurios mums reikia
-            avis.where = 'kirpykla';
-            const kitos = a.filter(av => av.id !== id); // visos avys be tos vienoso virsuj
-            return[...kitos, avis ];
+    const cbClick = c =>{
+        setCb(checkBox => ({...checkBox, [c]: !checkBox[c]}));
+    }
 
-        });
-        //setAvys(a => a.map(avis => avis.id === id ? {...avis, where: 'kirpykla'} : avis))
-
+    const inputColor= e =>{
+        setColor(e.target.value);
     }
 
     return (
         <div className="App">
             <header className="App-header">
-            <h1>Kirpykla</h1>
-                <div className="kvc">
-                    {
-                        avys.filter(a => a.where === 'kirpykla').map(a => <div key={a.id} className="kv" style={{background:a.color}}></div>)
-                    }
-                </div>
-                <h1>AVYS</h1>
-                <div className="kvc">
-                    {
-                        avys.filter(a => a.where === 'ganykla').map(a => <div onClick={() => go(a.id)} key={a.id} className="kv" style={{background:a.color}}></div>)
-                    }
-                </div>
-                <button onClick={newA}>Naujas Avinas</button>
+            <fieldset>
+            <input type="text" onChange={inputText} value={text}></input>
+            </fieldset>
+            <fieldset>
+            <select value={select} onChange={e => setSelect(e.target.value)}>
+                <option value ="one">Vienas</option>
+                <option value ="two">Du</option>
+                <option value ="three">Trys</option>
+                <option value ="four">Keturi</option>
+            </select>
+            </fieldset>
+            <fieldset>
+                <legend>CHECKBOX</legend>
+                A<input type = "checkbox" onChange={() => cbClick('a')} checked={cb.a}></input>
+                B<input type = "checkbox" onChange={() => cbClick('b')} checked={cb.b}></input>
+                C<input type = "checkbox" onChange={() => cbClick('c')} checked={cb.c}></input>
+                D<input type = "checkbox" onChange={() => cbClick('d')} checked={cb.d}></input>
+            </fieldset>
+            <fieldset>
+                <legend>RADIO BUTTON</legend>
+                A<input type = "radio" name='r' value='a' onChange={e => setRadio(e.target.value)} checked={radio === 'a'}></input>
+                B<input type = "radio" name='r' value='b' onChange={e => setRadio(e.target.value)} checked={radio === 'b'}></input>
+                C<input type = "radio" name='r' value='c' onChange={e => setRadio(e.target.value)} checked={radio === 'c'}></input>
+                D<input type = "radio" name='r' value='d' onChange={e => setRadio(e.target.value)} checked={radio === 'd'}></input>
+            
+            </fieldset>
+            <fieldset>
+                <legend>COLOR</legend>
+                <p className='kv' style ={{background: color}}></p>
+                <input type = "color" onChange={inputColor} value ='color'></input>
+             
+            
+            </fieldset>
             </header>
         </div>
     );
