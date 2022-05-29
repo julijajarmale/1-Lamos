@@ -1,63 +1,74 @@
-import { useState } from 'react';
 import './App.scss';
-
+import { useState } from 'react';
+import rand from './Functions/random';
 
 function App() {
+// 1 užduotis
+    const [kv, setKv] = useState([]);
+    const [textValue, setTextValue] = useState('')
 
-    const[text, setText] = useState('');
-    const[select, setSelect] = useState('three');
-    const[cb, setCb] = useState({a: false, b: false, c: true, d: true});
-    const[radio, setRadio] = useState('c');
-    const[color, setColor] = useState('');
+    const inputValue = e =>{
+        setTextValue(e.target.value);
+    }
+    
+    const prideti = () => {
+        const kiekis = textValue;
+        const kvadratukai = [];
+        for (let i = 0; i < kiekis; i++) {
+            kvadratukai.push(''); 
+        }
+        setKv(k => null === k ? [...kvadratukai] : [...k, ...kvadratukai]);
+    }
+    
+// 2 užduotis
+     const [katinukai, setKatinukai] = useState([]);
+     const [vardasValue, setVardasValue] = useState('')
+     const [svorisValue, setSvorisValue] = useState('')
 
-    const inputText = e =>{
-        console.log('gfh'.padStart(10, 0))
-        setText(e.target.value + '*')
+     const vardasInputValue = e =>{
+        setVardasValue(e.target.value);
     }
 
-    const cbClick = c =>{
-        setCb(checkBox => ({...checkBox, [c]: !checkBox[c]}));
+    const svorisInputValue = e =>{
+        setSvorisValue(e.target.value);
     }
 
-    const inputColor= e =>{
-        setColor(e.target.value);
-    }
 
+     const pridetiKatinuka = () => {
+     const vardas = vardasValue;
+     const svoris = svorisValue;
+     const katinukuSarasas =[]
+     
+    setKatinukai(x => null === x ? [...katinukuSarasas] : [...x, ...katinukuSarasas]);
+    katinukuSarasas.push(vardas, svoris); 
+}
+     
+    
+    
     return (
         <div className="App">
             <header className="App-header">
             <fieldset>
-            <input type="text" onChange={inputText} value={text}></input>
+              <legend>1 Užduotis</legend>
+              <div className="kvc">
+                    {
+                        kv ? kv.map((k, i) => <div key={i} className="kv">{k}{rand(100, 200)}</div>) : null
+                    }
+               </div>
+               <input type="text" onChange={inputValue} value={textValue}></input>
+               <button onClick={prideti}>Pridėti kvardatėlį</button>
             </fieldset>
             <fieldset>
-            <select value={select} onChange={e => setSelect(e.target.value)}>
-                <option value ="one">Vienas</option>
-                <option value ="two">Du</option>
-                <option value ="three">Trys</option>
-                <option value ="four">Keturi</option>
-            </select>
-            </fieldset>
-            <fieldset>
-                <legend>CHECKBOX</legend>
-                A<input type = "checkbox" onChange={() => cbClick('a')} checked={cb.a}></input>
-                B<input type = "checkbox" onChange={() => cbClick('b')} checked={cb.b}></input>
-                C<input type = "checkbox" onChange={() => cbClick('c')} checked={cb.c}></input>
-                D<input type = "checkbox" onChange={() => cbClick('d')} checked={cb.d}></input>
-            </fieldset>
-            <fieldset>
-                <legend>RADIO BUTTON</legend>
-                A<input type = "radio" name='r' value='a' onChange={e => setRadio(e.target.value)} checked={radio === 'a'}></input>
-                B<input type = "radio" name='r' value='b' onChange={e => setRadio(e.target.value)} checked={radio === 'b'}></input>
-                C<input type = "radio" name='r' value='c' onChange={e => setRadio(e.target.value)} checked={radio === 'c'}></input>
-                D<input type = "radio" name='r' value='d' onChange={e => setRadio(e.target.value)} checked={radio === 'd'}></input>
-            
-            </fieldset>
-            <fieldset>
-                <legend>COLOR</legend>
-                <p className='kv' style ={{background: color}}></p>
-                <input type = "color" onChange={inputColor} value ='color'></input>
-             
-            
+              <legend>2 Užduotis</legend>
+              <input type="text" placeholder="Katinuko vardas" onChange={vardasInputValue} value={vardasValue}></input>
+              <input type="text" placeholder="Katinuko svoris" onChange={svorisInputValue} value={svorisValue}></input>
+              <button onClick={pridetiKatinuka}>Pridėti katinuką</button>
+              <div className="kvc">
+              <legend>Katinukų sąrašas</legend>
+                     {
+                    katinukai.map((c, i) => <div key={i}>{c}</div>)
+                    }
+               </div>
             </fieldset>
             </header>
         </div>
@@ -65,3 +76,12 @@ function App() {
 }
 
 export default App;
+
+//1.Sukurti komponentą su mygtuku ir įvedimo laukeliu. Įvedus į laukelį skaičių ir paspaudus mygtuką,
+//atsiranda laukelyje nurodytas raudonų kvadratėlių skaičius. Įvedus kitą skaičių ir paspaudus mygtuką, prie jau 
+//egzistuojančių kvadratėlių papildomai prisideda naujas laukelyje nurodytas kvadratėlių kiekis. Kiekvieno kvadratėlio 
+//viduryje turi būti pavaizduotas rand skaičius 100 - 200.
+
+//2.Sukurti komponentą su dviem įvedimo laukeliais, katinuko vardui ir svoriui įvesti. Rodyti visų įvestų katinukų sąrašą.
+//Puslapiui persikrovus, katinukų sąrašas turi išlikti nepakitęs. Katinukus sąraše rūšiuoti nuo storiausio iki ploniausio.
+//Skaičiuoti ir atvaizduoti bendrą katinukų svorį.
