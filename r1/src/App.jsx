@@ -42,8 +42,19 @@ function App() {
     setKatinukai(x => null === x ? [...katinukuSarasas] : [...x, ...katinukuSarasas]);
     katinukuSarasas.push(vardas, svoris); 
 }
-     
+// 3 užduotis
+    const [pirmasInput, setPirmasInput] = useState('50');
+    const [antrasInput, setAntrasInput] = useState('100');
+
+    const inputFirst = e =>{
+        setPirmasInput(e.target.value);
+    }
+
+    const inputSecond = e =>{
+        setAntrasInput(e.target.value);
+    }
     
+
     
     return (
         <div className="App">
@@ -63,12 +74,17 @@ function App() {
               <input type="text" placeholder="Katinuko vardas" onChange={vardasInputValue} value={vardasValue}></input>
               <input type="text" placeholder="Katinuko svoris" onChange={svorisInputValue} value={svorisValue}></input>
               <button onClick={pridetiKatinuka}>Pridėti katinuką</button>
-              <div className="kvc">
-              <legend>Katinukų sąrašas</legend>
+              <div >
+              <legend>Katinukų sąrašas:</legend>
                      {
                     katinukai.map((c, i) => <div key={i}>{c}</div>)
                     }
                </div>
+            </fieldset>
+            <fieldset>
+              <legend>3 Užduotis</legend>
+              <input type="text" onChange={inputFirst} value ={pirmasInput}></input>
+              <input type="text" onChange={inputSecond} value ={antrasInput}></input>
             </fieldset>
             </header>
         </div>
@@ -85,3 +101,7 @@ export default App;
 //2.Sukurti komponentą su dviem įvedimo laukeliais, katinuko vardui ir svoriui įvesti. Rodyti visų įvestų katinukų sąrašą.
 //Puslapiui persikrovus, katinukų sąrašas turi išlikti nepakitęs. Katinukus sąraše rūšiuoti nuo storiausio iki ploniausio.
 //Skaičiuoti ir atvaizduoti bendrą katinukų svorį.
+
+//3.Sukurti komponentą su dviem įvedimo laukeliais. Pradžioje viename laukelyje rodyti skaičių 100 kitame 50.
+// Santykis tarp pirmo ir antro laukelio yra 2. Pakeitus skaičius viename kažkuriame laukelyje turi pasikeisti
+//ir skaičius kitame laukelyje taip, kad santykis išliktų nepakitęs.
