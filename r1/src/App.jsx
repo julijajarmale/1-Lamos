@@ -89,6 +89,25 @@ function App() {
         setText(e.target.value);
       };
 
+// 5 užduotis
+
+      const [kvadratai, setKvadratas] = useState([]);
+      const[color, setColor] = useState('');
+      const[size, setSize] = useState('');
+
+      const pridetiKvadrata = () =>{
+          setKvadratas((k) => [...k, kvadratai]);
+      }
+
+      const inputColor= e =>{
+        setColor(e.target.value);
+    }
+
+     const rangeSize= e =>{
+        setSize(e.target.value);
+    }
+
+
     return (
         <div className="App">
             <header className="App-header">
@@ -148,6 +167,18 @@ function App() {
               <p style={{color: selectColor, fontFamily: selectFont, fontSize: Number(selectSize)}}>{text}</p>
               
             </fieldset>
+            <fieldset>
+              <legend>5 Užduotis</legend>
+              <input type="range" onChange={rangeSize} value ='size'></input>
+              <input type="color" onChange={inputColor} value ='color'></input>
+              <button onClick={pridetiKvadrata}>SUKURTI</button>
+              <button>IŠSAUGOTI</button>
+              <div className='kvc'>
+              {
+                        kvadratai ? kvadratai.map((k, i) => <div key={i} className="kv" style={{background: color}}>{k}</div>) : null
+                    }
+             </div>
+            </fieldset>
             </header>
         </div>
     );
@@ -172,3 +203,11 @@ export default App;
 //atvaizduojamas atskirai komponento apačioje. Select pasirinkimai sudaryti iš 5 skirtingų spalvų, 5 skirtingų 
 //fontų dydžių ir 5 skirtingų fontų (Arial, Times new Roman ar panašiai) Select pasirinkimų nustatymai turi keisti 
 //atvaizduojamo teksto išvaizdą.
+
+//5.Sukurti komponentą su dviem range tipo įvedimais https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range 
+//vienu color įvedimu https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color ir mygtukais sukurti ir
+// išsaugoti. Paspaudus mygtuką sukurti, atsiranda naujas kvadratas 100px aukščio ir pločio bei juodu fonu.
+// Keičiant range ir color įvedimus keičiasi ir kvadrato išvaizda. Kvadrato išvaizdą nustato įvedimai: 
+//range tipo įvedimai nuo 10 iki 200 ir nustato plotą ir aukštį pikseliais, color- fono spalvą. 
+//Paspaudus mygtuką išsaugoti, kvadrato išvaizda išsaugoma ir į nustatymus nebereguoja. Vėl paspaudus mygtuką 
+//sukurti- atsiranda naujas reguliuojamas kvadratas.
