@@ -37,11 +37,18 @@ function App() {
      const pridetiKatinuka = () => {
      const vardas = vardasValue;
      const svoris = svorisValue;
-     const katinukuSarasas =[]
-     
-    setKatinukai(x => null === x ? [...katinukuSarasas] : [...x, ...katinukuSarasas]);
-    katinukuSarasas.push(vardas, svoris); 
-}
+     setKatinukai(x => [...x, [vardas, svoris]]);
+    // setKatinukai(x => null === x ? [vardas, svoris] : [...x, [vardas, svoris]]);
+    }
+
+    katinukai.sort((a, b) => b[1] - a[1]);
+
+    let bendrasSvoris = 0;
+    for (let i = 0; i < katinukai.length; i++){
+        bendrasSvoris = Number(katinukai[i][1]) + bendrasSvoris
+    }
+    console.log(bendrasSvoris)
+
 // 3 užduotis
     const [pirmasInput, setPirmasInput] = useState('50');
     const [antrasInput, setAntrasInput] = useState('100');
@@ -80,6 +87,7 @@ function App() {
                     katinukai.map((c, i) => <div key={i}>{c}</div>)
                     }
                </div>
+               <legend>Bendras katinukų svoris: {bendrasSvoris}</legend>
             </fieldset>
             <fieldset>
               <legend>3 Užduotis</legend>
