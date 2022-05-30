@@ -93,7 +93,7 @@ function App() {
 
       const [kvadratai, setKvadratas] = useState([]);
       const[color, setColor] = useState('');
-      const[size, setSize] = useState('');
+    
 
       const pridetiKvadrata = () =>{
           setKvadratas((k) => [...k, kvadratai]);
@@ -103,10 +103,7 @@ function App() {
         setColor(e.target.value);
     }
 
-     const rangeSize= e =>{
-        setSize(e.target.value);
-    }
-
+    
 
     return (
         <div className="App">
@@ -169,7 +166,10 @@ function App() {
             </fieldset>
             <fieldset>
               <legend>5 Užduotis</legend>
-              <input type="range" onChange={rangeSize} value ='size'></input>
+              <label>Plotis</label>
+              <input type="range"></input>
+              <label>Aukštis</label>
+              <input type="range"></input>
               <input type="color" onChange={inputColor} value ='color'></input>
               <button onClick={pridetiKvadrata}>SUKURTI</button>
               <button>IŠSAUGOTI</button>
