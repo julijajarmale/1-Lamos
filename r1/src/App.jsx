@@ -50,6 +50,10 @@ function App() {
         }
         localStorage.setItem('katinukai', JSON.stringify(katinukai));
       }, [katinukai]);
+
+      const istrintiKatinukus = () => {
+        setKatinukai([]);
+      };
       
 
     katinukai.sort((a, b) => b[1] - a[1]);
@@ -66,14 +70,25 @@ function App() {
 
     const inputFirst = e =>{
         setPirmasInput(e.target.value);
+        setAntrasInput(e.target.value * 2);
     }
 
     const inputSecond = e =>{
         setAntrasInput(e.target.value);
+        setPirmasInput(e.target.value / 2);
     }
     
-
+// 4 užduotis
     
+    const [text, setText] = useState('')
+    const [selectColor, setSelectColor] = useState('')
+    const [selectFont, setSelectFont] = useState('')
+    const [selectSize, setSelectSize] = useState('')
+    
+    const updateText =(e) => {
+        setText(e.target.value);
+      };
+
     return (
         <div className="App">
             <header className="App-header">
@@ -99,11 +114,39 @@ function App() {
                     }
                </div>
                <legend>Bendras katinukų svoris: {bendrasSvoris}</legend>
+               <button onClick={istrintiKatinukus}>Naujas sąrašas</button>
             </fieldset>
             <fieldset>
               <legend>3 Užduotis</legend>
               <input type="text" onChange={inputFirst} value ={pirmasInput}></input>
               <input type="text" onChange={inputSecond} value ={antrasInput}></input>
+            </fieldset>
+            <fieldset>
+              <legend>4 Užduotis</legend>
+              <input type="text" onChange={updateText} value ={text}></input>
+              <select value={selectColor} onChange={e => setSelectColor(e.target.value)}>
+                <option value ="pink">Pink</option>
+                <option value ="violet">Violet</option>
+                <option value ="yellow">Yellow</option>
+                <option value ="green">Green</option>
+                <option value ="blue">Blue</option>
+              </select>
+              <select value={selectFont} onChange={e => setSelectFont(e.target.value)}>
+                <option value ="Arial">Arial</option>
+                <option value ="Times New Roman">Times New Roman</option>
+                <option value ="Courier">Courier</option>
+                <option value ="Gothic">Gothic</option>
+                <option value ="Broadway">Broadway</option>
+              </select>
+              <select value={selectSize} onChange={e => setSelectSize(e.target.value)}>
+                <option value ="10">10px</option>
+                <option value ="15">20px</option>
+                <option value ="20">30px</option>
+                <option value ="25">40px</option>
+                <option value ="30">50px</option>
+              </select>
+              <p style={{color: selectColor, fontFamily: selectFont, fontSize: Number(selectSize)}}>{text}</p>
+              
             </fieldset>
             </header>
         </div>
@@ -124,3 +167,8 @@ export default App;
 //3.Sukurti komponentą su dviem įvedimo laukeliais. Pradžioje viename laukelyje rodyti skaičių 100 kitame 50.
 // Santykis tarp pirmo ir antro laukelio yra 2. Pakeitus skaičius viename kažkuriame laukelyje turi pasikeisti
 //ir skaičius kitame laukelyje taip, kad santykis išliktų nepakitęs.
+
+//4.Sukurti komponentą su trim select pasirinkimais ir teksto įvedimo laukeliu. Įvedamas tekstas turi būti 
+//atvaizduojamas atskirai komponento apačioje. Select pasirinkimai sudaryti iš 5 skirtingų spalvų, 5 skirtingų 
+//fontų dydžių ir 5 skirtingų fontų (Arial, Times new Roman ar panašiai) Select pasirinkimų nustatymai turi keisti 
+//atvaizduojamo teksto išvaizdą.
