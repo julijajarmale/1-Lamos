@@ -1,5 +1,5 @@
 import './App.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import rand from './Functions/random';
 
 function App() {
@@ -40,6 +40,17 @@ function App() {
      setKatinukai(x => [...x, [vardas, svoris]]);
     // setKatinukai(x => null === x ? [vardas, svoris] : [...x, [vardas, svoris]]);
     }
+    useEffect(() => {
+        setKatinukai(JSON.parse(localStorage.getItem('katinukai') ?? '[]'));
+      }, []);
+
+      useEffect(() => {
+        if (null === katinukai) {
+            return;
+        }
+        localStorage.setItem('katinukai', JSON.stringify(katinukai));
+      }, [katinukai]);
+      
 
     katinukai.sort((a, b) => b[1] - a[1]);
 
