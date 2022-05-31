@@ -1,32 +1,29 @@
+import KoltForm from './Components/Kolt/kolt-form';
 import './kolt.scss';
+import { useState, useEffect} from "react";
+import { create } from './Functions/localStorageKolt';
 
 function App() {
+
+    const [createKolt, setCreateKolt] = useState(null);
+
+
+    // Create (Kolt-form)
+     useEffect(() => {
+        if (null === createKolt) {
+            return;
+        }
+        create(createKolt);
+        
+
+    }, [createKolt]);
+
+
     return (
         <div className="App">
             <header className="App-header">
             <div className="container">
-              <div className='form'>
-                <div>
-                  <h2>Naujo paspirtuko forma</h2>  
-                </div>
-                <div className="form-group">
-                    <label className="label">ID:</label>
-                    <input type="text" className="form-row"/>
-                </div>
-                <div className="form-group">
-                    <label className="label">Registration Code:</label>
-                    <input type="text" className="form-row"/>
-                </div>
-                <div className="form-group">
-                    <label className="label">Last time used:</label>
-                    <input type="text" className="form-row"/>
-                </div>
-                <div className="form-group">
-                    <label className="label">Total Ride Kilometers:</label>
-                    <input type="text" className="form-row"/>
-                </div>
-                <button type="button" className="btn">Pridėti</button>
-            </div>
+            <KoltForm setCreateKolt={setCreateKolt}></KoltForm>
             </div>
             </header>
         </div>
