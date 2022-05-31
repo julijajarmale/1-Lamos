@@ -11,7 +11,7 @@ function Create({setCreateData}) {
         setCreateData(data);
         setName('');
         setType('1');
-        setPlace('')
+        setPlace('');
     }
 
     return (

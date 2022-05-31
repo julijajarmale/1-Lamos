@@ -1,35 +1,48 @@
 import { useEffect, useState } from 'react';
 import './bootstrap.css';
-import Create from './Components/crud/Create'; // su defaultu be skliaustu
+import './crud.scss';
+import Create from './Components/crud/Create';
 import List from './Components/crud/List';
-import { create, read } from './Functions/localStorage'; // jeigu be default export su skliaustais
+import { create, read, remove } from './Functions/localStorage';
+import Edit from './Components/crud/Edit';
 // import './App.scss';
-// import getId from './Functions/getId';
+
 
 
 function App() {
 
-    const [lastUpdate, setLastUpdate] = useState(Date.now()); // cia padarom, kad is karto updatintusi exai. Reiskia, kad pasikeite duomenys, galima ir delete ir t.t.
+    const [lastUpdate, setLastUpdate] = useState(Date.now());
 
     const [exes, setExes] = useState(null);
-
+    const [modalData, setModalData] = useState(null);
 
     const [createData, setCreateData] = useState(null);
-    //Read 2nd Crud Element
+    const [deleteData, setDeleteData] = useState(null);
+
+    //Read
     useEffect(() => {
-    setExes(read());
-}, [lastUpdate])
+        setExes(read());
+    }, [lastUpdate]);
 
-
-    // Create 1st Crud element
+    // Create
     useEffect(() => {
         if (null === createData) {
             return;
         }
-       create(createData)
-       setLastUpdate(Date.now());
+        create(createData);
+        setLastUpdate(Date.now());
 
-    }, [createData])
+    }, [createData]);
+
+    // Delete
+    useEffect(() => {
+        if (null === deleteData) {
+            return;
+        }
+        remove(deleteData);
+        setLastUpdate(Date.now());
+
+    }, [deleteData]);
 
     return (
         <>
@@ -39,10 +52,11 @@ function App() {
                         <Create setCreateData={setCreateData}></Create>
                     </div>
                     <div className="col-8">
-                        <List exes={exes}></List>
+                        <List exes={exes} setDeleteData={setDeleteData} setModalData={setModalData}></List>
                     </div>
                 </div>
             </div>
+            <Edit modalData={modalData} setModalData={setModalData}></Edit>
         </>
     );
 
