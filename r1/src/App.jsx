@@ -1,65 +1,48 @@
-import { useEffect, useState } from 'react';
-import './bootstrap.css';
-import './crud.scss';
-import Create from './Components/crud/Create';
-import List from './Components/crud/List';
-import { create, read, remove } from './Functions/localStorage';
-import Edit from './Components/crud/Edit';
-// import './App.scss';
-
-
+import './kolt.scss';
 
 function App() {
-
-    const [lastUpdate, setLastUpdate] = useState(Date.now());
-
-    const [exes, setExes] = useState(null);
-    const [modalData, setModalData] = useState(null);
-
-    const [createData, setCreateData] = useState(null);
-    const [deleteData, setDeleteData] = useState(null);
-
-    //Read
-    useEffect(() => {
-        setExes(read());
-    }, [lastUpdate]);
-
-    // Create
-    useEffect(() => {
-        if (null === createData) {
-            return;
-        }
-        create(createData);
-        setLastUpdate(Date.now());
-
-    }, [createData]);
-
-    // Delete
-    useEffect(() => {
-        if (null === deleteData) {
-            return;
-        }
-        remove(deleteData);
-        setLastUpdate(Date.now());
-
-    }, [deleteData]);
-
     return (
-        <>
+        <div className="App">
+            <header className="App-header">
             <div className="container">
-                <div className="row">
-                    <div className="col-4">
-                        <Create setCreateData={setCreateData}></Create>
-                    </div>
-                    <div className="col-8">
-                        <List exes={exes} setDeleteData={setDeleteData} setModalData={setModalData}></List>
-                    </div>
+              <div className='form'>
+                <div>
+                  <h2>Naujo paspirtuko forma</h2>  
                 </div>
+                <div className="form-group">
+                    <label className="label">ID:</label>
+                    <input type="text" className="form-row"/>
+                </div>
+                <div className="form-group">
+                    <label className="label">Registration Code:</label>
+                    <input type="text" className="form-row"/>
+                </div>
+                <div className="form-group">
+                    <label className="label">Last time used:</label>
+                    <input type="text" className="form-row"/>
+                </div>
+                <div className="form-group">
+                    <label className="label">Total Ride Kilometers:</label>
+                    <input type="text" className="form-row"/>
+                </div>
+                <button type="button" className="btn">Pridėti</button>
             </div>
-            <Edit modalData={modalData} setModalData={setModalData}></Edit>
-        </>
+            </div>
+            </header>
+        </div>
     );
-
-
 }
+
 export default App;
+
+
+//
+//<main class="container">
+//<form class="form">
+//    <div class="form-row">
+//        <h1>Get In Touch</h1>
+//    </div>
+//    <div class="form-row">
+//        <input type="text" class="input input1" placeholder="First Name">
+//        <input type="text" class="input input1" placeholder="Last Name" >
+//    </div>
