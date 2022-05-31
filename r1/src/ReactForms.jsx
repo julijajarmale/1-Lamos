@@ -62,7 +62,6 @@ function App() {
     for (let i = 0; i < katinukai.length; i++){
         bendrasSvoris = Number(katinukai[i][1]) + bendrasSvoris
     }
-    console.log(bendrasSvoris)
 
 // 3 užduotis
     const [pirmasInput, setPirmasInput] = useState('50');
@@ -81,7 +80,7 @@ function App() {
 // 4 užduotis
     
     const [text, setText] = useState('')
-    const [selectColor, setSelectColor] = useState('')
+    const [selectColor, setSelectColor] = useState('pink')
     const [selectFont, setSelectFont] = useState('')
     const [selectSize, setSelectSize] = useState('')
     
@@ -92,7 +91,7 @@ function App() {
 // 5 užduotis
 
       const [kvadratai, setKvadratas] = useState([]);
-      const[spalva, setSpalva] = useState('#000000');
+      const[spalva, setSpalva] = useState('');
       const[plotis, setPlotis] = useState('100px');
       const[aukstis, setAukstis] = useState('100px');
     
@@ -178,16 +177,17 @@ function App() {
             <fieldset>
               <legend>5 Užduotis</legend>
               <label>Plotis</label>
-              <input type="range" min="10" max="200" onChange={keistiPloti} value="plotis"></input>
+              <input type="range" min={10} max={200} onChange={keistiPloti} value={plotis}></input>
               <label>Aukštis</label>
-              <input type="range" min="10" max="200" onChange={keistiAuksti} value="aukstis"></input>
-              <input type="color" onChange={keistiSpalva} value = "spalva"></input>
+              <input type="range" min={10} max={200} onChange={keistiAuksti} value={aukstis}></input>
+              <input type="color" onChange={keistiSpalva} value = {spalva}></input>
               <button onClick={pridetiKvadrata}>SUKURTI</button>
               <button>IŠSAUGOTI</button>
               <div className='kvc'>
               {
                       kvadratai.map((k, i) => <div key={i}  style={{background: spalva, width: plotis, height: aukstis}}>{k}</div>)
                     }
+    
              </div>
             </fieldset>
             </header>
