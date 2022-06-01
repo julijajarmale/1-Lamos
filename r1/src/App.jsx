@@ -1,34 +1,39 @@
-import KoltForm from './Components/Kolt/kolt-form';
-import './kolt.scss';
-import { useState, useEffect} from "react";
-import { create, read, remove} from './Functions/localStorageKolt';
-import KoltList from './Components/Kolt/kolt-lits';
+import { useEffect, useState } from 'react';
+import './bootstrap.css';
+import './crud.scss';
+import Create from './Components/crud/Create';
+import List from './Components/crud/List';
+import { create, edit, read, remove } from './Functions/localStorage';
+import Edit from './Components/crud/Edit';
+// import './App.scss';
+
 
 
 function App() {
 
     const [lastUpdate, setLastUpdate] = useState(Date.now());
-    const [kolt, setKolt] = useState(null);
 
+    const [exes, setExes] = useState(null);
+    const [modalData, setModalData] = useState(null);
 
-    const [createKolt, setCreateKolt] = useState(null);
+    const [createData, setCreateData] = useState(null);
     const [deleteData, setDeleteData] = useState(null);
+    const [editData, setEditData] = useState(null);
 
-   // Read (Kolt-form)
-   
+    //Read
     useEffect(() => {
-        setKolt(read());
+        setExes(read());
     }, [lastUpdate]);
 
-    // Create (Kolt-form)
-     useEffect(() => {
-        if (null === createKolt) {
+    // Create
+    useEffect(() => {
+        if (null === createData) {
             return;
         }
-        create(createKolt);
+        create(createData);
         setLastUpdate(Date.now());
 
-    }, [createKolt]);
+    }, [createData]);
 
     // Delete
     useEffect(() => {
@@ -40,30 +45,32 @@ function App() {
 
     }, [deleteData]);
 
+    // Edit
+    useEffect(() => {
+        if (null === editData) {
+            return;
+        }
+        edit(editData);
+        setLastUpdate(Date.now());
+
+    }, [editData]);
+
     return (
-        <div className="App">
-            <header className="App-header">
+        <>
             <div className="container">
-            <KoltForm setCreateKolt={setCreateKolt}></KoltForm>
+                <div className="row">
+                    <div className="col-4">
+                        <Create setCreateData={setCreateData}></Create>
+                    </div>
+                    <div className="col-8">
+                        <List exes={exes} setDeleteData={setDeleteData} setModalData={setModalData}></List>
+                    </div>
+                </div>
             </div>
-            <div className="container1">
-            <KoltList kolt={kolt} setDeleteData={setDeleteData}></KoltList>
-            </div>
-            </header>
-        </div>
+            <Edit setEditData={setEditData} modalData={modalData} setModalData={setModalData}></Edit>
+        </>
     );
+
+
 }
-
 export default App;
-
-
-//
-//<main class="container">
-//<form class="form">
-//    <div class="form-row">
-//        <h1>Get In Touch</h1>
-//    </div>
-//    <div class="form-row">
-//        <input type="text" class="input input1" placeholder="First Name">
-//        <input type="text" class="input input1" placeholder="Last Name" >
-//    </div>
