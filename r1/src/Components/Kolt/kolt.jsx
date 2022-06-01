@@ -10,11 +10,10 @@ function OneKolt({oneKolt, setDeleteData}) {
                     <i>{oneKolt.code}</i>
                     <i>{oneKolt.time}</i>
                     <i>{oneKolt.km}</i>
-                    
-                </div>
-                <div className="buttons">
+                    <div className="buttons">
                     <button type="button" className="btn2">Redaguoti</button>
                     <button type="button" className="btn2" onClick={koltDelete}>Ištrinti</button>
+                    </div>
                 </div>
             </div>
         </li>

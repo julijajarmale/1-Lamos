@@ -92,21 +92,63 @@ transform: translate(-50%, -50%);
         top: 80%;
         left: 50%;
         transform: translate(-50%, -50%);
-
-     .btn2{
+    
+         .kolt-list{
+            width: 100%;
+            padding: 20px;
+            padding-left: 60px;
+            padding-right: 60px;
+            background-color: #fff;
+            position:relative;
+            }
         
+         h2{
+            font-size: 25px;
+            font-weight: lighter;
+            margin-bottom:15px;
+             }
+
+        .list-item{
+        
+            margin-bottom:15px;
+            border: 1px;
+            border-style: solid;
+            border-color: #6200ee;
+            border-radius: 5px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            
+        }
+    
+        .content{
+            display:flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .buttons{
+            display:flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        
+        .btn2{
+        margin: 5px;
         display: inline-block;
         outline: none;
         cursor: pointer;
         font-weight: 500;
         border-radius: 3px;
-        padding: 0 15px;
+        padding: 0 10px;
         border-radius: 4px;
         color: #6200ee;
         background: transparent;
         line-height: 1.15;
         font-size: 14px;
-        height: 36px;
+        height: 30px;
         word-spacing: 0px;
         letter-spacing: .0892857143em;
         text-decoration: none;
