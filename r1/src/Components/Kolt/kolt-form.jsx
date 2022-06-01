@@ -17,6 +17,7 @@ const koltCreate = () => {
 }
 
     return (
+        <div className="form-column">
         <div className='form'>
         <div>
           <h2>Naujo paspirtuko forma</h2>  
@@ -38,6 +39,7 @@ const koltCreate = () => {
             <input type="text" className="form-row" onChange={e => setKm(e.target.value)} value={km}/>
         </div>
         <button type="button" className="btn" onClick={koltCreate}>Pridėti</button>
+    </div>
     </div>
     );
 }

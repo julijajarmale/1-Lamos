@@ -5,7 +5,7 @@ import OneKolt from "./kolt";
 function KoltList({kolt, setDeleteData}) {
 
     return (
-        <div className='form'>
+        <div className='list-column'>
         <div>
            <h2>Paspirtukų sąrašas</h2>  
        </div>

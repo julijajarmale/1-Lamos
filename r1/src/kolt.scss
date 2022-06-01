@@ -18,94 +18,88 @@ App,
 }
 
 .container{
-width: 400px;
-background-color: white;
-display: inline-block;
-position: absolute;
-top: 30%;
-left: 50%;
-transform: translate(-50%, -50%);
-
-.btn{
-   
+    width: 1000px;
     display: inline-block;
-    outline: none;
-    cursor: pointer;
-    font-weight: 500;
-    border-radius: 3px;
-    padding: 0 16px;
-    border-radius: 4px;
-    color: #fff;
-    background: #6200ee;
-    line-height: 1.15;
-    font-size: 14px;
-    height: 36px;
-    word-spacing: 0px;
-    letter-spacing: .0892857143em;
-    text-decoration: none;
-    text-transform: uppercase;
-    min-width: 64px;
-    border: none;
-    text-align: center;
-    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-    :hover {
-        background: rgb(98, 0, 238);
-        box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
-    }
-
-    }
-
-
-    }
-
-    .form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     
+    .form-column{
+        width: 40%;
+        padding: 40px;
+        color:#fff;
+        position:absolute;
+        bottom:30px;
+        top: -50px;
+        left: 0px;
+
+        .btn{
+        
+            display: inline-block;
+            outline: none;
+            cursor: pointer;
+            font-weight: 500;
+            border-radius: 3px;
+            padding: 0 16px;
+            border-radius: 4px;
+            color: #fff;
+            background: #6200ee;
+            line-height: 1.15;
+            font-size: 14px;
+            height: 36px;
+            word-spacing: 0px;
+            letter-spacing: .0892857143em;
+            text-decoration: none;
+            text-transform: uppercase;
+            min-width: 64px;
+            border: none;
+            text-align: center;
+            box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+            transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+            :hover {
+                background: rgb(98, 0, 238);
+                box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+            }
+            }
+
+        .form{
+
             width: 100%;
-            padding: 20px;
+            padding: 30px;
             padding-left: 60px;
             padding-right: 60px;
-            background-color: #fff;
-            position:relative;
-            }
+            background-color:#fff;
+            color:#6200ee;
+
+             h2{
+                 font-size: 25px;
+                 font-weight: lighter;
+                 margin-bottom:15px;
+                  }
+              
+             .form-row{
+
+                 width:100%;
+                 margin-bottom:15px;
+
+             }
+         } 
+}       
+       
+    .list-column{
+        width: 60%;
+        padding: 60px;
+        float: right;
+        background-color: #fff;
+        position:relative;
+    
         
         h2{
             font-size: 25px;
             font-weight: lighter;
             margin-bottom:15px;
-             }
-
-        .form-row{
-
-    width:100%;
-    margin-bottom:15px;
-    
-        }
-            
-    
-    .container1{
-        margin-top: 20px;
-        width: 800px;
-        background-color: white;
-        display: inline-block;
-        position: absolute;
-        top: 80%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    
-         .kolt-list{
-            width: 100%;
-            padding: 20px;
-            padding-left: 60px;
-            padding-right: 60px;
-            background-color: #fff;
-            position:relative;
-            }
-        
-         h2{
-            font-size: 25px;
-            font-weight: lighter;
-            margin-bottom:15px;
+            color: #6200ee;
              }
 
         .list-item{
@@ -126,7 +120,8 @@ transform: translate(-50%, -50%);
         .content{
             display:flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content:space-between;
+            color: #6200ee;
         }
         
         .buttons{
@@ -162,6 +157,5 @@ transform: translate(-50%, -50%);
         }
     
     }
-
-
     }
+}
