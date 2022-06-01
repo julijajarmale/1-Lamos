@@ -1,12 +1,24 @@
 import KoltForm from './Components/Kolt/kolt-form';
 import './kolt.scss';
 import { useState, useEffect} from "react";
-import { create } from './Functions/localStorageKolt';
+import { create, read, remove} from './Functions/localStorageKolt';
+import KoltList from './Components/Kolt/kolt-lits';
+
 
 function App() {
 
-    const [createKolt, setCreateKolt] = useState(null);
+    const [lastUpdate, setLastUpdate] = useState(Date.now());
+    const [kolt, setKolt] = useState(null);
 
+
+    const [createKolt, setCreateKolt] = useState(null);
+    const [deleteData, setDeleteData] = useState(null);
+
+   // Read (Kolt-form)
+   
+    useEffect(() => {
+        setKolt(read());
+    }, [lastUpdate]);
 
     // Create (Kolt-form)
      useEffect(() => {
@@ -14,16 +26,28 @@ function App() {
             return;
         }
         create(createKolt);
-        
+        setLastUpdate(Date.now());
 
     }, [createKolt]);
 
+    // Delete
+    useEffect(() => {
+        if (null === deleteData) {
+            return;
+        }
+        remove(deleteData);
+        setLastUpdate(Date.now());
+
+    }, [deleteData]);
 
     return (
         <div className="App">
             <header className="App-header">
             <div className="container">
             <KoltForm setCreateKolt={setCreateKolt}></KoltForm>
+            </div>
+            <div className="container1">
+            <KoltList kolt={kolt} setDeleteData={setDeleteData}></KoltList>
             </div>
             </header>
         </div>
