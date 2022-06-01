@@ -1,7 +1,13 @@
-function OneKolt({oneKolt, setDeleteData}) {
+function OneKolt({ oneKolt, setDeleteData, setModalData }) {
+
     const koltDelete = () => {
         setDeleteData(oneKolt);
     }
+
+    const koltEdit = () => {
+        setModalData(oneKolt);
+    }
+
     return (
         <li className="list-item">
             <div className="item">
@@ -11,7 +17,7 @@ function OneKolt({oneKolt, setDeleteData}) {
                     <i>{oneKolt.time}</i>
                     <i>{oneKolt.km}</i>
                     <div className="buttons">
-                    <button type="button" className="btn2">Redaguoti</button>
+                    <button type="button" className="btn2" onClick={koltEdit}>Redaguoti</button>
                     <button type="button" className="btn2" onClick={koltDelete}>Ištrinti</button>
                     </div>
                 </div>

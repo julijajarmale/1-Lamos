@@ -2,7 +2,7 @@ import OneKolt from "./kolt";
 
 
 
-function KoltList({kolt, setDeleteData}) {
+function KoltList({kolt, setDeleteData, setModalData}) {
 
     return (
         <div className='list-column'>
@@ -12,7 +12,7 @@ function KoltList({kolt, setDeleteData}) {
        <div className="form-group">
        <ul className="kolt-list">
            {
-          kolt? kolt.map(oneKolt => <OneKolt key={oneKolt.id} oneKolt={oneKolt} setDeleteData={setDeleteData}></OneKolt>) : null
+          kolt? kolt.map(oneKolt => <OneKolt key={oneKolt.id} oneKolt={oneKolt} setDeleteData={setDeleteData} setModalData={setModalData}></OneKolt>) : null
         }
        </ul>
    </div>

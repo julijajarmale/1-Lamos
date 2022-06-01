@@ -159,3 +159,12 @@ App,
     }
     }
 }
+
+.modal{
+    display:block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(26, 24, 24, 0.5)
+}
