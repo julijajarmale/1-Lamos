@@ -192,13 +192,74 @@ body {
 
 
 .modal{
+    width: 500px;
+    padding: 60px;
+    border-radius: 20px;
     display:block;
     position: absolute;
-    top: 50%;
+    top: 120%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(26, 24, 24, 0.5)
+    background-color: white;
+    .btn{
+        
+        display: inline-block;
+        outline: none;
+        cursor: pointer;
+        font-weight: 500;
+        border-radius: 3px;
+        padding: 0 16px;
+        border-radius: 4px;
+        color: #fff;
+        background: rgb(252, 228, 228);
+        line-height: 1.15;
+        font-size: 14px;
+        height: 36px;
+        word-spacing: 0px;
+        letter-spacing: .0892857143em;
+        text-decoration: none;
+        text-transform: uppercase;
+        min-width: 64px;
+        border: none;
+        text-align: center;
+        box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+        transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+        :hover {
+            background: rgb(252, 228, 228);;
+            box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+        }
+        }
+    .btn2{
+        margin: 5px;
+        display: inline-block;
+        outline: none;
+        cursor: pointer;
+        font-weight: 500;
+        border-radius: 3px;
+        padding: 0 10px;
+        border-radius: 4px;
+        color: rgb(247, 162, 162);
+        background: transparent;
+        line-height: 1.15;
+        font-size: 14px;
+        height: 30px;
+        word-spacing: 0px;
+        letter-spacing: .0892857143em;
+        text-decoration: none;
+        text-transform: uppercase;
+        min-width: 64px;
+        border: 1px solid rgb(247, 162, 162);
+        text-align: center;
+        transition: background 280ms cubic-bezier(0.4, 0, 0.2, 1);
+        :hover {
+           background: #f4f4f4;
+        }
+    }
+
+
 }
+
+
 
 :root {
     --half-gap: 10px;

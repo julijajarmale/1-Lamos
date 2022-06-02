@@ -51,7 +51,7 @@ function KoltEdit({modalData, setModalData, setEditData}) {
             <label className="label">Total Kilometers Ride:</label>
             <input type="text" className="form-row" onChange={e => setKm(e.target.value)} value={km}/>
         </div>
-        <button type="button" className="btn" onClick={() => setModalData(null)}>Uždaryti</button>
+        <button type="button" className="btn2" onClick={() => setModalData(null)}>Uždaryti</button>
         <button type="button" className="btn" onClick={koltEdit}>Išsaugoti</button>
 
     </div>

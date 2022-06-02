@@ -72,10 +72,11 @@ function App() {
             <KoltList kolt={kolt} setDeleteData={setDeleteData} setModalData={setModalData}></KoltList>
             </div>
             </div>
+            <KoltEdit setEditData={setEditData} modalData={modalData} setModalData={setModalData}></KoltEdit>
             </div>
             </header>
         </div>
-        <KoltEdit setEditData={setEditData} modalData={modalData} setModalData={setModalData}></KoltEdit>
+        
         </>
     );
 }
