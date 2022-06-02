@@ -62,10 +62,10 @@ function App() {
             <header className="App-header">
             <div className="container">
             <div className="row">
-            <div className="col-5">
+            <div className="col-lg-5 col-ml-12">
             <KoltForm setCreateKolt={setCreateKolt}></KoltForm>
             </div>
-            <div className="col-7">
+            <div className="col-7 col-ml-12">
                 <ScooterImage></ScooterImage>
             </div>
             <div className="col-12">

@@ -22,15 +22,38 @@ body {
     border: 1px solid;
     border-color: rgb(255, 252, 247);
     border-radius: 50px;
+    padding-bottom: 100px;
 
 .main-image{
     height: 600px;
+    
+}
+@media (max-width: 1150px ) {
+    .main-image{
+        height: 550px;
+        margin-top:50px;
+        
+    }
+}
+@media (max-width: 1000px ) {
+    .main-image{
+        height: 600px;
+        margin-left: 100px;
+        
+    }
+}
+@media (max-width: 1000px ) {
+    .main-image{
+        height: 450px;
+        margin-left: 100px;
+        
+    }
 }
 }
 
     .form-column{
         margin-top: 90px;
-        margin-left: 20px;
+        margin-left: 100px;
         padding: 40px;
         
         
@@ -91,8 +114,11 @@ body {
 }       
    
     .list-column{
+        width: 80%;
+        margin-left: 100px;
         padding: 60px;
         background-color: #fff;
+        border-radius: 20px;
        
         
         h2{
@@ -116,8 +142,13 @@ body {
             width: 100%;
             
         }
-    
+        .item{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
         .content{
+            width: 100%;
             display:flex;
             align-items: center;
             justify-content:space-between;

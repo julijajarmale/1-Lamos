@@ -10,20 +10,19 @@ function OneKolt({ oneKolt, setDeleteData, setModalData }) {
 
     return (
         <li className="list-item">
-            <div className="item">
                 <div className="content">
-                    <td>{oneKolt.id}</td>
-                    <td>{oneKolt.code}</td>
-                    <td>{oneKolt.time}</td>
-                    <td>{oneKolt.km}</td>
-                    <td>{oneKolt.isBusy === 1? <div className="uzimtas">Uzimtas</div>:<div className="laisvas">Laisvas</div>}</td>
+                    <b>{oneKolt.id}</b>
+                    <span>{oneKolt.code}</span>
+                    <span>{oneKolt.time}</span>
+                    <span>{oneKolt.km}</span>
+                    {oneKolt.isBusy === 1? <div className="uzimtas">Uzimtas</div>:<div className="laisvas">Laisvas</div>}
                     
                     <div className="buttons">
                     <button type="button" className="btn2" onClick={koltEdit}>Redaguoti</button>
                     <button type="button" className="btn2" onClick={koltDelete}>Ištrinti</button>
                     </div>
                 </div>
-            </div>
+            
         </li>
     );
 }
