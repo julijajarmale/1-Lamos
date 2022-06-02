@@ -7,18 +7,20 @@ const [id, setId] = useState('');
 const [code, setCode] = useState(randLetters());
 const [time, setTime] = useState(new Date());
 const [km, setKm] = useState(0);
+const [isBusy, setIsBusy]=useState('1');
+const [checkBusy, setCheckBusy] = useState(({a: false, b: false} ));
 
-//const [bendrasKM, setBendrasKM]=useState(0);
-//const [isBusy, setIsBusy]=useState(0);
 const current = new Date();
 
 const koltCreate = () => {
-    const data = {id, code, time, km};
+    const data = {id, code, time, km, isBusy, checkBusy};
     setCreateKolt(data);
     setId('');
     setCode('');
     setTime((`${current.getFullYear()}-0${current.getMonth()+1}-${current.getDate()}`));
     setKm(0);
+    setIsBusy(1);
+    setCheckBusy(({a: false, b: false} ));
 }
 
 

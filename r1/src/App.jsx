@@ -4,6 +4,8 @@ import { useState, useEffect} from "react";
 import { create, read, remove, edit } from './Functions/localStorageKolt';
 import KoltList from './Components/Kolt/kolt-lits';
 import KoltEdit from './Components/Kolt/kolt-edit';
+import ScooterImage from './Components/Kolt/scooter-image';
+
 
 
 function App() {
@@ -59,11 +61,16 @@ function App() {
         <div className="App">
             <header className="App-header">
             <div className="container">
-            <div>
+            <div className="row">
+            <div className="col-5">
             <KoltForm setCreateKolt={setCreateKolt}></KoltForm>
             </div>
-            <div>
+            <div className="col-7">
+                <ScooterImage></ScooterImage>
+            </div>
+            <div className="col-12">
             <KoltList kolt={kolt} setDeleteData={setDeleteData} setModalData={setModalData}></KoltList>
+            </div>
             </div>
             </div>
             </header>

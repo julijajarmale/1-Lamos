@@ -1,5 +1,24 @@
 {
   "dependencies": {
     "uuid": "^8.3.2"
-  }
+  },
+  "name": "1-lamos",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julijajarmale/1-Lamos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julijajarmale/1-Lamos/issues"
+  },
+  "homepage": "https://github.com/julijajarmale/1-Lamos#readme",
+  "description": ""
 }
