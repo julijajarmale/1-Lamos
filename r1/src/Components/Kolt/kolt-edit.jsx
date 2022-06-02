@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 
 function KoltEdit({modalData, setModalData, setEditData}) {
 
+    const current = new Date();
+    
     const [code, setCode] = useState('');
     const [time, setTime] = useState('1');
+    const [newTime, setNewTime] = useState((`${current.getFullYear()}-0${current.getMonth()+1}-${current.getDate()}`));
     const [km, setKm] = useState('');
 
     useEffect(() => {
@@ -12,11 +15,12 @@ function KoltEdit({modalData, setModalData, setEditData}) {
         }
         setCode(modalData.code);
         setTime(modalData.time);
+        setNewTime(modalData.newTime);
         setKm(modalData.km);
     }, [modalData]);
 
     const koltEdit = () => {
-        const data = {code, time, km, id: modalData.id};
+        const data = {code, time, newTime, km, id: modalData.id};
         setEditData(data);
         setModalData(null);
     }
@@ -38,6 +42,10 @@ function KoltEdit({modalData, setModalData, setEditData}) {
         <div className="form-group">
             <label className="label">Last time used:</label>
             <input type="text" className="form-row"  onChange={e => setTime(e.target.value)} value={time}/>
+        </div>
+        <div className="form-group">
+            <label className="label">New date and time:</label>
+            <input type="text" className="form-row"  onChange={e => setNewTime(e.target.value)} value={newTime}/>
         </div>
         <div className="form-group">
             <label className="label">Total Kilometers Ride:</label>

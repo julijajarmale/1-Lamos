@@ -1,30 +1,34 @@
 import { useState } from "react";
+import randLetters from "../../Functions/randLetters";
 
 function KoltForm({setCreateKolt}) {
-
+    
 const [id, setId] = useState('');
-const [code, setCode] = useState('');
-const [time, setTime] = useState('');
-const [km, setKm] = useState('');
+const [code, setCode] = useState(randLetters());
+const [time, setTime] = useState(new Date());
+const [km, setKm] = useState(0);
+
+//const [bendrasKM, setBendrasKM]=useState(0);
+//const [isBusy, setIsBusy]=useState(0);
+const current = new Date();
 
 const koltCreate = () => {
     const data = {id, code, time, km};
     setCreateKolt(data);
     setId('');
     setCode('');
-    setTime('');
-    setKm('');
+    setTime((`${current.getFullYear()}-0${current.getMonth()+1}-${current.getDate()}`));
+    setKm(0);
 }
+
+
+
 
     return (
         <div className="form-column">
         <div className='form'>
         <div>
           <h2>Naujo paspirtuko forma</h2>  
-        </div>
-        <div className="form-group">
-            <label className="label">ID:</label>
-            <input type="text" className="form-row" onChange={e => setId(e.target.value)} value={id}/>
         </div>
         <div className="form-group">
             <label className="label">Registration Code:</label>
@@ -45,3 +49,4 @@ const koltCreate = () => {
 }
 
 export default KoltForm;
+
