@@ -1,85 +1,118 @@
-import KoltForm from './Components/Kolt/kolt-form';
-import './kolt.scss';
-import { useState, useEffect} from "react";
-import { create, read, remove, edit } from './Functions/localStorageKolt';
-import KoltList from './Components/Kolt/kolt-lits';
-import KoltEdit from './Components/Kolt/kolt-edit';
-import ScooterImage from './Components/Kolt/scooter-image';
-
-
+import { useEffect, useReducer, useState } from 'react';
+import './App.scss';
+import colorReducer from './Reducers/colorReducer';
+import numberReducer from './Reducers/numberReducer';
+import kvReducer from './Reducers/kvReducer';
+import rand from './Functions/rand';
+ 
 
 function App() {
 
-    const [lastUpdate, setLastUpdate] = useState(Date.now());
+    // const [color, setColor] = useState('yellow');
+    const [color, dispachColor] = useReducer(colorReducer, 'yellow');
+    const [numb, dispachNumb] = useReducer(numberReducer, '0000');
+    const [colorInput, setColorInput] = useState('#F8dd00');
+    const [textInput, setTextInput] = useState('');
+    const [h2, setH2] = useState('');
+    const [kv, dispachKv] = useReducer(kvReducer, []);
+    // const goPink = () => {
+    //     setColor('pink');
+    // }
 
-    const [kolt, setKolt] = useState(null);
-    const [modalData, setModalData] = useState(null);
-
-
-    const [createKolt, setCreateKolt] = useState(null);
-    const [deleteData, setDeleteData] = useState(null);
-    const [editData, setEditData] = useState(null);
-
-   // Read (Kolt-form)
-   
-    useEffect(() => {
-        setKolt(read());
-    }, [lastUpdate]);
-
-    // Create (Kolt-form)
-     useEffect(() => {
-        if (null === createKolt) {
-            return;
+    const goKv = () => {
+        const action = {
+            type: 'gokv'
         }
-        create(createKolt);
-        setLastUpdate(Date.now());
+        dispachKv(action);
+    }
 
-    }, [createKolt]);
-
-    // Delete
-    useEffect(() => {
-        if (null === deleteData) {
-            return;
+    const goPink = () => {
+        const action = {
+            type: 'go_pink'
         }
-        remove(deleteData);
-        setLastUpdate(Date.now());
+        dispachColor(action);
+    }
 
-    }, [deleteData]);
-
-     // Edit
-     useEffect(() => {
-        if (null === editData) {
-            return;
+    const goYellow = () => {
+        const action = {
+            type: 'go_y'
         }
-        edit(editData);
-        setLastUpdate(Date.now());
+        dispachColor(action);
+    }
 
-    }, [editData]);
+    const goChange = () => {
+        const action = {
+            type: 'change_color'
+        }
+        dispachColor(action);
+    }
 
+    const goChangeTo = () => {
+        const action = {
+            type: 'change_color_to',
+            payload: colorInput
+        }
+        dispachColor(action);
+    }
+
+    const number1 = () => {
+        const action = {
+            type: 'do1'
+        }
+        dispachNumb(action);
+    }
+
+    const number2 = () => {
+        const action = {
+            type: 'do2',
+            payload: rand(0, 100)
+        }
+        dispachNumb(action);
+    }
+
+    const goText = () => {
+        setH2(textInput);
+        const action = {
+            type: 'go_text',
+            payload: textInput
+        }
+        dispachNumb(action);
+    }
+
+    // useEffect(() => {
+    //     setInterval(()=> dispachColor({type: 'change_color'}), 3000)
+    // }, [])
+    
     return (
-        <>
         <div className="App">
-            <header className="App-header">
-            <div className="container">
-            <div className="row">
-            <div className="col-lg-5 col-ml-12">
-            <KoltForm setCreateKolt={setCreateKolt}></KoltForm>
+          <header className="App-header">
+              <h2>{h2}</h2>
+           <h1 style={{backgroundColor: color}}>Welcome to Reducer
+           <span> {numb} </span>
+           </h1>
+            <div className="kvc">
+            <button onClick={goPink}>Go pink</button>
+            <button onClick={goYellow}>Go yellow</button>
+            <button onClick={goChange}>Go and Change</button>
+            <button onClick={goChangeTo}>Go and Change to this</button>
+            <input type="color" value={colorInput} onChange={e => setColorInput(e.target.value)}></input>
             </div>
-            <div className="col-7 col-ml-12">
-                <ScooterImage></ScooterImage>
+            <div className="kvc">
+            <button onClick={number1}>Go One</button>
+            <button onClick={number2}>Go Two</button>
+            <input type="text" value={textInput} onChange={e => setTextInput(e.target.value)}></input>
+            <button onClick={goText}>Go Text</button>
+            <button onClick={goKv}>Go []</button>
             </div>
-            <div className="col-12">
-            <KoltList kolt={kolt} setDeleteData={setDeleteData} setModalData={setModalData}></KoltList>
+            <div className="kvc">
+                {
+                    kv.map((_, i) => <div className="kv" key={i}></div>)
+                }
             </div>
-            </div>
-            <KoltEdit setEditData={setEditData} modalData={modalData} setModalData={setModalData}></KoltEdit>
-            </div>
-            </header>
+          </header>
         </div>
-        
-        </>
-    );
+      );
+
 }
 
 export default App;
-
