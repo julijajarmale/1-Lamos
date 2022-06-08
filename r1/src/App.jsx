@@ -1,117 +1,85 @@
-import { useEffect, useReducer, useState } from 'react';
+import { useReducer } from 'react';
 import './App.scss';
-import colorReducer from './Reducers/colorReducer';
-import numberReducer from './Reducers/numberReducer';
-import kvReducer from './Reducers/kvReducer';
-import rand from './Functions/rand';
- 
+import listReducer from './Reducers/listReducer';
+
 
 function App() {
 
-    // const [color, setColor] = useState('yellow');
-    const [color, dispachColor] = useReducer(colorReducer, 'yellow');
-    const [numb, dispachNumb] = useReducer(numberReducer, '0000');
-    const [colorInput, setColorInput] = useState('#F8dd00');
-    const [textInput, setTextInput] = useState('');
-    const [h2, setH2] = useState('');
-    const [kv, dispachKv] = useReducer(kvReducer, []);
-    // const goPink = () => {
-    //     setColor('pink');
-    // }
+    const [list, listDispach] = useReducer(listReducer, []);
 
-    const goKv = () => {
+    const newList = () => {
         const action = {
-            type: 'gokv'
+            type: 'new'
         }
-        dispachKv(action);
+        listDispach(action);
     }
 
-    const goPink = () => {
+    const sortList = () => {
         const action = {
-            type: 'go_pink'
+            type: 'sort'
         }
-        dispachColor(action);
+        listDispach(action);
     }
 
-    const goYellow = () => {
+    const f5000 = () => {
         const action = {
-            type: 'go_y'
+            type: 'f5000'
         }
-        dispachColor(action);
+        listDispach(action);
     }
 
-    const goChange = () => {
+    const f4000 = () => {
         const action = {
-            type: 'change_color'
+            type: 'f4000'
         }
-        dispachColor(action);
+        listDispach(action);
     }
 
-    const goChangeTo = () => {
+    const freset = () => {
         const action = {
-            type: 'change_color_to',
-            payload: colorInput
+            type: 'freset'
         }
-        dispachColor(action);
+        listDispach(action);
     }
 
-    const number1 = () => {
+    const DefSortList = () => {
         const action = {
-            type: 'do1'
+            type: 'DefSortList'
         }
-        dispachNumb(action);
+        listDispach(action);
     }
 
-    const number2 = () => {
+    const add = () => {
         const action = {
-            type: 'do2',
-            payload: rand(0, 100)
+            type: 'add'
         }
-        dispachNumb(action);
+        listDispach(action);
     }
 
-    const goText = () => {
-        setH2(textInput);
-        const action = {
-            type: 'go_text',
-            payload: textInput
-        }
-        dispachNumb(action);
-    }
-
-    // useEffect(() => {
-    //     setInterval(()=> dispachColor({type: 'change_color'}), 3000)
-    // }, [])
-    
     return (
         <div className="App">
-          <header className="App-header">
-              <h2>{h2}</h2>
-           <h1 style={{backgroundColor: color}}>Welcome to Reducer
-           <span> {numb} </span>
-           </h1>
-            <div className="kvc">
-            <button onClick={goPink}>Go pink</button>
-            <button onClick={goYellow}>Go yellow</button>
-            <button onClick={goChange}>Go and Change</button>
-            <button onClick={goChangeTo}>Go and Change to this</button>
-            <input type="color" value={colorInput} onChange={e => setColorInput(e.target.value)}></input>
-            </div>
-            <div className="kvc">
-            <button onClick={number1}>Go One</button>
-            <button onClick={number2}>Go Two</button>
-            <input type="text" value={textInput} onChange={e => setTextInput(e.target.value)}></input>
-            <button onClick={goText}>Go Text</button>
-            <button onClick={goKv}>Go []</button>
-            </div>
-            <div className="kvc">
-                {
-                    kv.map((_, i) => <div className="kv" key={i}></div>)
-                }
-            </div>
-          </header>
+            <header className="App-header">
+                <h1>REDUCER</h1>
+                <div className="kvc">
+                <button onClick={newList}>New List</button>
+                <button onClick={sortList}>Sort List</button>
+                <button onClick={DefSortList}>Default Sort List</button>
+                <button onClick={f5000}>Filter more 5000</button>
+                <button onClick={f4000}>Filter less 4000</button>
+                <button onClick={freset}>Filter Reset</button>
+                <button onClick={add}>Add to List</button>
+                </div>
+                <div className="kvc">
+                    {
+                        list.map((o, i) => o.show ? <div key={i} className="kv" style={{backgroundColor:o.color}}><i>{o.number}</i></div> : null)
+                    }
+                </div>
+
+            </header>
         </div>
-      );
+    );
+
+    
 
 }
 
