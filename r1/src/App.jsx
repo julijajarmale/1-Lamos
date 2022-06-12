@@ -12,7 +12,11 @@ const [books, dispachBooks] = useReducer(booksReducer, []);
 useEffect(() => {
     axios.get('https://in3.dev/knygos/')   
     .then(res => {
-        dispachBooks({payload:res.data, type:'get_from_server'});
+        const action ={
+        payload:res.data, 
+        type:'get_from_server'
+        }
+        dispachBooks(action);
     })                                            //READY!  kai paleidziam callbacka kurio argumentas yra tuscias masyvas, inicijuojame, kad paleista ir galima daryti kreipimasi i serveri;
 }, [])  
 
