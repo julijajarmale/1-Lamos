@@ -1,79 +1,32 @@
-import { useReducer } from 'react';
+import axios from 'axios';
+import { useEffect, useReducer, useState } from 'react';
 import './App.scss';
-import listReducer from './Reducers/listReducer';
+import booksReducer from './Reducers/booksReducer';
+
 
 
 function App() {
+//const [books, setBooks] = useState([]);
+const [books, dispachBooks] = useReducer(booksReducer, []);
 
-    const [list, listDispach] = useReducer(listReducer, []);
+useEffect(() => {
+    axios.get('https://in3.dev/knygos/')   
+    .then(res => {
+        dispachBooks({payload:res.data, type:'get_from_server'});
+    })                                            //READY!  kai paleidziam callbacka kurio argumentas yra tuscias masyvas, inicijuojame, kad paleista ir galima daryti kreipimasi i serveri;
+}, [])  
 
-    const newList = () => {
-        const action = {
-            type: 'new'
-        }
-        listDispach(action);
-    }
 
-    const sortList = () => {
-        const action = {
-            type: 'sort'
-        }
-        listDispach(action);
-    }
 
-    const f5000 = () => {
-        const action = {
-            type: 'f5000'
-        }
-        listDispach(action);
-    }
-
-    const f4000 = () => {
-        const action = {
-            type: 'f4000'
-        }
-        listDispach(action);
-    }
-
-    const freset = () => {
-        const action = {
-            type: 'freset'
-        }
-        listDispach(action);
-    }
-
-    const DefSortList = () => {
-        const action = {
-            type: 'DefSortList'
-        }
-        listDispach(action);
-    }
-
-    const add = () => {
-        const action = {
-            type: 'add'
-        }
-        listDispach(action);
-    }
 
     return (
         <div className="App">
             <header className="App-header">
-                <h1>REDUCER</h1>
-                <div className="kvc">
-                <button onClick={newList}>New List</button>
-                <button onClick={sortList}>Sort List</button>
-                <button onClick={DefSortList}>Default Sort List</button>
-                <button onClick={f5000}>Filter more 5000</button>
-                <button onClick={f4000}>Filter less 4000</button>
-                <button onClick={freset}>Filter Reset</button>
-                <button onClick={add}>Add to List</button>
-                </div>
-                <div className="kvc">
-                    {
-                        list.map((o, i) => o.show ? <div key={i} className="kv" style={{backgroundColor:o.color}}><i>{o.number}</i></div> : null)
-                    }
-                </div>
+            <div>
+              {
+                books.length? books.map(b => <div key={b.id}>{b.title}</div>): <h2>Loading...</h2>
+              }
+          </div>
 
             </header>
         </div>
