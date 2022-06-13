@@ -8,6 +8,7 @@ function KoltEdit({modalData, setModalData, setEditData}) {
     const [time, setTime] = useState('1');
     const [newTime, setNewTime] = useState((`${current.getFullYear()}-0${current.getMonth()+1}-${current.getDate()}`));
     const [km, setKm] = useState('');
+    const [newKm, setNewKm] = useState('');
 
     useEffect(() => {
         if (null === modalData) {
@@ -16,11 +17,18 @@ function KoltEdit({modalData, setModalData, setEditData}) {
         setCode(modalData.code);
         setTime(modalData.time);
         setNewTime(modalData.newTime);
-        setKm(modalData.km);
+        setKm(modalData.km); 
+        setNewKm(modalData.newKm);
     }, [modalData]);
 
     const koltEdit = () => {
-        const data = {code, time, newTime, km, id: modalData.id};
+        const data = {
+            code, 
+            time, 
+            newTime, 
+            km, 
+            newKm,
+            id: modalData.id};
         setEditData(data);
         setModalData(null);
     }
@@ -50,7 +58,11 @@ function KoltEdit({modalData, setModalData, setEditData}) {
         <div className="form-group">
             <label className="label">Total Kilometers Ride:</label>
             <input type="text" className="form-row" onChange={e => setKm(e.target.value)} value={km}/>
-        </div>
+        </div> 
+        <div className="form-group">
+            <label className="label">Add New Kilometers</label>
+            <input type="text" className="form-row" onChange={e => setNewKm(e.target.value)} value={newKm}/>
+        </div>  
         <button type="button" className="btn2" onClick={() => setModalData(null)}>Uždaryti</button>
         <button type="button" className="btn" onClick={koltEdit}>Išsaugoti</button>
 

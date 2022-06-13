@@ -1,43 +1,85 @@
-import axios from 'axios';
-import { useEffect, useReducer, useState } from 'react';
-import './App.scss';
-import booksReducer from './Reducers/booksReducer';
+import KoltForm from './Components/Kolt/kolt-form';
+import './kolt.scss';
+import { useState, useEffect} from "react";
+import { create, read, remove, edit } from './Functions/localStorageKolt';
+import KoltList from './Components/Kolt/kolt-lits';
+import KoltEdit from './Components/Kolt/kolt-edit';
+import ScooterImage from './Components/Kolt/scooter-image';
 
 
 
 function App() {
-//const [books, setBooks] = useState([]);
-const [books, dispachBooks] = useReducer(booksReducer, []);
 
-useEffect(() => {
-    axios.get('https://in3.dev/knygos/')   
-    .then(res => {
-        const action ={
-        payload:res.data, 
-        type:'get_from_server'
+    const [lastUpdate, setLastUpdate] = useState(Date.now());
+
+    const [kolt, setKolt] = useState(null);
+    const [modalData, setModalData] = useState(null);
+
+
+    const [createKolt, setCreateKolt] = useState(null);
+    const [deleteData, setDeleteData] = useState(null);
+    const [editData, setEditData] = useState(null);
+
+   // Read (Kolt-form)
+   
+    useEffect(() => {
+        setKolt(read());
+    }, [lastUpdate]);
+
+    // Create (Kolt-form)
+     useEffect(() => {
+        if (null === createKolt) {
+            return;
         }
-        dispachBooks(action);
-    })                                            //READY!  kai paleidziam callbacka kurio argumentas yra tuscias masyvas, inicijuojame, kad paleista ir galima daryti kreipimasi i serveri;
-}, [])  
+        create(createKolt);
+        setLastUpdate(Date.now());
 
+    }, [createKolt]);
 
+    // Delete
+    useEffect(() => {
+        if (null === deleteData) {
+            return;
+        }
+        remove(deleteData);
+        setLastUpdate(Date.now());
 
+    }, [deleteData]);
+
+     // Edit
+     useEffect(() => {
+        if (null === editData) {
+            return;
+        }
+        edit(editData);
+        setLastUpdate(Date.now());
+
+    }, [editData]);
 
     return (
+        <>
         <div className="App">
             <header className="App-header">
-            <div>
-              {
-                books.length? books.map(b => <div key={b.id}>{b.title}</div>): <h2>Loading...</h2>
-              }
-          </div>
-
+            <div className="container">
+            <div className="row">
+            <div className="col-lg-5 col-ml-12">
+            <KoltForm setCreateKolt={setCreateKolt}></KoltForm>
+            </div>
+            <div className="col-7 col-ml-12">
+                <ScooterImage></ScooterImage>
+            </div>
+            <div className="col-12">
+            <KoltList kolt={kolt} setDeleteData={setDeleteData} setModalData={setModalData}></KoltList>
+            </div>
+            </div>
+            <KoltEdit setEditData={setEditData} modalData={modalData} setModalData={setModalData}></KoltEdit>
+            </div>
             </header>
         </div>
+        
+        </>
     );
-
-    
-
 }
 
 export default App;
+
