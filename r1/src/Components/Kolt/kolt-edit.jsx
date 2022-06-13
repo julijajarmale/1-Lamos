@@ -9,6 +9,7 @@ function KoltEdit({modalData, setModalData, setEditData}) {
     const [newTime, setNewTime] = useState((`${current.getFullYear()}-0${current.getMonth()+1}-${current.getDate()}`));
     const [km, setKm] = useState('');
     const [newKm, setNewKm] = useState('');
+    const [isBusy, setIsBusy]=useState('0');
 
     useEffect(() => {
         if (null === modalData) {
@@ -19,6 +20,7 @@ function KoltEdit({modalData, setModalData, setEditData}) {
         setNewTime(modalData.newTime);
         setKm(modalData.km); 
         setNewKm(modalData.newKm);
+        setIsBusy(modalData.isBusy);
     }, [modalData]);
 
     const koltEdit = () => {
@@ -28,6 +30,7 @@ function KoltEdit({modalData, setModalData, setEditData}) {
             newTime, 
             km, 
             newKm,
+            isBusy: isBusy ? 'true' : false,
             id: modalData.id};
         setEditData(data);
         setModalData(null);
@@ -53,7 +56,7 @@ function KoltEdit({modalData, setModalData, setEditData}) {
         </div>
         <div className="form-group">
             <label className="label">New date and time:</label>
-            <input type="text" className="form-row"  onChange={e => setNewTime(e.target.value)} value={newTime}/>
+            <input type="date" className="form-row"  onChange={e => setNewTime(e.target.value)} value={newTime}/>
         </div>
         <div className="form-group">
             <label className="label">Total Kilometers Ride:</label>
@@ -63,6 +66,10 @@ function KoltEdit({modalData, setModalData, setEditData}) {
             <label className="label">Add New Kilometers</label>
             <input type="text" className="form-row" onChange={e => setNewKm(e.target.value)} value={newKm}/>
         </div>  
+        <div className="form-group">
+                <small>Check if busy</small>
+                <input type="checkbox" checked={isBusy ? 1 : 0} onChange={() => setIsBusy(isBusy ? 0 : 1)}/>
+        </div> 
         <button type="button" className="btn2" onClick={() => setModalData(null)}>Uždaryti</button>
         <button type="button" className="btn" onClick={koltEdit}>Išsaugoti</button>
 

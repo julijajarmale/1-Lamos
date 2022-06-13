@@ -15,7 +15,7 @@ function OneKolt({ oneKolt, setDeleteData, setModalData }) {
                     <span>{oneKolt.code}</span>
                     <span>{oneKolt.time}</span>
                     <span>{oneKolt.km}</span>
-                    {oneKolt.isBusy === 1? <div className="uzimtas">Uzimtas</div>:<div className="laisvas">Laisvas</div>}
+                    <span>{oneKolt.isBusy ? <div className="uzimtas">Busy</div>:<div className="laisvas">Available</div>}</span>
                     <div className="buttons">
                     <button type="button" className="btn2" onClick={koltEdit}>Redaguoti</button>
                     <button type="button" className="btn2" onClick={koltDelete}>Ištrinti</button>

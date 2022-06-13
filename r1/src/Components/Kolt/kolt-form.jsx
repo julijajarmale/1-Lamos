@@ -5,22 +5,19 @@ function KoltForm({setCreateKolt}) {
     
 const [id, setId] = useState('');
 const [code, setCode] = useState(randLetters());
-const [time, setTime] = useState(new Date());
+const [time, setTime] = useState('');
 const [km, setKm] = useState(0);
-const [isBusy, setIsBusy]=useState('1');
-const [checkBusy, setCheckBusy] = useState(({a: false, b: false} ));
 
-const current = new Date();
+
 
 const koltCreate = () => {
-    const data = {id, code, time, km, isBusy, checkBusy};
+    const data = {id, code, time, km};
     setCreateKolt(data);
     setId('');
-    setCode('');
-    setTime((`${current.getFullYear()}-0${current.getMonth()+1}-${current.getDate()}`));
+    setCode(randLetters());
+    setTime('');
     setKm(0);
-    setIsBusy(1);
-    setCheckBusy(({a: false, b: false} ));
+   
 }
 
 
@@ -38,7 +35,7 @@ const koltCreate = () => {
         </div>
         <div className="form-group">
             <label className="label">Last time used:</label>
-            <input type="text" className="form-row" onChange={e => setTime(e.target.value)} value={time}/>
+            <input type="date" className="form-row" onChange={e => setTime(e.target.value)} value={time}/>
         </div>
         <div className="form-group">
             <label className="label">Total Kilometers Ride:</label>
