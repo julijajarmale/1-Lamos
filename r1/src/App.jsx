@@ -1,8 +1,8 @@
-import KoltForm from './Components/Kolt/kolt-form';
+import KoltForm from './Components/Kolt/CREATE';
 import './kolt.scss';
 import { useState, useEffect} from "react";
 import { create, read, remove, edit } from './Functions/localStorageKolt';
-import KoltList from './Components/Kolt/kolt-lits';
+import KoltList from './Components/Kolt/LIST';
 import KoltEdit from './Components/Kolt/kolt-edit';
 import ScooterImage from './Components/Kolt/scooter-image';
 

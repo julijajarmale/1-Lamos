@@ -1,4 +1,4 @@
-import OneKolt from "./kolt";
+import OneKolt from "./KOLT";
 
 
 

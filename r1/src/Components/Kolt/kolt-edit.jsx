@@ -2,13 +2,11 @@ import { useEffect, useState } from "react";
 
 function KoltEdit({modalData, setModalData, setEditData}) {
 
-    const current = new Date();
+    
     
     const [code, setCode] = useState('');
     const [time, setTime] = useState('1');
-    const [newTime, setNewTime] = useState((`${current.getFullYear()}-0${current.getMonth()+1}-${current.getDate()}`));
-    const [km, setKm] = useState('');
-    const [newKm, setNewKm] = useState('');
+    const [newKm, setNewKm] = useState(0);
     const [isBusy, setIsBusy]=useState('0');
 
     useEffect(() => {
@@ -16,9 +14,7 @@ function KoltEdit({modalData, setModalData, setEditData}) {
             return;
         }
         setCode(modalData.code);
-        setTime(modalData.time);
-        setNewTime(modalData.newTime);
-        setKm(modalData.km); 
+        setTime(modalData.time); 
         setNewKm(modalData.newKm);
         setIsBusy(modalData.isBusy);
     }, [modalData]);
@@ -26,9 +22,8 @@ function KoltEdit({modalData, setModalData, setEditData}) {
     const koltEdit = () => {
         const data = {
             code, 
-            time, 
-            newTime, 
-            km, 
+            time,  
+            km:Number(modalData.km) + Number(newKm), 
             newKm,
             isBusy: isBusy ? 'true' : false,
             id: modalData.id};
@@ -47,24 +42,21 @@ function KoltEdit({modalData, setModalData, setEditData}) {
           <h2>Atnaujinti paspirtuko informaciją</h2>  
         </div>
         <div className="form-group">
-            <label className="label">Registration Code:</label>
-            <input type="text" className="form-row" onChange={e => setCode(e.target.value)} value={code}/>
+            Registration code: <span>{modalData.code}</span>
         </div>
         <div className="form-group">
-            <label className="label">Last time used:</label>
-            <input type="text" className="form-row"  onChange={e => setTime(e.target.value)} value={time}/>
+            Last time used: <span>{modalData.time}</span>
         </div>
         <div className="form-group">
-            <label className="label">New date and time:</label>
-            <input type="date" className="form-row"  onChange={e => setNewTime(e.target.value)} value={newTime}/>
+            <label className="label">New date:</label>
+            <input type="date" className="form-row"  onChange={e => setTime(e.target.value)} value={time}/>
         </div>
         <div className="form-group">
-            <label className="label">Total Kilometers Ride:</label>
-            <input type="text" className="form-row" onChange={e => setKm(e.target.value)} value={km}/>
-        </div> 
+           Total Kilometers Ride: <span>{modalData.km}</span>
+        </div>
         <div className="form-group">
             <label className="label">Add New Kilometers</label>
-            <input type="text" className="form-row" onChange={e => setNewKm(e.target.value)} value={newKm}/>
+            <input type="number" className="form-row" onChange={e => setNewKm(e.target.value)} value={newKm}/>
         </div>  
         <div className="form-group">
                 <small>Check if busy</small>
