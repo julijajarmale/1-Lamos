@@ -1,85 +1,57 @@
-import KoltForm from './Components/Kolt/CREATE';
-import './kolt.scss';
-import { useState, useEffect} from "react";
-import { create, read, remove, edit } from './Functions/localStorageKolt';
-import KoltList from './Components/Kolt/LIST';
-import KoltEdit from './Components/Kolt/kolt-edit';
-import ScooterImage from './Components/Kolt/scooter-image';
-
-
+import { useEffect, useReducer, useState } from 'react';
+import './App.scss';
+import axios from 'axios';
+import booksReducer from './Reducers/booksReducer';
 
 function App() {
 
-    const [lastUpdate, setLastUpdate] = useState(Date.now());
+    // const [books, setBooks] = useState([]);
+    const [books, dispachBooks] = useReducer(booksReducer, []);
 
-    const [kolt, setKolt] = useState(null);
-    const [modalData, setModalData] = useState(null);
-
-
-    const [createKolt, setCreateKolt] = useState(null);
-    const [deleteData, setDeleteData] = useState(null);
-    const [editData, setEditData] = useState(null);
-
-   // Read (Kolt-form)
-   
     useEffect(() => {
-        setKolt(read());
-    }, [lastUpdate]);
+        axios.get('http://in3.dev/knygos/')
+        .then(res => {
+            const action = {
+                payload:res.data,
+                type:'get_from_server'
+            }
+            dispachBooks(action);
+        })
+    }, []);
 
-    // Create (Kolt-form)
-     useEffect(() => {
-        if (null === createKolt) {
-            return;
+    const sortAZ = () => {
+        const action = {
+            type: 'sortAZ'
         }
-        create(createKolt);
-        setLastUpdate(Date.now());
-
-    }, [createKolt]);
-
-    // Delete
-    useEffect(() => {
-        if (null === deleteData) {
-            return;
+        dispachBooks(action);
+    }
+    const sortDEF = () => {
+        const action = {
+            type: 'sortDEF'
         }
-        remove(deleteData);
-        setLastUpdate(Date.now());
-
-    }, [deleteData]);
-
-     // Edit
-     useEffect(() => {
-        if (null === editData) {
-            return;
-        }
-        edit(editData);
-        setLastUpdate(Date.now());
-
-    }, [editData]);
+        dispachBooks(action);
+    }
 
     return (
-        <>
         <div className="App">
             <header className="App-header">
-            <div className="container">
-            <div className="row">
-            <div className="col-lg-5 col-ml-12">
-            <KoltForm setCreateKolt={setCreateKolt}></KoltForm>
-            </div>
-            <div className="col-7 col-ml-12">
-                <ScooterImage></ScooterImage>
-            </div>
-            <div className="col-12">
-            <KoltList kolt={kolt} setDeleteData={setDeleteData} setModalData={setModalData}></KoltList>
-            </div>
-            </div>
-            <KoltEdit setEditData={setEditData} modalData={modalData} setModalData={setModalData}></KoltEdit>
-            </div>
+                <h1>BOOKS REDUCER</h1>
+                <div className="kvc">
+                    <button onClick={sortAZ}>Sort AZ</button>
+                    <button onClick={sortDEF}>Reset Sort</button>
+                </div>
+
+                <div>
+                    {
+                       books.length ? books.map(b => <div key={b.id}>{b.title} <i>{b.price} EUR</i></div>) : <h2>Loading...</h2>
+                    }
+                </div>
             </header>
         </div>
-        
-        </>
     );
+
+    
+
 }
 
 export default App;
-
