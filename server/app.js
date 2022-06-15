@@ -15,7 +15,7 @@ const con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "la_ma",
+  database: "lama",
 });
 
 //Routes
