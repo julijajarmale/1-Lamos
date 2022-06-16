@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { useEffect, useState } from "react";
 import TreeContext from "./TreeContext";
 
-function Edit({modalData, setModalData}) {
-    const {setEditData} = useContext(TreeContext);
+function Edit() {
+    const {setEditData, modalData, setModalData} = useContext(TreeContext);
 
     const [title, setTitle] = useState('');
     const [type, setType] = useState('1');
@@ -13,9 +13,9 @@ function Edit({modalData, setModalData}) {
         if (null === modalData) {
             return;
         }
-        setTitle(modalData.name);
+        setTitle(modalData.title);
         setType(modalData.type);
-        setHeight(modalData.place);
+        setHeight(modalData.height);
     }, [modalData]);
 
     const handleEdit = () => {

@@ -61,7 +61,9 @@ function App() {
         setCreateData,
         setDeleteData,
         setEditData,
+        modalData,
         setModalData
+        
       }
     }>
       <div className="container">
