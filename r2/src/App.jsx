@@ -29,16 +29,20 @@ function App() {
   // Create
   useEffect(() => {
     if (null === createData) return;
-
-
-
-    setLastUpdate(Date.now());
+    axios.post('http://localhost:3003/medziai', createData)
+    .then(_ => {
+      setLastUpdate(Date.now());
+    });
+    
   }, [createData]);
 
   // Delete
   useEffect(() => {
-    if (null === createData) return;
-
+    if (null === deleteData) return;
+    axios.delete('http://localhost:3003/medziai/' + deleteData.id)
+    .then(_ => {
+      setLastUpdate(Date.now());
+    });
     setLastUpdate(Date.now());
   }, [deleteData]);
 
@@ -53,7 +57,9 @@ function App() {
   return (
     <TreeContext.Provider value={
       {
-        trees
+        trees,
+        setCreateData,
+        setDeleteData
       }
     }>
       <div className="container">

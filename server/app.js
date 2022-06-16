@@ -5,33 +5,63 @@ const cors = require("cors");
 app.use(cors());
 const mysql = require("mysql");
 app.use(
-  express.urlencoded({
-    extended: true,
-  })
+    express.urlencoded({
+        extended: true,
+    })
 );
 app.use(express.json());
 
+
 const con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "lama",
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "lama",
 });
 
 //Routes
-
+//READ
 app.get("/medziai", (req, res) => {
-  const sql = `
+    const sql = `
   SELECT
   *
   FROM trees
 `;
-  con.query(sql, (err, result) => {
-    if (err) throw err;
-    res.send(result);
+    con.query(sql, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+//CREATE
+// INSERT INTO table_name (column1, column2, column3, ...)
+// VALUES (value1, value2, value3, ...);
+app.post("/medziai", (req, res) => {
+    const sql = `
+INSERT INTO trees
+(type, title, height)
+VALUES (?, ?, ?)
+`;
+    con.query(sql, [req.body.type, req.body.title, req.body.height], (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+//DELETE
+//DELETE FROM table_name WHERE condition
+app.delete("/medziai/:treeId", (req, res) => {
+  const sql = `
+DELETE FROM trees
+WHERE id = ?
+`;
+  con.query(sql, [req.params.treeId], (err, result) => {
+      if (err) throw err;
+      res.send(result);
   });
 });
 
+
+
+
 app.listen(port, () => {
-  console.log(`Bebras klauso porto Nr ${port}`);
+    console.log(`Bebras klauso porto Nr ${port}`);
 });
