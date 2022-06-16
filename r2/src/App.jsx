@@ -47,7 +47,7 @@ function App() {
 
   // Edit
   useEffect(() => {
-    if (null === createData) return;
+    if (null === editData) return;
     axios.put('http://localhost:3003/medziai/' + editData.id, editData)
     .then(_ => {
       setLastUpdate(Date.now());
@@ -59,7 +59,9 @@ function App() {
       {
         trees,
         setCreateData,
-        setDeleteData
+        setDeleteData,
+        setEditData,
+        setModalData
       }
     }>
       <div className="container">
@@ -72,7 +74,7 @@ function App() {
           </div>
         </div>
       </div>
-      <Edit setEditData={setEditData} modalData={modalData} setModalData={setModalData}></Edit>
+      <Edit  modalData={modalData} setModalData={setModalData}></Edit>
     </TreeContext.Provider>
   );
 

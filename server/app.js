@@ -60,7 +60,21 @@ WHERE id = ?
     });
 });
 
+//UPDATE table_name
+//SET column1 = value1, column2 = value2, ...
+//WHERE condition;
 
+app.put("/medziai", (req, res) => {
+    const sql = `
+UPDATE trees
+SET type = ?, title = ?, height = ?
+WHERE id = ?
+`;
+    con.query(sql, [ [req.body.type, req.body.title, req.body.height, req.params.id]], (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
 
 
 app.listen(port, () => {
