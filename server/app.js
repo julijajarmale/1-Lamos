@@ -19,13 +19,6 @@ const con = mysql.createConnection({
 });
 
 //Routes
-app.get("/", (req, res) => {
-  res.send("Bye, World!");
-});
-
-app.get("/zuikis", (req, res) => {
-  res.send("Labas, Zuiki!");
-});
 
 app.get("/medziai", (req, res) => {
   const sql = `

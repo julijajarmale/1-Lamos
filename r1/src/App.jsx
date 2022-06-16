@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useReducer } from 'react';
+import TreeContext from '../../r2/src/Components/TreeContext';
 import './App.scss';
 import ld from './Reducers/ld';
 
@@ -23,7 +24,9 @@ dispachList({type: select})
 
 
     return (
+        
         <div className="App">
+            <TreeContext.Provider>
             <header className="App-header">
               <h1>Sort reducer</h1>
               <dvi className="kvc">
@@ -53,7 +56,9 @@ dispachList({type: select})
                 </div>
               </dvi>
             </header>
+            </TreeContext.Provider>
         </div>
+    
     );
 
     
