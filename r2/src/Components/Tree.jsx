@@ -1,15 +1,16 @@
 import { useContext } from "react";
 import TreeContext from "./TreeContext";
 
-function Tree({ tree }) {
-    const {setDeleteData} = useContext(TreeContext)
+function Tree({tree}) {
+
+    const {setDeleteData} = useContext(TreeContext);
 
     const handleDelete = () => {
-      setDeleteData(tree);
+        setDeleteData(tree);
     }
 
     const handleEdit = () => {
-      //  setModalData(ex);
+        // setModalData(ex);
     }
 
     return (

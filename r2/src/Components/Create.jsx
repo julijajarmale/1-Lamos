@@ -27,7 +27,7 @@ function Create() {
                 <div className="form-group">
                     <label>Title</label>
                     <input type="text" className="form-control" onChange={e => setTitle(e.target.value)} value={title} />
-                    <small className="form-text text-muted">Enter Tree title here.</small>
+                    <small className="form-text text-muted">Enter tree title here.</small>
                 </div>
                 <div className="form-group">
                     <label>Type</label>
@@ -36,12 +36,12 @@ function Create() {
                         <option value="2">Spike</option>
                         <option value="3">Palm</option>
                     </select>
-                    <small className="form-text text-muted">Select Ex type here.</small>
+                    <small className="form-text text-muted">Select tree type here.</small>
                 </div>
                 <div className="form-group">
                     <label>Height</label>
                     <input type="text" className="form-control" onChange={e => setHeight(e.target.value)} value={height} />
-                    <small className="form-text text-muted">Enter Tree height here.</small>
+                    <small className="form-text text-muted">Enter tree height here.</small>
                 </div>
                 <button type="button" className="btn btn-outline-primary" onClick={handleCreate}>Create</button>
             </div>
