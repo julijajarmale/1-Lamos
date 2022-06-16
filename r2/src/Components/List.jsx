@@ -5,7 +5,9 @@ import Tree from "./Tree";
 import TreeContext from "./TreeContext";
 
 function List() {
-const {trees} = useContext(TreeContext)
+
+    const {trees} = useContext(TreeContext);
+
     return (
         <div className="card mt-4">
             <div className="card-header">
@@ -14,7 +16,7 @@ const {trees} = useContext(TreeContext)
             <div className="card-body">
                 <ul className="list-group">
                     {
-                    trees ? trees.map(tree => <Tree key={tree.id} tree={tree} ></Tree>) : null
+                    trees ? trees.map(tree => <Tree key={tree.id} tree={tree}></Tree>) : null
                     }
                 </ul>
             </div>
