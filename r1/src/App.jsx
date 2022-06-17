@@ -1,24 +1,10 @@
 
-import { useState } from 'react';
 import './App.scss';
-import Pokemon from './Components/poke';
+import Pokemons from './Components/Pokemons';
+
 
 
 function App() {
-
-const [poke, setPoke] = useState([])
-
-const getData = () =>{
-    fetch("https://pokeapi.co/api/v2/pokemon")
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        setPoke(data.results)
- 
-    })     
-           
-};
-getData()
 
     return (
         
@@ -29,7 +15,7 @@ getData()
               <div className="kvc">
                 <div>
                 <ul className="list-group">
-               <Pokemon poke={poke}></Pokemon>
+               <Pokemons></Pokemons>
                 </ul>
                 </div>
                
