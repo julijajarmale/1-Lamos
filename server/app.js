@@ -70,7 +70,7 @@ UPDATE trees
 SET type = ?, title = ?, height = ?
 WHERE id = ?
 `;
-    con.query(sql, [ [req.body.type, req.body.title, req.body.height, req.params.id]], (err, result) => {
+    con.query(sql,  [req.body.type, req.body.title, req.body.height, req.params.id], (err, result) => {
         if (err) throw err;
         res.send(result);
     });

@@ -5,6 +5,7 @@ function Tree({tree}) {
 
     const {setDeleteData} = useContext(TreeContext);
     const {setModalData} = useContext(TreeContext);
+    
 
     const handleDelete = () => {
         setDeleteData(tree);
@@ -12,6 +13,7 @@ function Tree({tree}) {
 
     const handleEdit = () => {
         setModalData(tree);
+     
     }
 
     return (
