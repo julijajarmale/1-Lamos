@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import TreeContext from "./TreeContext";
+import KoltContext from "./KoltContext";
 
 function Message() {
 
-    const {message} = useContext(TreeContext);
+    const {message} = useContext(KoltContext);
 
     if (null === message) {
         return null;

@@ -1,12 +1,14 @@
 
 import './kolt.scss';
 import { useState, useEffect} from "react";
-import { create, read, remove, edit } from './Functions/localStorageKolt';
 import KoltList from './Components/List';
 import KoltEdit from './Components/Edit';
 import ScooterImage from './Components/scooter-image';
 import KoltForm from './Components/Create';
 import Statistics from './Components/Statistics';
+import axios from 'axios';
+import './bootstrap.css';
+import KoltContext from './Components/KoltContext';
 
 
 
@@ -22,47 +24,76 @@ function App() {
     const [deleteData, setDeleteData] = useState(null);
     const [editData, setEditData] = useState(null);
 
-  
+    const [message, setMessage] = useState(null);
+
+    const [disableCreate, setDisableCreate] = useState(false);
 
    // Read (Kolt-form)
    
     useEffect(() => {
-        setKolt(read());
+      axios.get('http://localhost:3003/paspirtukai/')
+      .then(res => setKolt(res.data));
     }, [lastUpdate]);
 
-    // Create (Kolt-form)
-     useEffect(() => {
-        if (null === createKolt) {
-            return;
-        }
-        create(createKolt);
+    // Create
+  useEffect(() => {
+    if (null === createKolt) return;
+    axios.post('http://localhost:3003/paspirtukai/', createKolt)
+      .then(res => {
+        showMessage(res.data.msg);
         setLastUpdate(Date.now());
+      })
+      .catch(error => {
+        showMessage({ text: error.message, type: 'danger' });
+      })
+      .then(() => {
+        setDisableCreate(false);
+      })
 
-    }, [createKolt]);
 
-    // Delete
-    useEffect(() => {
-        if (null === deleteData) {
-            return;
-        }
-        remove(deleteData);
+  }, [createKolt]);
+
+  // Delete
+  useEffect(() => {
+    if (null === deleteData) return;
+    axios.delete('http://localhost:3003/paspirtukai/' + deleteData.id)
+      .then(res => {
+        showMessage(res.data.msg);
         setLastUpdate(Date.now());
+      });
+  }, [deleteData]);
 
-    }, [deleteData]);
-
-     // Edit
-     useEffect(() => {
-        if (null === editData) {
-            return;
-        }
-        edit(editData);
+  // Edit
+  useEffect(() => {
+    if (null === editData) return;
+    axios.put('http://localhost:3003/paspirtukai/' + editData.id, editData)
+      .then(res => {
+        showMessage(res.data.msg);
         setLastUpdate(Date.now());
+      });
+  }, [editData]);
 
-    }, [editData]);
+
+  const showMessage = msg => {
+    setMessage(msg);
+    setTimeout(() => setMessage(null), 5000);
+  }
 
 
     return (
-        <>
+         <KoltContext.Provider value={
+          {
+            kolt,
+            setCreateKolt,
+            setDeleteData,
+            setModalData,
+            modalData,
+            setEditData,
+            message,
+            disableCreate,
+            setDisableCreate
+          }
+        }>
         <div className="App">
             <header className="App-header">
             </header>
@@ -84,7 +115,7 @@ function App() {
             
         </div>
         
-        </>
+        </KoltContext.Provider>
     );
 }
 
