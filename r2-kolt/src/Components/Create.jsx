@@ -1,8 +1,12 @@
 import { useState, useRef } from "react";
 import randLetters from "../Functions/randLetters";
+import { useContext } from "react";
+import KoltContext from "./KoltContext";
 
 
-function KoltForm({setCreateKolt}) {
+function KoltForm() {
+
+const { setCreateKolt, disableCreate, setDisableCreate } = useContext(KoltContext);
     
 const [id, setId] = useState('');
 const [code, setCode] = useState(randLetters());
@@ -13,6 +17,7 @@ let countKolts = useRef(0);
 
 
 const koltCreate = () => {
+    setDisableCreate(true);
     const data = {id, code, time, km:parseFloat(km)};
     setCreateKolt(data);
     setId('');
@@ -45,7 +50,7 @@ const koltCreate = () => {
             <input type="text" className="form-row" onChange={e => setKm(e.target.value)} value={km}/>
         </div>
 
-        <button type="button" className="btn" onClick={koltCreate}>ADD</button>
+        <button type="button" className="btn" onClick={koltCreate} disabled={disableCreate}>ADD</button>
     </div>
     </div>
     );

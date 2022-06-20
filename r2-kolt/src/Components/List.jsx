@@ -1,9 +1,10 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import OneKolt from "./Kolt";
+import { useContext, useEffect, useState } from "react";
+import Kolt from "./Kolt";
+import KoltContext from "./KoltContext";
 
+function KoltList() {
 
-function KoltList({kolt, setDeleteData, setModalData}) {
+  const {kolt, setDeleteData, setModalData} = useContext(KoltContext);
     
     const [copy, setCopy] = useState([]); // sort tik ant kopiju
    useEffect(() => {
@@ -34,7 +35,7 @@ const sortDate = () => {
        <div className="form-group">
        <ul className="kolt-list">
            {
-          copy.map(oneKolt => <OneKolt key={oneKolt.id} oneKolt={oneKolt} setDeleteData={setDeleteData} setModalData={setModalData} ></OneKolt>)
+          copy.map(oneKolt => <Kolt key={kolt.id}  setDeleteData={setDeleteData} setModalData={setModalData} ></Kolt>)
         }
        </ul>
        <div className="buttons2">

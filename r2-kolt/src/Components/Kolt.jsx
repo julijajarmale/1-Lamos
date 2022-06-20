@@ -1,20 +1,24 @@
-function OneKolt({ oneKolt, setDeleteData, setModalData }) {
+import { useContext } from "react";
+import KoltContext from "./KoltContext";
 
+function Kolt({kolt}) {
+
+    const {setDeleteData, setModalData} = useContext(KoltContext);
     const koltDelete = () => {
-        setDeleteData(oneKolt);
+        setDeleteData({kolt});
     }
 
     const koltEdit = () => {
-        setModalData(oneKolt);
+        setModalData({kolt});
     }
 
     return (
         <li className="list-item">
                 <div className="content">
-                    <span className="item">{oneKolt.code}</span>
-                    <span className="item">{oneKolt.time}</span>
-                    <span className="item">{oneKolt.km} km</span>
-                    <span className="item">{oneKolt.isBusy ? <div className="uzimtas">Busy</div>:<div className="laisvas">Available</div>}</span>
+                    <span className="item">{kolt.code}</span>
+                    <span className="item">{kolt.time}</span>
+                    <span className="item">{kolt.km} km</span>
+                    <span className="item">{kolt.isBusy ? <div className="uzimtas">Busy</div>:<div className="laisvas">Available</div>}</span>
                     <div className="buttons">
                     <button type="button" className="btn2" onClick={koltEdit}>Edit</button>
                     <button type="button" className="btn2" onClick={koltDelete}>Delete</button>
@@ -25,4 +29,4 @@ function OneKolt({ oneKolt, setDeleteData, setModalData }) {
     );
 }
 
-export default OneKolt;
+export default Kolt;

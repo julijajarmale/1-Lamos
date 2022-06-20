@@ -100,7 +100,7 @@ function App() {
             <div className="container">
             <div className="row">
             <div className="col-lg-5 col-ml-12">
-            <KoltForm setCreateKolt={setCreateKolt}></KoltForm>
+            <KoltForm></KoltForm>
             </div>
             <div className="col-7 col-ml-12">
                 <ScooterImage></ScooterImage>
