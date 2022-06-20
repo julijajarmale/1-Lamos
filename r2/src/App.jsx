@@ -6,6 +6,7 @@ import List from './Components/List';
 import Edit from './Components/Edit';
 import TreeContext from './Components/TreeContext';
 import axios from 'axios';
+import Message from './Components/Message';
 
 function App() {
 
@@ -19,40 +20,61 @@ function App() {
   const [deleteData, setDeleteData] = useState(null);
   const [editData, setEditData] = useState(null);
 
+  const [message, setMessage] = useState(null);
+
+  const [disableCreate, setDisableCreate] = useState(false);
+
 
   //Read
   useEffect(() => {
     axios.get('http://localhost:3003/medziai')
-    .then(res => setTrees(res.data));
+      .then(res => setTrees(res.data));
   }, [lastUpdate]);
 
   // Create
   useEffect(() => {
     if (null === createData) return;
     axios.post('http://localhost:3003/medziai', createData)
-    .then(_ => {
-      setLastUpdate(Date.now());
-    });
-    
+      .then(res => {
+        showMessage(res.data.msg);
+        setLastUpdate(Date.now());
+      })
+      .catch(error => {
+        showMessage({ text: error.message, type: 'danger' });
+      })
+      .then(() => {
+        setDisableCreate(false);
+      })
+
+
   }, [createData]);
 
   // Delete
   useEffect(() => {
     if (null === deleteData) return;
     axios.delete('http://localhost:3003/medziai/' + deleteData.id)
-    .then(_ => {
-      setLastUpdate(Date.now());
-    });
+      .then(res => {
+        showMessage(res.data.msg);
+        setLastUpdate(Date.now());
+      });
   }, [deleteData]);
 
   // Edit
   useEffect(() => {
     if (null === editData) return;
     axios.put('http://localhost:3003/medziai/' + editData.id, editData)
-    .then(_ => {
-      setLastUpdate(Date.now());
-    });
+      .then(res => {
+        showMessage(res.data.msg);
+        setLastUpdate(Date.now());
+      });
   }, [editData]);
+
+
+  const showMessage = msg => {
+    setMessage(msg);
+    setTimeout(() => setMessage(null), 5000);
+  }
+
 
   return (
     <TreeContext.Provider value={
@@ -60,23 +82,26 @@ function App() {
         trees,
         setCreateData,
         setDeleteData,
-        setEditData,
+        setModalData,
         modalData,
-        setModalData
-        
+        setEditData,
+        message,
+        disableCreate,
+        setDisableCreate
       }
     }>
       <div className="container">
         <div className="row">
           <div className="col-4">
-            <Create/>
+            <Create />
           </div>
           <div className="col-8">
-            <List trees={trees} setModalData={setModalData}></List>
+            <List></List>
           </div>
         </div>
       </div>
-      <Edit  modalData={modalData} setModalData={setModalData}></Edit>
+      <Edit />
+      <Message />
     </TreeContext.Provider>
   );
 

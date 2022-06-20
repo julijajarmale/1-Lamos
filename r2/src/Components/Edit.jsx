@@ -1,9 +1,10 @@
-import { useContext } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import TreeContext from "./TreeContext";
 
 function Edit() {
-    const {setEditData, modalData, setModalData} = useContext(TreeContext);
+
+    const { modalData, setModalData, setEditData } = useContext(TreeContext);
+
 
     const [title, setTitle] = useState('');
     const [type, setType] = useState('1');
@@ -42,21 +43,21 @@ function Edit() {
                         <div className="form-group">
                             <label>Title</label>
                             <input type="text" className="form-control" onChange={e => setTitle(e.target.value)} value={title} />
-                            <small className="form-text text-muted">Enter Tree name here.</small>
+                            <small className="form-text text-muted">Enter tree title here.</small>
                         </div>
                         <div className="form-group">
                             <label>Type</label>
                             <select className="form-control" onChange={e => setType(e.target.value)} value={type}>
-                             <option value="1">Leaf</option>
-                             <option value="2">Spike</option>
-                             <option value="3">Palm</option>
+                                <option value="1">Leaf</option>
+                                <option value="2">Spike</option>
+                                <option value="3">Palm</option>
                             </select>
-                            <small className="form-text text-muted">Select Tree type here.</small>
+                            <small className="form-text text-muted">Select tree type here.</small>
                         </div>
                         <div className="form-group">
-                            <label>Place</label>
+                            <label>Height</label>
                             <input type="text" className="form-control" onChange={e => setHeight(e.target.value)} value={height} />
-                            <small className="form-text text-muted">Enter Tree height here.</small>
+                            <small className="form-text text-muted">Enter tree height here.</small>
                         </div>
                     </div>
                     <div className="modal-footer">

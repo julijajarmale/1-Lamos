@@ -1,33 +1,54 @@
-body{
-    font-family: Oswald;
+body {
+    font-family: 'Oswald', sans-serif;
 }
 
-.list-group-item{
-    .item{
+.list-group-item {
+    .item {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        .content{
-            display:flex;
+        .content {
+            display: flex;
             align-items: center;
             justify-content: flex-start;
         }
-        .buttons{
-            display:flex;
+        .buttons {
+            display: flex;
             align-items: center;
             justify-content: flex-end;
         }
-        b{
-            margin-right:7px;
+        b {
+            margin-right: 7px;
         }
-       
-        i{
-            margin-left:7px;
+        i {
+            margin-left: 7px;
         }
     }
 }
-.modal{
+
+.modal {
     display: block;
-    background-color: rgba(106, 0, 0, 0.5)
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.show-message {
+    display: flex;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+button.with-loader {
+    .spinner-border {
+        display: none;
+    }
+}
+
+button.with-loader:disabled {
+    .spinner-border {
+        display: inline-block;
+    }
 }
