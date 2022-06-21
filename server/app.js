@@ -103,10 +103,10 @@ app.get("/paspirtukai", (req, res) => {
 app.post("/paspirtukai", (req, res) => {
     const sql = `
 INSERT INTO kolt
-(code, km, time, isbusy)
-VALUES (?, ?, ?, ?)
+(code, km, time)
+VALUES (?, ?, ?)
 `;
-    con.query(sql, [req.body.code, req.body.km, req.body.time, req.body.isbusy], (err, result) => {
+    con.query(sql, [req.body.code, req.body.km, req.body.time], (err, result) => {
         if (err) throw err;
         res.send({ result, msg: { text: 'OK, Zuiki', type: 'success' } });
     });

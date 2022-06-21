@@ -7,7 +7,7 @@ import ScooterImage from './Components/scooter-image';
 import KoltForm from './Components/Create';
 import Statistics from './Components/Statistics';
 import axios from 'axios';
-import './bootstrap.css';
+//import './bootstrap.css';
 import KoltContext from './Components/KoltContext';
 
 

@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import KoltContext from "./KoltContext";
 
-function KoltEdit({modalData, setModalData, setEditData}) {
+function KoltEdit() {
 
-    
+    const { modalData, setModalData, setEditData } = useContext(KoltContext);
     
     const [code, setCode] = useState('');
     const [time, setTime] = useState('1');
