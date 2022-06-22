@@ -41,8 +41,13 @@ app.get("/medziai", (req, res) => {
 app.get("/gerybes", (req, res) => {
     const sql = `
   SELECT
-  *
-  FROM goods
+  g.title, g.id, COUNT(t.id) AS trees_count
+  FROM trees AS t
+  RIGHT JOIN goods AS g
+  ON t.goods_id = g.id
+  GROUP BY g.id
+  ORDER BY COUNT(t.id) DESC
+
 `;
     con.query(sql, (err, result) => {
         if (err) throw err;
@@ -75,6 +80,7 @@ VALUES (?)
         res.send({ result, msg: { text: 'OK, Zuiki', type: 'success' } });
     });
 });
+
 
 //DELETE
 // DELETE FROM table_name WHERE condition;
