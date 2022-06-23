@@ -8,7 +8,7 @@ function KoltEdit() {
     const [code, setCode] = useState('');
     const [time, setTime] = useState('1');
     const [newKm, setNewKm] = useState(0);
-    const [isBusy, setIsBusy]=useState('0');
+    const [isBusy, setIsBusy]=useState(1);
 
     useEffect(() => {
         if (null === modalData) {
