@@ -8,7 +8,7 @@ function KoltEdit() {
     const [code, setCode] = useState('');
     const [time, setTime] = useState('1');
     const [newKm, setNewKm] = useState(0);
-    const [isBusy, setIsBusy]=useState(1);
+    const [isBusy, setIsBusy]=useState(false);
 
     useEffect(() => {
         if (null === modalData) {
@@ -26,7 +26,7 @@ function KoltEdit() {
             time,  
             km:Number(modalData.km) + Number(newKm), 
             newKm,
-            isBusy: isBusy ? 'true' : false,
+            isBusy: isBusy ? 1 : 0,
             id: modalData.id};
         setEditData(data);
         setModalData(null);
@@ -61,7 +61,7 @@ function KoltEdit() {
         </div>  
         <div className="form-group">
                 <small>Check if busy</small>
-                <input type="checkbox" className="cb" checked={isBusy ? 1 : 0} onChange={() => setIsBusy(isBusy ? 0 : 1)}/>
+                <input type="checkbox" className="cb" checked={isBusy} onChange={() => setIsBusy(isBusy => !isBusy)}/>
         </div> 
         <div className="buttons">
         <button type="button" className="btn2" onClick={() => setModalData(null)}>Close</button>
