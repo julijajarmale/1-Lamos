@@ -18,7 +18,7 @@ const con = mysql.createConnection({
     password: "",
     database: "lama",
 });
-//
+
 //Routes
 //READ
 // SELECT column_name(s)
@@ -46,14 +46,14 @@ app.get("/gerybes", (req, res) => {
   RIGHT JOIN goods AS g
   ON t.goods_id = g.id
   GROUP BY g.id
-  ORDER BY COUNT(t.id) DESC
-
+  ORDER BY trees_count DESC
 `;
     con.query(sql, (err, result) => {
         if (err) throw err;
         res.send(result);
     });
 });
+
 
 app.get("/front/gerybes", (req, res) => {
     const sql = `
@@ -70,6 +70,24 @@ app.get("/front/gerybes", (req, res) => {
         res.send(result);
     });
 });
+
+app.get("/front/medziai", (req, res) => {
+    const sql = `
+  SELECT
+  t.title, g.title AS good, height, type, t.id, GROUP_CONCAT(c.com, '-^o^-') AS coms
+  FROM trees AS t
+  LEFT JOIN goods AS g
+  ON t.goods_id = g.id
+  LEFT JOIN comments AS c
+  ON c.tree_id = t.id
+  GROUP BY t.id
+`;
+    con.query(sql, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
 //CREATE
 
 // INSERT INTO table_name (column1, column2, column3, ...)
@@ -77,7 +95,7 @@ app.get("/front/gerybes", (req, res) => {
 app.post("/medziai", (req, res) => {
     const sql = `
 INSERT INTO trees
-(type, title, height, good_id)
+(type, title, height, goods_id)
 VALUES (?, ?, ?, ?)
 `;
     con.query(sql, [req.body.type, req.body.title, req.body.height ? req.body.height : 0, req.body.good !== '0' ? req.body.good : null], (err, result) => {
@@ -92,6 +110,18 @@ INSERT INTO goods
 VALUES (?)
 `;
     con.query(sql, [req.body.title], (err, result) => {
+        if (err) throw err;
+        res.send({ result, msg: { text: 'OK, Zuiki', type: 'success' } });
+    });
+});
+
+app.post("/front/komentarai", (req, res) => {
+    const sql = `
+INSERT INTO comments
+(com, tree_id)
+VALUES (?, ?)
+`;
+    con.query(sql, [req.body.com, req.body.treeId], (err, result) => {
         if (err) throw err;
         res.send({ result, msg: { text: 'OK, Zuiki', type: 'success' } });
     });
@@ -122,6 +152,7 @@ WHERE id = ?
     });
 });
 
+
 //EDIT
 // UPDATE table_name
 // SET column1 = value1, column2 = value2, ...
@@ -129,7 +160,7 @@ WHERE id = ?
 app.put("/medziai/:treeId", (req, res) => {
     const sql = `
     UPDATE trees
-    SET title = ?, type = ?, height = ?, goods_id = ?
+    SET title = ?, type = ?, height = ?, good_id = ?
     WHERE id = ?
 `;
     con.query(sql, [req.body.title, req.body.type, req.body.height, req.body.good, req.params.treeId], (err, result) => {
@@ -141,7 +172,7 @@ app.put("/medziai/:treeId", (req, res) => {
 
 app.listen(port, () => {
     console.log(`Bebras klauso porto Nr ${port}`);
-})
+});
 
 ////*****************************KOLT****************************************************
 ////
