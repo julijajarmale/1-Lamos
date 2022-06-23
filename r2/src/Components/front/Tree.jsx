@@ -2,13 +2,15 @@ import { useState } from "react";
 import { useContext } from "react";
 import FrontContext from "./FrontContext";
 
-function Tree({tree}) {
+function Tree({ tree }) {
 
-    const {setCreateComment} = useContext(FrontContext);
+    const { setCreateComment } = useContext(FrontContext);
 
-    const [com, setCom] = useState(null);
+    const [com, setCom] = useState('');
+
     const handleComment = () => {
-        setCreateComment({com, treeId: tree.id})
+        setCreateComment({com, treeId: tree.id});
+        setCom('');
     }
 
     return (
@@ -17,7 +19,7 @@ function Tree({tree}) {
                 <div className="content">
                     <b>{tree.title}</b>
                     <span>{['Leaf', 'Spike', 'Palm'][tree.type - 1]}</span>
-                    <i>{tree.height} m</i>
+                    <i>{tree.height.toFixed(2)} m</i>
                     <u>{tree.good}</u>
                 </div>
                 <div className="form-group">
@@ -27,6 +29,11 @@ function Tree({tree}) {
                 <div className="buttons">
                     <button type="button" className="btn btn-outline-success ml-2" onClick={handleComment}>I want to say</button>
                 </div>
+                <ul>
+                    {
+                    tree.coms ? tree.coms.slice(0, -5).split('-^o^-,').map((c, i) => <li key={i}>{c}</li>) : null
+                    }
+                </ul>
             </div>
         </li>
     );
