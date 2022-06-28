@@ -18,7 +18,7 @@ function OneKolt({ onekolt }) {
         <span className="item">{onekolt.time}</span>
         <span className="item">{onekolt.km} km</span>
         <span className="item">
-          {onekolt.isbusy? (
+          {onekolt.isbusy ? (
             <div className="uzimtas">Busy</div>
           ) : (
             <div className="laisvas">Available</div>

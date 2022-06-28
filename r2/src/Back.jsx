@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import './bootstrap.css';
+
 import './crud.scss';
+import './bootstrap.css';
 import Create from './Components/Create';
 import List from './Components/List';
 import Edit from './Components/Edit';
@@ -32,6 +33,14 @@ function Back() {
 
   const [message, setMessage] = useState(null);
   const [disableCreate, setDisableCreate] = useState(false);
+  
+  
+ // TIMERIS intervalas, kad backe atsinaujintu vis info is serverio
+ // useEffect(()=> {
+ //   setInterval(() => setLastUpdate(Date.now()), 3000)
+ // }, []);
+
+
 
 //////////////////TREES?/////////////////////////////
   //Read
@@ -111,6 +120,14 @@ function Back() {
 
 
 
+    // DELETE COMMENT
+    const handleDeleteComment = id => {
+      axios.delete('http://localhost:3003/komentarai/' + id)
+      .then(res => {
+        showMessage(res.data.msg);
+        setLastUpdate(Date.now());
+      });
+  }
 
 
 
@@ -137,7 +154,8 @@ function Back() {
         message,
         disableCreate,
         setDisableCreate,
-        goods
+        goods,
+        handleDeleteComment
       }
     }>
     <GoodContext.Provider value={{
