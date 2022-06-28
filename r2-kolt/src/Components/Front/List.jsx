@@ -1,27 +1,27 @@
+// import { useState } from "react";
+
 import { useContext } from "react";
-import Tree from "./Tree";
+import Good from "./Good";
 import FrontContext from "./FrontContext";
 
-function TreeList() {
+function List() {
 
-    const {trees} = useContext(FrontContext);
+    const {goods} = useContext(FrontContext);
 
     return (
-        <div className="card mt-4">
+        <div className="card mt-4 mb-4">
             <div className="card-header">
-                <h2>List of Trees</h2>
+                <h2>List of Goods</h2>
             </div>
             <div className="card-body">
                 <ul className="list-group">
                     {
-                    trees ? trees.map(tree => <Tree key={tree.id} tree={tree}></Tree>) : null
+                    goods ? goods.map(good => <Good key={good.id} good={good}></Good>) : null
                     }
                 </ul>
             </div>
         </div>
-
-        
     );
 }
 
-export default TreeList;
+export default List;

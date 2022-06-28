@@ -32,7 +32,9 @@ function App() {
    
     useEffect(() => {
       axios.get('http://localhost:3003/paspirtukai/')
-      .then(res => setKolt(res.data));
+      .then(res => 
+        
+        setKolt(res.data));
     }, [lastUpdate]);
 
     // Create
@@ -65,6 +67,7 @@ function App() {
 
   // Edit
   useEffect(() => {
+    console.log(editData)
     if (null === editData) return;
     axios.put('http://localhost:3003/paspirtukai/' + editData.id, editData)
       .then(res => {

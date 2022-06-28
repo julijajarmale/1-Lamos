@@ -189,6 +189,22 @@ app.get("/paspirtukai", (req, res) => {
         res.send(result);
     });
 });
+
+app.get("/front/paspirtukai", (req, res) => {
+    const sql = `
+
+    SELECT
+    *
+    FROM kolt
+
+`;
+    con.query(sql, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+
 //CREATE
 // INSERT INTO table_name (column1, column2, column3, ...)
 // VALUES (value1, value2, value3, ...);
@@ -227,7 +243,7 @@ app.put("/paspirtukai/:koltId", (req, res) => {
     SET code = ?, km = ?, time = ?, isbusy = ?
     WHERE id = ?
 `;
-    con.query(sql, [req.body.code, req.body.km, req.body.time, req.body.isbusy, req.params.koltId], (err, result) => {
+    con.query(sql, [req.body.code, req.body.km, req.body.time, req.body.isBusy, req.params.koltId], (err, result) => {
         if (err) throw err;
         res.send({ result, msg: { text: 'OK, Barsukai', type: 'danger' } });
     });
