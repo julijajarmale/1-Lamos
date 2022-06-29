@@ -216,17 +216,19 @@ app.get("/paspirtukai", (req, res) => {
 app.get("/front/paspirtukai", (req, res) => {
     const sql = `
 
-    SELECT
-    *
-    FROM kolt
+      SELECT
+      kolt.code, time, km, kolt.id, GROUP_CONCAT(c.com, '-^o^-') AS coms
+      FROM kolt 
+      LEFT JOIN kolt_comments AS c
+      ON c.kolt_id = kolt.id
+      GROUP BY kolt.id
+    `;
 
-`;
     con.query(sql, (err, result) => {
         if (err) throw err;
         res.send(result);
     });
 });
-
 
 //CREATE
 // INSERT INTO table_name (column1, column2, column3, ...)
@@ -238,6 +240,18 @@ INSERT INTO kolt
 VALUES (?, ?, ?)
 `;
     con.query(sql, [req.body.code, req.body.km, req.body.time], (err, result) => {
+        if (err) throw err;
+        res.send({ result, msg: { text: 'OK, Zuiki', type: 'success' } });
+    });
+});
+
+app.post("/front/komentarai", (req, res) => {
+    const sql = `
+INSERT INTO comments
+(com, kolt_Id)
+VALUES (?, ?)
+`;
+    con.query(sql, [req.body.com, req.body.koltId], (err, result) => {
         if (err) throw err;
         res.send({ result, msg: { text: 'OK, Zuiki', type: 'success' } });
     });

@@ -3,12 +3,14 @@ import FrontContext from "./Components/front/FrontContext";
 import ScooterImage from './Components/scooter-image';
 import axios from 'axios';
 import KoltList from "./Components/front/KoltList";
-import KoltForm from "./Components/Create";
 import LogIn from "./Components/front/Login";
 
 function Front() {
 
     const [kolts, setKolts] = useState(null);
+
+    const [lastUpdate, setLastUpdate] = useState(Date.now());
+    const [createComment, setCreateComment] = useState(null);
 
     //READ
     useEffect(() => {
@@ -17,11 +19,24 @@ function Front() {
                 console.log(res.data);
                 setKolts(res.data);
             });
-    }, []);
+    }, [lastUpdate]);
+
+
+    // Create
+    useEffect(() => {
+        if (null === createComment) return;
+        axios.post('http://localhost:3003/front/komentarai', createComment)
+            .then(_ => {
+                setLastUpdate(Date.now());
+            })
+    }, [createComment]);
+
+
     return (
         <FrontContext.Provider value={
             {
                 kolts,
+                setCreateComment
             }
         }>
              <div className="App">
