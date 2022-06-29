@@ -2,6 +2,10 @@ import { NavLink } from "react-router-dom";
 
 function Nav() {
   return (
+    <div className="container">
+  <div className="row">
+    <div className="col-sm">
+
     <nav className="nav">
       <NavLink
         to="/admin/"
@@ -17,6 +21,9 @@ function Nav() {
         Products
       </NavLink>
     </nav>
+    </div>
+    </div>
+    </div>
   );
 }
 

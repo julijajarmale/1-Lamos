@@ -19,6 +19,35 @@ const con = mysql.createConnection({
   database: "la_ma_shop",
 });
 
+//READ
+app.get("/admin/cats", (req, res) => {
+  const sql = `
+SELECT
+*
+FROM cats
+ORDER by title
+`;
+  con.query(sql, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+  });
+});
+
+//CREATE
+//CATS
+// INSERT INTO table_name (column1, column2, column3, ...)
+// VALUES (value1, value2, value3, ...);
+app.post("/admin/cats", (req, res) => {
+    const sql = `
+INSERT INTO cats
+(title)
+VALUES (?)
+`;
+    con.query(sql, [req.body.title], (err, result) => {
+        if (err) throw err;
+        res.send({ result, msg: { text: 'OK, new cat was created', type: 'success' } });
+    });
+});
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })

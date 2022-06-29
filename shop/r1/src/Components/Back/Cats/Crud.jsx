@@ -1,13 +1,23 @@
 import Nav from '../Nav'
+import Create from './Create'
+import List from './List'
 
 function CatsCrud() {
 
     return (
         <>
         <Nav/>
-       <h1>Cats</h1>
-      
-       </>
+        <div className="container">
+        <div className="row">
+          <div className="col-4">
+            <Create />
+          </div>
+          <div className="col-8">
+            <List/>
+          </div>
+        </div>
+      </div>
+</>
     )
 }
 export default CatsCrud

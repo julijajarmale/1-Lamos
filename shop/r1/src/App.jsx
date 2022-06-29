@@ -1,5 +1,6 @@
 import './bootstrap.css';
 import './App.scss';
+import './crud.scss';
 import {
     BrowserRouter,
     Routes,
