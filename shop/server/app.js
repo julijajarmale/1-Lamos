@@ -49,7 +49,20 @@ VALUES (?)
     });
 });
 
-
+//PRODUCTS
+// INSERT INTO table_name (column1, column2, column3, ...)
+// VALUES (value1, value2, value3, ...);
+app.post("/admin/products", (req, res) => {
+  const sql = `
+INSERT INTO products
+(title, price, in_stock, cats_id)
+VALUES (?, ?, ?, ?)
+`;
+  con.query(sql, [req.body.title, req.body.price, req.body.inStock, req.body.cat], (err, result) => {
+      if (err) throw err;
+      res.send({ result, msg: { text: 'OK, new cat was created', type: 'success' } });
+  });
+});
 //DELETE
 // DELETE FROM table_name WHERE condition;
 app.delete("/admin/cats/:id", (req, res) => {
