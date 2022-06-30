@@ -11,6 +11,7 @@ function Back({ show }) {
 
   const [createCat, setCreateCat] = useState(null);
   const [cats, setCats] = useState(null);
+  const [deleteCat, setDeleteCat] = useState(null);
 
  //Read
  useEffect(() => {
@@ -36,10 +37,21 @@ function Back({ show }) {
 
  }
 
+  // Delete
+  useEffect(() => {
+    if (null === deleteCat) return;
+    axios.delete('http://localhost:3003/admin/cats/' + deleteCat.id)
+      .then(res => {
+        showMessage(res.data.msg);
+        setLastUpdate(Date.now());
+      });
+  }, [deleteCat]);
+
   return (
     <BackContext.Provider value={{
    setCreateCat,
-   cats
+   cats,
+   setDeleteCat
 
     }}>
       {show === "admin" ? (

@@ -4,10 +4,10 @@ import BackContext from "../BackContext";
 
 function Line({ line}) {
 
-    const { } = useContext(BackContext);
+    const {setDeleteCat} = useContext(BackContext);
 
     const handleDelete = () => {
-      //  setDeleteData(tree);
+      setDeleteCat(line);
     }
 
     const handleEdit = () => {
