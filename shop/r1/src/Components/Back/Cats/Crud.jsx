@@ -1,6 +1,7 @@
 import Nav from '../Nav'
 import Create from './Create'
 import List from './List'
+import Edit from './Edit'
 
 function CatsCrud() {
 
@@ -17,6 +18,7 @@ function CatsCrud() {
           </div>
         </div>
       </div>
+      <Edit></Edit>
 </>
     )
 }

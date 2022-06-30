@@ -1,70 +1,99 @@
-import CatsCrud from "./Cats/Crud";
-import ProductsCrud from "./Products/Crud";
-import Nav from "./Nav";
-import { useState, useEffect } from "react";
-import BackContext from "./BackContext";
-import axios from 'axios'
+import { useState, useEffect } from 'react';
+import BackContext from './BackContext';
+import CatsCrud from './Cats/Crud';
+import Nav from './Nav';
+import ProductsCrud from './Products/Crud';
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid'
 
 function Back({ show }) {
 
-  const [lastUpdate, setLastUpdate] = useState(Date.now());
+    const [lastUpdate, setLastUpdate] = useState(Date.now());
 
-  const [createCat, setCreateCat] = useState(null);
-  const [cats, setCats] = useState(null);
-  const [deleteCat, setDeleteCat] = useState(null);
+    const [messages, setMessages] = useState([]);
 
- //Read
- useEffect(() => {
-    axios.get('http://localhost:3003/admin/cats')
-      .then(res => setCats(res.data));
-  }, [lastUpdate]);
+    const [cats, setCats] = useState(null);
+    const [createCat, setCreateCat] = useState(null);
+    const [deleteCat, setDeleteCat] = useState(null);
+    const [editCat, setEditCat] = useState(null);
+    const [modalCat, setModalCat] = useState(null);
 
- // Create
- useEffect(() => {
-    if (null === createCat) return;
-    axios.post('http://localhost:3003/admin/cats', createCat)
-      .then(res => {
-        showMessage(res.data.msg);
-        setLastUpdate(Date.now());
-      })
-      .catch(error => {
-        showMessage({ text: error.message, type: 'danger' });
-      })
+    // Read
+    useEffect(() => {
+        axios.get('http://localhost:3003/admin/cats')
+            .then(res => setCats(res.data));
+    }, [lastUpdate]);
 
-  }, [createCat]);
+    // Create
+    useEffect(() => {
+        if (null === createCat) return;
+        axios.post('http://localhost:3003/admin/cats', createCat)
+            .then(res => {
+                showMessage(res.data.msg);
+                setLastUpdate(Date.now());
+            })
+            .catch(error => {
+                showMessage({ text: error.message, type: 'danger' });
+            })
+    }, [createCat]);
 
- const showMessage = () =>{
+    // Delete
+    useEffect(() => {
+        if (null === deleteCat) return;
+        axios.delete('http://localhost:3003/admin/cats/' + deleteCat.id)
+            .then(res => {
+                showMessage(res.data.msg);
+                setLastUpdate(Date.now());
+            })
+            .catch(error => {
+                showMessage({ text: error.message, type: 'danger' });
+            })
+    }, [deleteCat]);
 
- }
+    // Edit
+    useEffect(() => {
+      if (null === editCat) return;
+      axios.put('http://localhost:3003/admin/cats/' + editCat.id, editCat)
+          .then(res => {
+              showMessage(res.data.msg);
+              setLastUpdate(Date.now());
+          })
+          .catch(error => {
+              showMessage({ text: error.message, type: 'danger' });
+          })
+  }, [editCat]);
 
-  // Delete
-  useEffect(() => {
-    if (null === deleteCat) return;
-    axios.delete('http://localhost:3003/admin/cats/' + deleteCat.id)
-      .then(res => {
-        showMessage(res.data.msg);
-        setLastUpdate(Date.now());
-      });
-  }, [deleteCat]);
+    const showMessage = (m) => {
+  const id = uuidv4();
+  m.id = id;
+  setMessages(msg => [...msg, m ]); // prie pries tai buvusiu messages pridedame nauja message
+  setTimeout( () => {
+    setMessages(mes => mes.filter(ms => ms.id !== id))
+  }, 5000);
+    }
 
-  return (
-    <BackContext.Provider value={{
-   setCreateCat,
-   cats,
-   setDeleteCat
 
-    }}>
-      {show === "admin" ? (
-        <>
-          <Nav></Nav>
-          <h1>Back</h1>
-        </>
-      ) : show === "cats" ? (
-        <CatsCrud />
-      ) : show === "products" ? (
-        <ProductsCrud />
-      ) : null}
-    </BackContext.Provider>
-  );
+    return (
+        <BackContext.Provider value={{
+            setCreateCat,
+            cats,
+            setDeleteCat,
+            messages,
+            setEditCat,
+            setModalCat,
+            modalCat
+           
+        }}>
+            {
+                show === 'admin' ?
+                    <>
+                        <Nav />
+                        <h1>BACK</h1>
+                    </>
+                    : show === 'cats' ? <CatsCrud /> :
+                        show === 'products' ? <ProductsCrud /> : null
+            }
+        </BackContext.Provider>
+    )
 }
 export default Back;

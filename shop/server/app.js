@@ -62,6 +62,22 @@ WHERE id = ?
       res.send({ result, msg: { text: 'Cat gone', type: 'info' } });
   });
 });
+
+//DELETE
+// DELETE FROM table_name WHERE condition;
+app.put("/admin/cats/:id", (req, res) => {
+  const sql = `
+UPDATE cats
+SET title = ?
+WHERE id = ?
+`;
+
+  con.query(sql, [req.body.title, req.params.id], (err, result) => {
+      if (err) throw err;
+      res.send({ result, msg: { text: 'Ok, cat as new', type: 'info' } });
+  });
+});
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
