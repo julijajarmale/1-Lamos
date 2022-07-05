@@ -76,6 +76,14 @@ function App() {
       });
   }, [editData]);
 
+     // DELETE COMMENT
+     const handleDeleteComment = id => {
+      axios.delete('http://localhost:3003/komentarai/' + id)
+      .then(res => {
+        showMessage(res.data.msg);
+        setLastUpdate(Date.now());
+      });
+  }
 
   const showMessage = msg => {
     setMessage(msg);
@@ -94,7 +102,8 @@ function App() {
             setEditData,
             message,
             disableCreate,
-            setDisableCreate
+            setDisableCreate,
+            handleDeleteComment
           }
         }>
         <div className="App">

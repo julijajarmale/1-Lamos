@@ -277,6 +277,16 @@ WHERE id = ?
     });
 });
 
+app.delete("/komentarai/:comId", (req, res) => {
+    const sql = `
+    DELETE FROM kolt_comments
+    WHERE id = ?
+    `;
+        con.query(sql, [req.params.comId], (err, result) => {
+            if (err) throw err;
+            res.send({ result, msg: { text: 'Komentaro pabaiga', type: 'info' } });
+        });
+    });
 //EDIT
 // UPDATE table_name
 // SET column1 = value1, column2 = value2, ...

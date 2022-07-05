@@ -10,7 +10,7 @@ function KoltList() {
 
         <div className='list-column'>
         <div>
-           <h2>Scooter reservation</h2>  
+           <h2>Scooter List</h2>  
        </div>
        <div className="form-group">
        <ul className="kolt-list">
