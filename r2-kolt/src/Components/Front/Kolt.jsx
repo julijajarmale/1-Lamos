@@ -6,13 +6,23 @@ import { useState } from "react";
 function Kolt({ kolt }) {
 
 
-  const { setCreateComment } = useContext(FrontContext);
+  const { setCreateComment, setRateNow  } = useContext(FrontContext);
 
   const [com, setCom] = useState('');
+  const [rate, setRate] = useState('5');
+
   
   const handleComment = () => {
     setCreateComment({com, koltId: kolt.id});
     setCom('');
+}
+
+const rateIt = e => {
+  setRate(e.target.value);
+  setRateNow({
+      rate: parseInt(e.target.value),
+      id: kolt.id
+  });
 }
   return (
     <li className="list-item">
@@ -20,6 +30,20 @@ function Kolt({ kolt }) {
         <span className="item">{kolt.code}</span>
         <span className="item"><label>last time used:</label>{kolt.time}</span>
         <span className="item"><label>total ride:</label>{kolt.km} km</span>
+        <b className="ml-4">
+                        {
+                            kolt.rate_sum ? 'rate: ' + (kolt.rate_sum / kolt.rates).toFixed(2) : 'no rates yet'
+                        }
+                    </b>
+                </div>
+                <div className="form-group mt-3">
+                    <label className="mr-2">Rate it!</label>
+                    <select value={rate} onChange={rateIt}>
+                        {
+                            [...Array(10)].map((_, i) => <option key={i} value={10 - i}>{10 - i}</option>)
+                        }
+                    </select>
+                </div>
         <span className="item">
           {kolt.isbusy ? (
             <div className="uzimtas">Busy</div>
@@ -41,7 +65,7 @@ function Kolt({ kolt }) {
         <div className="buttons2">
           <button className="btn" onClick={handleComment}>Add comment</button>
         </div>
-      </div>
+      
     </li>
   );
 }

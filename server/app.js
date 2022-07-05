@@ -224,7 +224,7 @@ app.get("/front/paspirtukai", (req, res) => {
     const sql = `
 
       SELECT
-      k.code, time, km, isbusy, k.id, GROUP_CONCAT(c.com, '-^o^-') AS coms, GROUP_CONCAT(c.id) AS coms_id
+      k.code, time, km, isbusy, k.id, GROUP_CONCAT(c.com, '-^o^-') AS coms, GROUP_CONCAT(c.id) AS coms_id, k.rates, k.rate_sum
       FROM kolt AS k
       LEFT JOIN kolt_comments AS c
       ON c.kolt_id = k.id
@@ -303,8 +303,20 @@ app.put("/paspirtukai/:koltId", (req, res) => {
     });
 });
 
+app.put("/front/balsuok/:koltId", (req, res) => {
+        const sql = `
+        UPDATE kolt
+        SET rates = rates + 1, rate_sum = rate_sum + ?
+        WHERE id = ?
+    `;
+        con.query(sql, [req.body.rate, req.params.koltId], (err, result) => {
+            if (err) throw err;
+            res.send({ result, msg: { text: 'Tu prabalsavai', type: 'danger' } });
+        });
+    });
+    app.listen(port, () => {
+        console.log(`Bebras klauso porto Nr ${port}`);
+    });
 
-app.listen(port, () => {
-    console.log(`Bebras klauso porto Nr ${port}`);
-});
+
 

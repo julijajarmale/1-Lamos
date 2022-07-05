@@ -11,6 +11,7 @@ function Front() {
 
     const [lastUpdate, setLastUpdate] = useState(Date.now());
     const [createComment, setCreateComment] = useState(null);
+    const [rateNow, setRateNow] = useState(null);
 
     //READ
     useEffect(() => {
@@ -31,12 +32,22 @@ function Front() {
             })
     }, [createComment]);
 
+// Rate
+    // Create
+    useEffect(() => {
+        if (null === rateNow) return;
+        axios.put('http://localhost:3003/front/balsuok/' + rateNow.id, rateNow)
+            .then(_ => {
+                setLastUpdate(Date.now());
+            })
+    }, [rateNow]);
 
     return (
         <FrontContext.Provider value={
             {
                 kolts,
-                setCreateComment
+                setCreateComment,
+                setRateNow
             }
         }>
              <div className="App">
