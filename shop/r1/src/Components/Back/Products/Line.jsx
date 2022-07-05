@@ -21,6 +21,9 @@ function Line({ line }) {
                     <i>{line.price.toFixed(2)} EUR</i>
                     <div className="box" style={{backgroundColor: line.in_stock ? 'coral' : null}}></div>
                     <span>{new Date(Date.parse(line.lu)).toLocaleString()}</span>
+                    {
+                    line.photo ? <div className="photo-bin"><img src={line.photo} alt={line.title}/></div> : null
+                }
                     <div className="cat">{line.cat}</div>
                 </div>
                 <div className="buttons">

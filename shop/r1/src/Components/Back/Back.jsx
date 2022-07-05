@@ -24,6 +24,7 @@ function Back({ show }) {
     const [deleteProduct, setDeleteProduct] = useState(null);
     const [editProduct, setEditProduct] = useState(null);
     const [modalProduct, setModalProduct] = useState(null);
+    const [deletePhoto, setDeletePhoto] = useState(null);
 
     // Read
     useEffect(() => {
@@ -83,6 +84,17 @@ function Back({ show }) {
             })
     }, [deleteProduct]);
 
+    useEffect(() => {
+        if (null === deletePhoto) return;
+        axios.delete('http://localhost:3003/admin/photos/' + deletePhoto.id)
+            .then(res => {
+                showMessage(res.data.msg);
+                setLastUpdate(Date.now());
+            })
+            .catch(error => {
+                showMessage({ text: error.message, type: 'danger' });
+            })
+    }, [deletePhoto]);
 
     // Edit
     useEffect(() => {
@@ -101,7 +113,7 @@ function Back({ show }) {
         axios.put('http://localhost:3003/admin/products/' + editProduct.id, editProduct)
             .then(res => {
                 showMessage(res.data.msg);
-                setLastUpdate(Date.now());
+               // setLastUpdate(Date.now());
             })
             .catch(error => {
                 showMessage({ text: error.message, type: 'danger' });
@@ -136,6 +148,7 @@ function Back({ show }) {
             setEditProduct,
             setModalProduct,
             modalProduct,
+            setDeletePhoto
         }}>
             {
                 show === 'admin' ?
