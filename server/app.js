@@ -5,18 +5,17 @@ const cors = require("cors");
 app.use(cors());
 const mysql = require("mysql");
 app.use(
-    express.urlencoded({
-        extended: true,
-    })
+  express.urlencoded({
+    extended: true,
+  })
 );
 app.use(express.json());
 
-
 const con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "lama",
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "lama",
 });
 
 //////Routes
@@ -202,7 +201,7 @@ const con = mysql.createConnection({
 //Routes
 //READ
 app.get("/paspirtukai", (req, res) => {
-    const sql = `
+  const sql = `
     SELECT
     k.code, time, km, isbusy, k.id, GROUP_CONCAT(c.com, '-^o^-') AS coms, GROUP_CONCAT(c.id) AS coms_id
     FROM kolt AS k
@@ -211,17 +210,14 @@ app.get("/paspirtukai", (req, res) => {
     GROUP BY k.id
  
 `;
-    con.query(sql, (err, result) => {
-        if (err) throw err;
-        res.send(result);
-    });
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
 });
 
-
-
-
 app.get("/front/paspirtukai", (req, res) => {
-    const sql = `
+  const sql = `
 
       SELECT
       k.code, time, km, isbusy, k.id, GROUP_CONCAT(c.com, '-^o^-') AS coms, GROUP_CONCAT(c.id) AS coms_id, k.rates, k.rate_sum
@@ -231,92 +227,99 @@ app.get("/front/paspirtukai", (req, res) => {
       GROUP BY k.id
     `;
 
-    con.query(sql, (err, result) => {
-        if (err) throw err;
-        res.send(result);
-    });
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
 });
 
 //CREATE
 // INSERT INTO table_name (column1, column2, column3, ...)
 // VALUES (value1, value2, value3, ...);
 app.post("/paspirtukai", (req, res) => {
-    const sql = `
+  const sql = `
 INSERT INTO kolt
 (code, km, time)
 VALUES (?, ?, ?)
 `;
-    con.query(sql, [req.body.code, req.body.km, req.body.time], (err, result) => {
-        if (err) throw err;
-        res.send({ result, msg: { text: 'OK, Zuiki', type: 'success' } });
-    });
+  con.query(sql, [req.body.code, req.body.km, req.body.time], (err, result) => {
+    if (err) throw err;
+    res.send({ result, msg: { text: "OK, Zuiki", type: "success" } });
+  });
 });
 
 app.post("/front/komentarai", (req, res) => {
-    const sql = `
+  const sql = `
 INSERT INTO kolt_comments
 (com, kolt_id)
 VALUES (?, ?)
 `;
-    con.query(sql, [req.body.com, req.body.koltId], (err, result) => {
-        if (err) throw err;
-        res.send({ result, msg: { text: 'OK, Zuiki', type: 'success' } });
-    });
+  con.query(sql, [req.body.com, req.body.koltId], (err, result) => {
+    if (err) throw err;
+    res.send({ result, msg: { text: "OK, Zuiki", type: "success" } });
+  });
 });
 
 //DELETE
 // DELETE FROM table_name WHERE condition;
 app.delete("/paspirtukai/:koltId", (req, res) => {
-    const sql = `
+  const sql = `
 DELETE FROM kolt
 WHERE id = ?
 `;
-    con.query(sql, [req.params.koltId], (err, result) => {
-        if (err) throw err;
-        res.send({ result, msg: { text: 'OK, Bebrai', type: 'info' } });
-    });
+  con.query(sql, [req.params.koltId], (err, result) => {
+    if (err) throw err;
+    res.send({ result, msg: { text: "OK, Bebrai", type: "info" } });
+  });
 });
 
 app.delete("/komentarai/:comId", (req, res) => {
-    const sql = `
+  const sql = `
     DELETE FROM kolt_comments
     WHERE id = ?
     `;
-        con.query(sql, [req.params.comId], (err, result) => {
-            if (err) throw err;
-            res.send({ result, msg: { text: 'Komentaro pabaiga', type: 'info' } });
-        });
-    });
+  con.query(sql, [req.params.comId], (err, result) => {
+    if (err) throw err;
+    res.send({ result, msg: { text: "Komentaro pabaiga", type: "info" } });
+  });
+});
 //EDIT
 // UPDATE table_name
 // SET column1 = value1, column2 = value2, ...
 // WHERE condition;
 app.put("/paspirtukai/:koltId", (req, res) => {
-    const sql = `
+  const sql = `
     UPDATE kolt
     SET code = ?, km = ?, time = ?, isbusy = ?
     WHERE id = ?
 `;
-    con.query(sql, [req.body.code, req.body.km, req.body.time, req.body.isBusy, req.params.koltId], (err, result) => {
-        if (err) throw err;
-        res.send({ result, msg: { text: 'OK, Barsukai', type: 'danger' } });
-    });
+  con.query(
+    sql,
+    [
+      req.body.code,
+      req.body.km,
+      req.body.time,
+      req.body.isBusy,
+      req.params.koltId,
+    ],
+    (err, result) => {
+      if (err) throw err;
+      res.send({ result, msg: { text: "OK, Barsukai", type: "danger" } });
+    }
+  );
 });
 
 app.put("/front/balsuok/:koltId", (req, res) => {
-        const sql = `
+  const sql = `
         UPDATE kolt
         SET rates = rates + 1, rate_sum = rate_sum + ?
         WHERE id = ?
     `;
-        con.query(sql, [req.body.rate, req.params.koltId], (err, result) => {
-            if (err) throw err;
-            res.send({ result, msg: { text: 'Tu prabalsavai', type: 'danger' } });
-        });
-    });
-    app.listen(port, () => {
-        console.log(`Bebras klauso porto Nr ${port}`);
-    });
-
-
-
+  con.query(sql, [req.body.rate, req.params.koltId], (err, result) => {
+    if (err) throw err;
+    res.send({ result, msg: { text: "Tu prabalsavai", type: "danger" } });
+  });
+});
+app.listen(port, () => {
+  console.log(`Bebras klauso porto Nr ${port}`);
+});

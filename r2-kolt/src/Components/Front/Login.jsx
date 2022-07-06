@@ -1,6 +1,4 @@
-
 function LogIn() {
-
   return (
     <div className="form-column">
       <div className="form">
@@ -9,32 +7,18 @@ function LogIn() {
         </div>
         <div className="form-group">
           <label className="label">E-mail</label>
-          <input
-            type="email"
-            className="form-row"
-          />
+          <input type="email" className="form-row" />
         </div>
         <div className="form-group">
           <label className="label">Password</label>
-          <input
-            type="password" name="password"
-            className="form-row"
-          />
-          
+          <input type="password" name="password" className="form-row" />
         </div>
         <div className="form-group">
           <label className="label">Repeat Password</label>
-          <input
-            type="password" name="password"
-            className="form-row"
-          />
-          
+          <input type="password" name="password" className="form-row" />
         </div>
-        
-        <button
-          type="button"
-          className="btn"
-        >
+
+        <button type="button" className="btn">
           Go
         </button>
       </div>

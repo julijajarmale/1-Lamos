@@ -20,7 +20,7 @@ function KoltEdit() {
   }, [modalData]);
 
   const koltEdit = () => {
-    console.log('suveike')
+    console.log("suveike");
     const data = {
       code,
       time,
@@ -29,7 +29,7 @@ function KoltEdit() {
       isBusy: isBusy ? 1 : 0,
       id: modalData.id,
     };
-    console.log(data)
+    console.log(data);
     setEditData(data);
     setModalData(null);
   };
