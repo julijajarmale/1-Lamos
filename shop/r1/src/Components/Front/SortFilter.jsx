@@ -5,15 +5,26 @@ import FrontContext from './FrontContext';
 function SortFilter() {
 
     const [sortBy, setSortBy] = useState('default');
-    const { setProducts, products, cats, doFilter, cat, setSearch} = useContext(FrontContext);
+    const { setProducts, products, cats, doFilter, cat, setSearch, cur, setNowCur} = useContext(FrontContext);
 
     const [s, setS] = useState('');
 
+    const [currency, setCurrency] = useState('USD');
+
     
-const doSearch = e => {
-    setS(e.target.value);
-    setSearch(e.target.value);
-}
+    const doSearch = e => {
+        setS(e.target.value);
+        setSearch(e.target.value);
+    }
+
+    const changeCur = (code) => {
+        setCurrency(code);
+        setNowCur(code);
+    }
+
+
+
+
 
 
 
@@ -81,7 +92,17 @@ const doSearch = e => {
                         <div className="col-4">
                             <div className="form-group">
                                 <label>Search</label>
-                                <input className="form-control "type="text" value={s} onChange={doSearch}/>
+                                <input className="form-control" type="text" value={s} onChange={doSearch} />
+                            </div>
+                        </div>
+                        <div className="col-4">
+                            <div className="form-group">
+                                <label>Currencies</label>
+                                <select className="form-control" onChange={e =>changeCur(e.target.value)} value={currency}>
+                                    {
+                                        cur ? cur.map(c => <option key={c.id} value={c.code}>{c.code}</option>) : null
+                                    }
+                                </select>
                             </div>
                         </div>
                     </div>

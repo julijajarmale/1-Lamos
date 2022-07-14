@@ -12,8 +12,29 @@ import Front from './Components/Front/Front';
 import { login, logout, authConfig } from './Functions/auth';
 import axios from 'axios';
 import { useState, useEffect } from "react";
+import {apikey} from './Functions/key';
 
 function App() {
+
+
+
+  useEffect(() => {
+
+    if (false) {
+      axios.get('https://api.currencyapi.com/v3/latest?apikey=' + apikey)
+      .then(res => {
+        axios.post('http://localhost:3003/admin/cur', res.data, authConfig())
+        .then(r => console.log(r))
+      })
+    }
+
+      
+
+
+    
+    
+  }, [])
+
 
     return (
         <BrowserRouter>
@@ -49,6 +70,8 @@ function RequireAuth({ children, role }) {
   
     return view;
   }
+
+
 
   
   
