@@ -45,7 +45,7 @@ function RequireAuth({ children, role }) {
           }
         })
   
-    }, [children]);
+    }, [children, role]);
   
     return view;
   }
